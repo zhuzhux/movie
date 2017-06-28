@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!--<meta http-equiv="Content-Type" content="text/html;charset:UTF-8">-->
+<meta charset="UTF-8"/>
+<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<title>sh</title>
+</head>
+<body>
+<div id="contents" style="display: none;">
+	
+</div>
+<ul>
+
+<li class="mui-table-view-cell mui-media mui-col-xs-4">
+    <a href="#">
+        <img class="mui-media-object" src="http://wxjii.cn/img1.jpg">
+        <div class="mui-media-body">1s试试</div>
+    </a>
+</li>
+<li class="mui-table-view-cell mui-media mui-col-xs-4">
+    <a href="#">
+        <img class="mui-media-object" src="http://wxjii.cn/img1.jpg">
+        <div class="mui-media-body">1s试试</div>
+    </a>
+</li>
+<li class="mui-table-view-cell mui-media mui-col-xs-4">
+    <a href="#">
+        <img class="mui-media-object" src="http://wxjii.cn/img1.jpg">
+        <div class="mui-media-body">1s试试</div>
+    </a>
+</li>
+</ul>
+<script type="text/javascript">
+	$.ajax({
+		type:"post",
+		url:"test.php",
+		success:function(data){
+//			console.log(typeof(data))
+			$('#contents').html(data);
+		},
+		async:false
+	});
+	for(var i = 0;i<$('.con').length;i++){
+//		console.log($('.con').eq(i).html());
+//		console.log($('.con .sTit').eq(i).text());
+			console.log($('.con img').eq(i).attr('data-original'));
+	}
+	for(i=0;i<$('li.mui-media').length;i++){
+		$('li.mui-media').find('div.mui-media-body').eq(i).text($('.con .sTit').eq(i).text());
+		$('li.mui-media').find('img').eq(i).attr('src',$('.con img').eq(i).attr('data-original'));
+	}
+
+</script>
+</body>
+</html>

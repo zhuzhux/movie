@@ -1,0 +1,17 @@
+{
+  "index.html": {
+    "href": "index.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery.js",
+      "css/mui.min.css",
+      "img/tb4.jpg",
+      "img/tb1.jpg",
+      "img/tb2.jpg",
+      "img/tb3.jpg",
+      "fonts/mui.ttf"
+    ],
+    "refer": [],
+    "priority": 0
+  }
+}
