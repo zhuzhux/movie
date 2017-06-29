@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<script src="js/mui.min.js"></script>
+
+	</body>
+
+  <script type="text/javascript" charset="utf-8">
+          mui.init();
+        //B页面onload从服务器获取列表数据；
+        window.onload = function(){
+            //从服务器获取数据
+            
+            //业务数据获取完毕，并已插入当前页面DOM；
+            //注意：若为ajax请求，则需将如下代码放在处理完ajax响应数据之后；
+            mui.plusReady(function(){
+                var self = plus.webview.currentWebview();
+                var name = self.name;
+                console.log(name);
+                //关闭等待框
+                plus.nativeUI.closeWaiting();
+                //显示当前页面
+                mui.currentWebview.show();
+            });
+        }
+        
+  </script>search
+</html>

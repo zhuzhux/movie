@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<script src="js/mui.min.js"></script>
+
+	</body>
+		<script type="text/javascript" charset="utf-8">
+        mui.init();
+        mui.plusReady(function() {
+          
+            document.getElementById("test").addEventListener("tap", function() {
+                mui.openWindow({
+                    url: "search.html",
+                    id: "search",
+                    waiting: {
+                        autoShow: false
+                    },
+                     extras:{
+                      name:'testapp'
+                    }
+    
+                });
+            
+            });
+        });
+        
+      
+        </script>
+
+
+
+
+<a  id="test"> 跳转 search.html </a>
+</html>
