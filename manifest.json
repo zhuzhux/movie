@@ -109,7 +109,7 @@
 	},
 	"plus": {
 		"splashscreen": {
-			"autoclose": true,/*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
+			"autoclose": false,/*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
 			"waiting": true,
 			"delay": "0"
 		},
@@ -231,8 +231,45 @@
 					"img/tb4.jpg",
 					"img/tb1.jpg",
 					"img/tb2.jpg",
-					"img/tb3.jpg"
+					"img/tb3.jpg",
+					"/php/movieA.php",
+					"list.html"
 				],
+				"priority": 0,
+				"refer": [
+					"index2.html",
+					"movie.html"
+				]
+			},
+			"index2.html": {
+				"resources": [
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"movie.html": {
+				"resources": [
+					"css/mui.min.css",
+					"/php/movieA.php"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"list.html": {
+				"resources": [
+					"img/tb1.jpg",
+					"img/tb2.jpg",
+					"img/tb3.jpg",
+					"img/tb4.jpg",
+					"js/jquery.js",
+					"css/mui.min.css",
+					"/php/movieA.php",
+					"movie.html",
+					"/movie.html",
+					"fonts/mui.ttf"
+				],
+				"refer": [],
 				"priority": 0
 			}
 		},

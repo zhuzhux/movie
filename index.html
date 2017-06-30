@@ -1,290 +1,143 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <title></title>
-    <script src="js/mui.min.js"></script>
-    <script src="js/jquery.js"></script>
-    <link href="css/mui.min.css" rel="stylesheet"/>
-    <script type="text/javascript" charset="utf-8">
-      	mui.init();
-      	mui.plusReady(function() {
-          
-          
-            document.getElementById("test").addEventListener("tap", function() {
-                mui.openWindow({
-                    url: "index2.html",
-                    id: "index2",
-                    waiting: {
-                        autoShow: false
-                    },
-                     extras:{
-                      name:'testapp'
-                    }
-    
-                });
-            
-            });
-        });
-    </script>
-    <style>
-    	body{max-width: 640px;margin: 0 auto;}
-    </style>
-    <style>
-		.mui-control-content {
-			background-color: white;
-			min-height: 1015px;
-		}
-		.mui-control-content .mui-loading {
-			margin-top: 50px;
-		}
-	</style>
-</head>
-<body>
-		<!-- 主界面菜单同时移动 -->
-		    <!-- 侧滑导航根容器 -->
-		    <div class="mui-off-canvas-wrap mui-draggable">
-		        <!-- 主页面容器 -->
-		        <div class="mui-inner-wrap">
-		            <!-- 菜单容器 -->
-		            <aside class="mui-off-canvas-left" id="offCanvasSide">
-		                <div class="mui-scroll-wrapper">
-		                    <div class="mui-scroll">
-		                        <!-- 菜单具体展示内容 -->
-		                        123123
-		                    </div>
-		                </div>
-		            </aside>
-		            <!-- 主页面标题 -->
-		            <header class="mui-bar mui-bar-nav">
-		                <a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left" href="#offCanvasSide"></a>
-		                <h1 class="mui-title">标题</h1>
-		            </header>
-		            <nav class="mui-bar mui-bar-tab">
-		    		    <a class="mui-tab-item mui-active">
-		    		        <span class="mui-icon mui-icon-home"></span>
-		    		        <span class="mui-tab-label">首页</span>
-		    		    </a>
-		    		    <a class="mui-tab-item">
-		    		        <span class="mui-icon mui-icon-phone"></span>
-		    		        <span class="mui-tab-label">电话</span>
-		    		    </a>
-		    		    <a class="mui-tab-item">
-		    		        <span class="mui-icon mui-icon-email"></span>
-		    		        <span class="mui-tab-label">邮件</span>
-		    		    </a>
-		    		    <a class="mui-tab-item">
-		    		        <span class="mui-icon mui-icon-gear"></span>
-		    		        <span class="mui-tab-label">设置</span>
-		    		    </a>
-		    		</nav>
-		            <!-- 主页面内容容器 -->
-		            <div class="mui-content mui-scroll-wrapper">
-		                <div class="mui-scroll">
-		                    <!-- 主界面具体展示内容 -->
-		                    <div id="slider" class="mui-slider" >
-								  	<div class="mui-slider-group mui-slider-loop">
-								    <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
-									    <div class="mui-slider-item mui-slider-item-duplicate">
-									      <a href="#">
-									        <img src="./img/tb4.jpg">
-									      </a>
-									    </div>
-									    <!-- 第一张 -->
-									    <div class="mui-slider-item">
-									      <a href="#">
-									        <img src="./img/tb1.jpg">
-									      </a>
-									    </div>
-									    <!-- 第二张 -->
-									    <div class="mui-slider-item">
-									      <a href="#">
-									        <img src="./img/tb2.jpg">
-									      </a>
-									    </div>
-									    <!-- 第三张 -->
-									    <div class="mui-slider-item">
-									      <a href="#">
-									        <img src="./img/tb3.jpg">
-									      </a>
-									    </div>
-									    <!-- 第四张 -->
-									    <div class="mui-slider-item">
-									      <a href="#">
-									        <img src="./img/tb4.jpg">
-									      </a>
-									    </div>
-									    <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
-									    <div class="mui-slider-item mui-slider-item-duplicate">
-									      <a href="#">
-									        <img src="./img/tb1.jpg">
-									      </a>
-									    </div>
-								  	</div>
-								  	<div class="mui-slider-indicator">
-										<div class="mui-indicator mui-active"></div>
-										<div class="mui-indicator"></div>
-										<div class="mui-indicator"></div>
-										<div class="mui-indicator"></div>
-								  	</div>
-								</div>
-								<a id="test">tiaozhuan</a>
-		                    <ul class="mui-table-view mui-grid-view">
-		                        <!--内容-->
-		                    </ul>
-		                </div>
-		            </div>
-		       	 <div class="mui-off-canvas-backdrop"></div>
-		        </div>
-		    </div>
-		    
-		
-		<!--<div class="mui-content">
-			<div id="slider" class="mui-slider">
-				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-					<a class="mui-control-item" href="#item1mobile">
-						待办公文
-					</a>
-					<a class="mui-control-item" href="#item2mobile">
-						已办公文
-					</a>
-			 		<a class="mui-control-item" href="#item3mobile">
-						全部公文
-					</a>
-				</div>
-				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>
-				<div class="mui-slider-group">
-					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
-						<div id="scroll1" class="mui-scroll-wrapper">
-							<div class="mui-scroll">
-								<ul class="mui-table-view mui-grid-view">
-								    <li class="mui-table-view-cell mui-media mui-col-xs-4">
-								        <a href="#">
-								            <img class="mui-media-object" src="http://placehold.it/400x300">
-								            <div class="mui-media-body">文字说明1</div>
-								        </a>
-								    </li>
-								    <li class="mui-table-view-cell mui-media mui-col-xs-4">
-								        <a href="#">
-								            <img class="mui-media-object" src="http://placehold.it/400x300">
-								            <div class="mui-media-body">文字说明2</div>
-								        </a>
-								    </li>
-								    <li class="mui-table-view-cell mui-media mui-col-xs-4">
-								        <a href="#">
-								            <img class="mui-media-object" src="http://placehold.it/400x300">
-								            <div class="mui-media-body">文字说明3</div>
-								        </a>
-								    </li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div id="item2mobile" class="mui-slider-item mui-control-content">
-						<div id="scroll2" class="mui-scroll-wrapper">
-							<div class="mui-scroll">
-								<div class="mui-loading">
-									<div class="mui-spinner">
-									</div>
-								</div>
-								
-							</div>
-						</div>
 
-					</div>
-					<div id="item3mobile" class="mui-slider-item mui-control-content">
-						<div id="scroll3" class="mui-scroll-wrapper">
-							<div class="mui-scroll">
-								<div class="mui-loading">
-									<div class="mui-spinner">
-									</div>
-								</div>
-							</div>
-						</div>
+	<head>
+		<meta charset="utf-8">
+		<title>36氪 | 关注互联网创业</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-					</div>
-				</div>
-			</div>-->
-		</div>
-		<div id="contents" style="display: none"></div>
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" href="css/app.css" />
+
+		<style>
+			html,
+			body {
+				min-height: 100%;
+				background-color: #efeff4;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="position: static;">
+			<!--<h1 id="title" class="mui-title kr-title"><span class="kr-logo">wxj</span></h1>-->
+			<a id="setting" class="mui-icon mui-icon-gear mui-pull-right"></a>
+		</header>
+		<div class="mui-content"></div>
+		<script type="text/javascript" charset="UTF-8" src="js/mui.min.js"></script>
+		<script type="text/javascript" charset="UTF-8" src="js/app.js"></script>
 		<script>
+			 //预加载
 			mui.init({
-				swipeBack: false
+				preloadPages: [
+	
+				{
+					"id": "list",
+					"url": "/list.html",
+					"styles": {
+						"popGesture": "hide"
+					},
+					"subpages": [{
+						"id": "movie",
+					"url": "/movie.html",
+					"styles": {
+						"popGesture": "hide"
+					}
+					}]
+				}
+				]
 			});
-			(function($) {
-				$('.mui-scroll-wrapper').scroll({
-					indicators: false //是否显示滚动条
-				});
-//				var html2 = '<ul class="mui-table-view"><li class="mui-table-view-cell">第二个选项卡子项-1</li><li class="mui-table-view-cell">第二个选项卡子项-2</li><li class="mui-table-view-cell">第二个选项卡子项-3</li><li class="mui-table-view-cell">第二个选项卡子项-4</li><li class="mui-table-view-cell">第二个选项卡子项-5</li></ul>';
-//				var html3 = '<ul class="mui-table-view"><li class="mui-table-view-cell">第三个选项卡子项-1</li><li class="mui-table-view-cell">第三个选项卡子项-2</li><li class="mui-table-view-cell">第三个选项卡子项-3</li><li class="mui-table-view-cell">第三个选项卡子项-4</li><li class="mui-table-view-cell">第三个选项卡子项-5</li></ul>';
-//				var item2 = document.getElementById('item2mobile');
-//				var item3 = document.getElementById('item3mobile');
-//				document.getElementById('slider').addEventListener('slide', function(e) { 
-//					if (e.detail.slideNumber === 1) {
-//						if (item2.querySelector('.mui-loading')) {
-//							setTimeout(function() {
-//								item2.querySelector('.mui-scroll').innerHTML = html2;
-//							}, 500);
-//						}
-//					} else if (e.detail.slideNumber === 2) {
-//						if (item3.querySelector('.mui-loading')) {
-//							setTimeout(function() {
-//								item3.querySelector('.mui-scroll').innerHTML = html3;
-//							}, 500);
-//						}
-//					}
-//				});
-				var sliderSegmentedControl = document.getElementById('sliderSegmentedControl');
-				$('.mui-input-group').on('change', 'input', function() {
-					if (this.checked) {
-						sliderSegmentedControl.className = 'mui-slider-indicator mui-segmented-control mui-segmented-control-inverted mui-segmented-control-' + this.value;
-						//force repaint
-						sliderProgressBar.setAttribute('style', sliderProgressBar.getAttribute('style'));
+			mui.plusReady(function() {
+				//关闭splash界面
+				//plus.navigator.closeSplashscreen();
+				//创建子窗口
+				plus.webview.currentWebview().append(plus.webview.create('list.html', 'list', {
+					top: "0px",
+					bottom: "0px"
+				}));
+				if (mui.os.stream) {
+					//创建桌面快捷方式
+					if (mui.isFunction(plus.navigator.createShortcut)) {
+						var shortcut = plus.storage.getItem("SHORTCUT");
+						if (!shortcut) {
+							plus.navigator.createShortcut({
+								name: "36氪资讯",
+								icon: "img/icon.png"
+							});
+							plus.storage.setItem("SHORTCUT", "true");
+						}
+					}
+					//向服务器发送激活请求，后续可删除
+					plus.runtime.getProperty(plus.runtime.appid, function(info) {
+						mui.get('http://stream.dcloud.net.cn/collect/data', {
+							appid: plus.runtime.appid,
+							version: info.version,
+							logtype: 2,
+							imei: plus.device.imei
+						});
+					});
+				}
+			});
+			 //右上角设置按钮点击事件
+			var setting_view = null;
+			document.getElementById("setting").addEventListener('tap', function() {
+				if (!setting_view) {
+					setting_view = plus.webview.getWebviewById('setting');
+				}
+				setting_view.show('slide-in-bottom', 200);
+			});
+			 //首页退出事件
+			mui.back = function() {
+				mui.confirm('确定退出应用？', '提示', ['确定', '取消'], function(e) {
+					if (e.index === 0) {
+						plus.runtime.quit();
 					}
 				});
-			})(mui);
-			var a = $('.mui-table-view .mui-table-view-cell .mui-media-object').width();
-			$('.mui-table-view .mui-table-view-cell .mui-media-object').css({height:a*1.4})
-		</script>
-</body>
-</html>
-<script type="text/javascript">
-//http://movie.wxjii.cn
-	var _ajax = mui.ajax("http://movie.wxjii.cn/php/movieA.php",{
-		data:{},
-		async:false,
-		dataType:'json',
-		type:'post',
-		timeout:1000,
-		success:function(data){
-			var str = '';
-			for(var i = 0;i<data.data.length;i++){
-				str +='<li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="http://movie.wxjii.cn/index2.html"><img class="mui-media-object" src="'+data.data[i].imgSrc+'"><p class="mui-media-body">'+data.data[i].filmName+'</p><p class="mui-media-body">'+data.data[i].actor+'</p></a></li>';
-				
-				$('ul.mui-table-view').html(str);
-			}
+			};
 
-		}
-	});
-	
-//	$.ajax({
-//		type:"post",
-//		dataType:'json',
-//		url:"php/movieA.php",
-//		success:function(data){
-//			var str = '';
-//			for(var i = 0;i<data.data.length;i++){
-//				str +='<li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="http://movie.wxjii.cn/index2.html"><img class="mui-media-object" src="'+data.data[i].imgSrc+'"><p class="mui-media-body">'+data.data[i].filmName+'</p><p class="mui-media-body">'+data.data[i].actor+'</p></a></li>';
-//				
-//				$('ul.mui-table-view').html(str);
-//			}
-//			console.log(data.data);
-//			console.log(str);
-////			$('#contents').html(data);
-//		},
-//		async:false
-//	});
-	
-	
-</script>
+			
+			//防止白屏，转圈圈等待
+			mui.plusReady(function() {
+                    setTimeout(function() {
+                        mui.preload({
+                            id: '/list.html',
+                            url: '/list.html'
+                        })//预打开登录页
+                    }, 100);//延时加载登录页，这个可以不用演示，你可以放在mui.int里面
+                    setTimeout(function() {//这里面也用了一个延时，因为一般登陆页面，只要不是太多的东西，200毫秒应该能满足了，时间长短，自己把控了。
+                            /*
+                             * 这里获取本地存储中的字段，来判定是否第一次打开app；
+                             * 注意，只需要判定有这个值就可以了，因为只有两种情况：
+                             * 1、有这个值，并且值是true
+                             * 2、压根就没有这个值
+                             * http://www.html5plus.org/doc/zh_cn/storage.html#plus.storage.getItem
+                             */
+                            /*
+                            这里用的是版本的名字，是为了后续更新版本后，我们更新应用或者升级版本的时候，把这个相应的修改
+                            一下即可进入新的引导页面了，如果固定一个，以后更新版本，就看不到欢迎页了，这个看个人需求了。
+                            */
+                            var first = plus.storage.getItem("version1.3");
+                            if (first) { //如果已经有值，那么就代表不是第一次打开，则直接进入主页
+                                plus.navigator.closeSplashscreen();//关闭启动页
+                                mui.openWindow({
+                                    id: "html/login.html",
+                                    waiting: {
+                                        autoShow: true
+                                    },
+                                    show: {
+                                        aniShow: 'pop-in'
+                                    }
+                                });
+                            } else { //否则将打开欢迎界面    
+                                plus.navigator.closeSplashscreen();
+                                
+                            }
+                        }, 500)
+                        
+                }, false)
+		</script>
+	</body>
+
+</html>
