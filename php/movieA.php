@@ -1,4 +1,5 @@
 <?php
+	//获取首页的图片，文字，连接等
 $demo_include_path = dirname(__FILE__) . '/../';
 set_include_path(get_include_path() . PATH_SEPARATOR . $demo_include_path);
 require_once('phpfetcher.php');

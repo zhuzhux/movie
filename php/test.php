@@ -1,27 +1,15 @@
-<?php 
-/**
-* 
-*/
-class a 
-{
-	function a1()
-	{
-		return $a=23;
-	}
-}
-class b 
-{
-	
-	function b1($a)
-	{
-		return $a;
-	}
-}
+<?php
+$url = 'http://www.yingshidaquan.cc/play/DQ238234-2-1.html';  //这儿填页面地址
+$info=file_get_contents($url);
 
-$a=new a();
-$s=$a->a1();
-$b=new b();
-$n=$b->b1($s);
-//echo $n;
-echo $s;
-?>
+
+$result = array();
+if(preg_match_all( '/<script language="javascript">var ff_urls=\'([\w\W]*)\'\;<\/script>/iU', $info, $result) )
+{
+    //print_r($result);
+    for( $i = 0; $i<count($result[1]); $i++)    {
+        var_dump( $result[1][$i] );
+        echo '<hr>';
+        echo $result[1][$i];
+    }  
+}

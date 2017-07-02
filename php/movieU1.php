@@ -25,7 +25,7 @@ if($type==3){
 	       	$arr1 =array();
 	       	$arr2 =array();
 			$objContent = $page->sel("//div[@id='_player']");		
-			echo $objContent[0]->plaintext;
+			echo $objContent->plaintext;
 /*	        $objContent = $page->sel("//div[@id='play']");
 	        
 	        for ($i = 0; $i < count($objContent); ++$i) {

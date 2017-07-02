@@ -1,4 +1,5 @@
 <?php
+	//获取内容页面的高清视频连接
 $demo_include_path = dirname(__FILE__) . '/../';
 set_include_path(get_include_path() . PATH_SEPARATOR . $demo_include_path);
 
