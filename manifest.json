@@ -267,7 +267,8 @@
 					"/php/movieA.php",
 					"movie.html",
 					"/movie.html",
-					"fonts/mui.ttf"
+					"fonts/mui.ttf",
+					"css/list.css"
 				],
 				"refer": [],
 				"priority": 0

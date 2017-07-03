@@ -7,6 +7,7 @@
     <script src="js/mui.min.js"></script>
     <script src="js/jquery.js"></script>
     <link href="css/mui.min.css" rel="stylesheet"/>
+
     
     <style>
     	body{max-width: 640px;margin: 0 auto;}
@@ -22,9 +23,12 @@
 	</style>
 </head>
 <body>
-	
-	<div id="" style="border: 1px solid #ccc;width: 100%;height: 300px;">
-		<video width="100%" height="200" controls="" style="border: 1px solid red;" id="media" src="">
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title"></h1>
+	</header>
+	<div id="" style="width: 100%;height:auto;margin-top: 40px;">
+		<video width="100%" height="200" controls="" id="media" src="">
 			
 			<!--<source id="video1" src="">-->
 			<!--<source id="video1" src="https://dqplayers.duapp.com/bshare/supurl.php?url=zaWq1nBnYazYrJKam5munmSYp1.pZJaUZG5oZ3BlnA,,&ctype=phone">-->
@@ -35,7 +39,10 @@
 			</object>
 			当前浏览器不支持 video直接播放，点击这里下载视频： <a href="myvideo.webm">下载视频</a>
 		</video>
+		<i id="htmlurl"></i>
 	</div>
+	
+	<button id="url">点击播放</button>
 		<script>
 			mui.init({
 				swipeBack: false
@@ -64,44 +71,29 @@
         window.onload = function(){
             //从服务器获取数据
 //http://movie.wxjii.cn
-			var href_a;
-			mui.ajax("http://movie.wxjii.cn/php/movieU.php",{
-				data:{
-					aHref:localStorage.aHref,
-					type:2
-				},
-				async:false,
-				dataType:'json',
-				type:'post',
-				timeout:1000,
-				success:function(data){
-//					console.log(data.data[0].href);//要点击高清链接地址
-//              	console.log(localStorage.aHref );//首页传进来的参数
-					href_a = data.data[0].href;
-					
-					
-					return href_a;
-				}
-		
-			});
-//			console.log(href_a);
-			
-//			mui.ajax("http://movie.wxjii.cn/php/movieU1.php",{
-//				data:{
-//					aHref:href_a,
-//					type:3
-//				},
-//				async:false,
-//				dataType:'json',
-//				type:'post',
-//				timeout:1000,
-//				success:function(data){
-//					href_a = data.data[0].href;
-//					return href_a;
-//				}
-//		
-//			});
+            //业务数据获取完毕，并已插入当前页面DOM；
+            //注意：若为ajax请求，则需将如下代码放在处理完ajax响应数据之后；
+            mui.plusReady(function(){
+                var self = plus.webview.currentWebview();
+                var ahref = self.href;
+                var headerTitle = self.title;
+                localStorage.aHref = ahref;
 
+				getHtmlUrl();
+				$('header h1').text(headerTitle);
+                //关闭等待框
+                plus.nativeUI.closeWaiting();
+                //显示当前页面
+                mui.currentWebview.show();
+
+                $('#url').click(function(){
+	            	clickUrl($('#htmlurl').attr('src'));
+	            });
+                
+				localStorage.removeItem("aHref");//清空aHref
+            });
+        }
+        function clickUrl(href_a){
 			mui.ajax("http://movie.wxjii.cn/php/movieU2.php",{
 				data:{
 					aHref:href_a
@@ -111,43 +103,89 @@
 				type:'post',
 				timeout:1000,
 				success:function(data){
-					console.log(href_a);
-
-//					console.log(localStorage.aHref);
 					for(var i = 0;i<data.Data.length;i++){
-						if(data.Data[i].playname=="acfun"){
-							$('#media').attr('src',"https://dqplayers.duapp.com/bshare/supurl.php?url="+data.Data[i].playurls[0][1]+"&ctype=phone");
-						}
-//						if(data.Data[i].playname==""){
+//						if(data.Data[i].playname=="acfun"){
 //							$('#media').attr('src',"https://dqplayers.duapp.com/bshare/supurl.php?url="+data.Data[i].playurls[0][1]+"&ctype=phone");
 //						}
-					}
-//      			console.log($('#video1').attr('src'));
-					
-					
-				}
-		
-			});
-            //业务数据获取完毕，并已插入当前页面DOM；
-            //注意：若为ajax请求，则需将如下代码放在处理完ajax响应数据之后；
-//          var aHref;
-            mui.plusReady(function(){
-                var self = plus.webview.currentWebview();
-                var ahref = self.href;
-                localStorage.aHref = ahref;
+						if(data.Data[i].playname=="acfun"){
+							$('#url').text(data.Data[i].playname);
+							$('#url').attr('src',"https://dqplayers.duapp.com/bshare/macfunu8.php?v="+data.Data[i].playurls[0][1]);
+							relUrl(data.Data[i].playname);
 
-                //关闭等待框
-                plus.nativeUI.closeWaiting();
-                //显示当前页面
-                mui.currentWebview.show();
-            });
-//              console.log(localStorage.aHref );
-            
+						}
+						if(data.Data[i].playname=="yuku"){
+							$('#url').text(data.Data[i].playname);
+							$('#url').attr('src',"https://dqplayers.duapp.com/bshare/mcommon.php?v="+data.Data[i].playurls[0][1]);
+							relUrl(data.Data[i].playname);
+
+						}
+						if(data.Data[i].playname=="bilibili"){
+							$('#url').text(data.Data[i].playname);
+							$('#url').attr('src',"https://dqplayers.duapp.com/bshare/macfun.php?v="+data.Data[i].playurls[0][1]);
+							relUrl(data.Data[i].playname);
+
+						}
+
+						if(data.Data[i].playname=="dusk360"){
+							$('#url').text(data.Data[i].playname);
+							$('#url').attr('src',"http://dqplayers.duapp.com/bshare/mm3u8.php?v="+data.Data[i].playurls[0][1]);
+							relUrl(data.Data[i].playname);
+
+						}
+
+					}
+					console.log($('#url').attr('src'));
+				}
+			});
         }
+        function getHtmlUrl(){
+				mui.ajax("http://movie.wxjii.cn/php/movieU.php",{
+					data:{
+						aHref:localStorage.aHref,
+						type:2
+					},
+					async:false,
+					dataType:'json',
+					type:'post',
+					timeout:1000,
+					success:function(data){
+	//					console.log(data.data[0].href);//要点击高清链接地址
+	//              	console.log(localStorage.aHref );//首页传进来的参数
+						$('#htmlurl').attr('src',data.data[0].href);
+						console.log(1);
+//						console.log(localStorage.aHref);
+						console.log($('#htmlurl').attr('src'));
+						
+	//					localStorage.href_a = href_a;
+					 	
+					}
+			
+				});
+				
+			}
+        function relUrl(playname){
+        	//取真实地址
+			mui.ajax("http://movie.wxjii.cn/php/movieU3.php",{
+				data:{
+					aHref:$('#url').attr('src'),
+					playname:playname
+				},
+				async:true,
+				dataType:'text',
+				type:'POST',
+				timeout:1000,
+				success:function(data){
+					console.log(data);
+					$('#media').attr("src",data);
+					$('#media').attr("autoplay","autoplay");
+				}
+			});
+        }
+
         
         $(document).ready(function(){
-        	
-        	console.log($('#video1').attr('src'));
+//      	console.log($('#video1').attr('src'));
         })
 
     </script>
+    

@@ -43,7 +43,8 @@
       "css/mui.min.css",
       "/php/movieA.php",
       "/movie.html",
-      "fonts/mui.ttf"
+      "fonts/mui.ttf",
+      "css/list.css"
     ],
     "refer": [
       "movie.html"

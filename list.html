@@ -7,6 +7,7 @@
     <script src="js/mui.min.js"></script>
     <script src="js/jquery.js"></script>
     <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/list.css" rel="stylesheet"/>
     
     <style>
     	body{max-width: 640px;margin: 0 auto;}
@@ -19,6 +20,12 @@
 		.mui-control-content .mui-loading {
 			margin-top: 50px;
 		}
+		
+#conul .lia .mui-media-body{
+	font-size: 10px;
+	line-height: 12px;
+}
+#title{color: cornflowerblue;}
 	</style>
 </head>
 <body>
@@ -39,7 +46,7 @@
 		            <!-- 主页面标题 -->
 		            <header class="mui-bar mui-bar-nav">
 		                <a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left" href="#offCanvasSide"></a>
-		                <h1 class="mui-title">标题</h1>
+		                <h1 class="mui-title" id="title">标题</h1>
 		            </header>
 		            <nav class="mui-bar mui-bar-tab">
 		    		    <a class="mui-tab-item mui-active">
@@ -63,54 +70,10 @@
 		            <div class="mui-content mui-scroll-wrapper">
 		                <div class="mui-scroll">
 		                    <!-- 主界面具体展示内容 -->
-		                    <div id="slider" class="mui-slider" >
-								  	<div class="mui-slider-group mui-slider-loop">
-								    <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
-									    <div class="mui-slider-item mui-slider-item-duplicate">
-									      <a href="#">
-									        <img src="./img/tb4.jpg">
-									      </a>
-									    </div>
-									    <!-- 第一张 -->
-									    <div class="mui-slider-item">
-									      <a href="#">
-									        <img src="./img/tb1.jpg">
-									      </a>
-									    </div>
-									    <!-- 第二张 -->
-									    <div class="mui-slider-item">
-									      <a href="#">
-									        <img src="./img/tb2.jpg">
-									      </a>
-									    </div>
-									    <!-- 第三张 -->
-									    <div class="mui-slider-item">
-									      <a href="#">
-									        <img src="./img/tb3.jpg">
-									      </a>
-									    </div>
-									    <!-- 第四张 -->
-									    <div class="mui-slider-item">
-									      <a href="#">
-									        <img src="./img/tb4.jpg">
-									      </a>
-									    </div>
-									    <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
-									    <div class="mui-slider-item mui-slider-item-duplicate">
-									      <a href="#">
-									        <img src="./img/tb1.jpg">
-									      </a>
-									    </div>
-								  	</div>
-								  	<div class="mui-slider-indicator">
-										<div class="mui-indicator mui-active"></div>
-										<div class="mui-indicator"></div>
-										<div class="mui-indicator"></div>
-										<div class="mui-indicator"></div>
-								  	</div>
-								</div>
-								<!--<a id="test">tiaozhuan</a>-->
-		                    <ul class="mui-table-view mui-grid-view">
+
+		                    <ul class="mui-table-view mui-grid-view" id="conul">
+		                    	<li><a href="">123</a></li>
+		                    	123<br />
 		                        <!--内容-->
 		                    </ul>
 		                    
@@ -182,9 +145,8 @@
 		success:function(data){
 			var str = '';
 			for(var i = 0;i<data.data.length;i++){
-				str +='<li class="mui-table-view-cell mui-media mui-col-xs-4"><a id="list_'+i+'" href="'+data.data[i].href+'"><img class="mui-media-object" src="'+data.data[i].imgSrc+'"><p class="mui-media-body">'+data.data[i].filmName+'</p><p class="mui-media-body">'+data.data[i].actor+'</p></a></li>';
+				str +='<li class="mui-table-view-cell mui-media mui-col-xs-4"><a class="lia" id="list_'+i+'" href="'+data.data[i].href+'"><img class="mui-media-object" src="'+data.data[i].imgSrc+'"><p class="mui-media-body">'+data.data[i].filmName+'</p><p class="mui-media-body">'+data.data[i].actor+'</p></a></li>';
 //							console.log(data.data[i].href);
-				
 				$('ul.mui-table-view').html(str);
 			}
 
@@ -218,6 +180,8 @@
         mui('.mui-table-view ').on('tap', 'a', function(e) {
             var id = this.getAttribute('id');
             var href = this.getAttribute('href');
+            var title = this.getElementsByTagName('p')[0].innerHTML;
+            console.log(title);
             //获得详情页面
             if(!detailPage){
                 detailPage = plus.webview.getWebviewById('movie.html');
@@ -234,10 +198,10 @@
                     autoShow: true
                 },
                 extras:{
-                  href:href
+                  href:href,
+                  title:title
                 }
             });
         });
 
-
-    </script>
+</script>
