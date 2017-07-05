@@ -51,11 +51,11 @@
 		            <nav class="mui-bar mui-bar-tab">
 		    		    <a class="mui-tab-item mui-active">
 		    		        <span class="mui-icon mui-icon-home"></span>
-		    		        <span class="mui-tab-label">首页</span>
+		    		        <span class="mui-tab-label">推荐</span>
 		    		    </a>
 		    		    <a class="mui-tab-item">
 		    		        <span class="mui-icon mui-icon-phone"></span>
-		    		        <span class="mui-tab-label">电话</span>
+		    		        <span class="mui-tab-label">最新电影</span>
 		    		    </a>
 		    		    <a class="mui-tab-item">
 		    		        <span class="mui-icon mui-icon-email"></span>
@@ -72,8 +72,6 @@
 		                    <!-- 主界面具体展示内容 -->
 
 		                    <ul class="mui-table-view mui-grid-view" id="conul">
-		                    	<li><a href="">123</a></li>
-		                    	123<br />
 		                        <!--内容-->
 		                    </ul>
 		                    
@@ -181,7 +179,6 @@
             var id = this.getAttribute('id');
             var href = this.getAttribute('href');
             var title = this.getElementsByTagName('p')[0].innerHTML;
-            console.log(title);
             //获得详情页面
             if(!detailPage){
                 detailPage = plus.webview.getWebviewById('movie.html');
@@ -195,13 +192,15 @@
             	url: "movie.html",
                 id:'movie.html',
                 waiting: {
-                    autoShow: true
+                    autoShow: true,      
+                    title:'正在加载...',//等待对话框上显示的提示内容
                 },
                 extras:{
                   href:href,
                   title:title
                 }
             });
+        
         });
 
 </script>

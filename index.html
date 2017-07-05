@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>36氪 | 关注互联网创业</title>
+		<title>movie.wxjii.cn</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -30,6 +30,17 @@
 		<script>
 			 //预加载
 			mui.init({
+				subpages:[//先加载首页 
+				{ 
+					url:'list.html', 
+					id:'list', 
+					styles:{ 
+						top:'0px', 
+						bottom:'50px' 
+					} 
+				} 
+				
+				], 
 				preloadPages: [
 				{
 					"id": "list",

@@ -46,8 +46,8 @@
 	</div>
 			
 	
-	<button id="url">点击播放</button>
-	<!--<video id="videoId" src="http://52dy.hanju2017.com/ppvod/4200AA958BE3AAD2E2643E2DFFF0B238.m3u8" width="100%" height="200" controls="controls">-->
+	<!--<button id="url">点击播放</button>-->
+	<!--<video id="videoId" src="http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url=xZVobpmXZsdtZGpul5dnaXCVY2iaxZmWbJj14011jcbJVommY_pprid&ctype=phone" width="100%" height="200" controls="controls">-->
 		<script>
 			mui.init({
 				swipeBack: false
@@ -72,7 +72,6 @@
 </html>
 <script type="text/javascript" charset="utf-8">
       	mui.init();
-//B页面onload从服务器获取列表数据；
         window.onload = function(){
             //从服务器获取数据
 //http://movie.wxjii.cn
@@ -86,17 +85,23 @@
 
 				getHtmlUrl();
 				$('header h1').text(headerTitle);
-                //关闭等待框
-                plus.nativeUI.closeWaiting();
-                //显示当前页面
-                mui.currentWebview.show();
-				//清空aHref
-				localStorage.removeItem("aHref");
+				
 				//获取真实地址，输出到页面按钮，传递的值是
                 getrUrl($('#htmlurl').attr('src'));
                 //点击真实地址按钮，自动播放
 				clickrUrl();
+				
 				console.log($('#rUrl').html());
+				
+                //关闭等待框
+                plus.nativeUI.closeWaiting();
+                
+                //显示当前页面
+                mui.currentWebview.show();
+				//清空aHref
+				localStorage.removeItem("aHref");
+				
+
             });
         }
         function getrUrl(href_a){
@@ -217,11 +222,35 @@
 					$('#media').attr('src',$(this).attr('src'));
 					$('#media').attr("autoplay","autoplay");
 				}
-				if(hText=="yuku"){
-					$('#url').text(data.Data[i].playname);
-					$('#url').attr('src',"https://dqplayers.duapp.com/bshare/mcommon.php?v="+data.Data[i].playurls[0][1]);
-					relUrl(data.Data[i].playname);	
+				if(hText=="acfun"){
+					var str = $(this).attr('src');
+					str = str.substr(0, str.indexOf('douban'));
+					acfun = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"&ctype=phone";
+					$('#media').attr('src',acfun);
+					$('#media').attr("autoplay","autoplay");
 				}
+				if(hText=="yuku"){
+					var str = $(this).attr('src');
+					str = str.substr(0, str.indexOf('douban'));
+					yuku = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"&ctype=phone";
+					$('#media').attr('src',yuku);
+					$('#media').attr("autoplay","autoplay");
+				}
+				if(hText=="360"){
+					var str = $(this).attr('src');
+					str = str.substr(0, str.indexOf('douban'));
+					s360 = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"_pprid&ctype=phone";
+					$('#media').attr('src',s360);
+					$('#media').attr("autoplay","autoplay");
+				}
+				if(hText=="imgo"){
+					var str = $(this).attr('src');
+					str = str.substr(0, str.indexOf('douban'));
+					imgo = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"_pprid&ctype=phone";
+					$('#media').attr('src',imgo);
+					$('#media').attr("autoplay","autoplay");
+				}
+				
 			
 			});
 		}
