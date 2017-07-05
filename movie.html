@@ -47,7 +47,7 @@
 			
 	
 	<!--<button id="url">点击播放</button>-->
-	<!--<video id="videoId" src="http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url=xZVobpmXZsdtZGpul5dnaXCVY2iaxZmWbJj14011jcbJVommY_pprid&ctype=phone" width="100%" height="200" controls="controls">-->
+	<!--<video id="videoId" src="http://dqplayers.duapp.com/bshare/Yunflvco/parse.php?url=vH2gnWmwiLuvgK2O3YCZc3Q_youku&ctype=phone" width="100%" height="200" controls="controls">-->
 		<script>
 			mui.init({
 				swipeBack: false
@@ -116,8 +116,10 @@
 				success:function(data){
 					var str = '';
 					for(var i = 0;i<data.Data.length;i++){
-						if(data.Data[i].playname!="xigua"&&data.Data[i].playname!="xigua1"){
-							str+='<div><h4>'+data.Data[i].playname+'</h4>';
+						var noPlay = data.Data[i].playname!="xigua"&&data.Data[i].playname!="xigua1"&&data.Data[i].playname!="down1"&&data.Data[i].playname!="down3"&&data.Data[i].playname!="down4"&&data.Data[i].playname!="ed2k"&&data.Data[i].playname!="ffhd"&&data.Data[i].playname!="real"&&data.Data[i].playname!="web9";
+						
+						if(noPlay){
+							str+='<div><h5 dataTitle='+data.Data[i].playname+'>'+data.Data[i].playname+' 在线播放(点击开始)</h5>';
 							for(var j=0;j<data.Data[i].playurls.length;j++){
 								str+='<button style="max-width:100%;width:auto;overflow: hidden;text-align: left;" src="'+data.Data[i].playurls[j][1]+'">'+data.Data[i].playurls[j][0]+'</button>';
 							}
@@ -217,38 +219,75 @@
         
 		function clickrUrl(){//点击真实地址的按钮
 			$('#rUrl>div>button').click(function(){
-				var hText = $(this).prevAll("h4:first").text();
-				if(hText=="dusk360"){
+				var dataTitle = $(this).prevAll("h5:first").attr("dataTitle");
+				if(dataTitle=="dusk360"){
 					$('#media').attr('src',$(this).attr('src'));
 					$('#media').attr("autoplay","autoplay");
+					mui.toast('正在解析，请稍等..');
 				}
-				if(hText=="acfun"){
+				if(dataTitle=="acfun"){
 					var str = $(this).attr('src');
 					str = str.substr(0, str.indexOf('douban'));
 					acfun = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"&ctype=phone";
 					$('#media').attr('src',acfun);
 					$('#media').attr("autoplay","autoplay");
+					mui.toast('正在解析，请稍等..');
 				}
-				if(hText=="yuku"){
+				if(dataTitle=="yuku"){
 					var str = $(this).attr('src');
 					str = str.substr(0, str.indexOf('douban'));
 					yuku = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"&ctype=phone";
 					$('#media').attr('src',yuku);
 					$('#media').attr("autoplay","autoplay");
+					mui.toast('正在解析，请稍等..');
 				}
-				if(hText=="360"){
+				if(dataTitle=="360"){
 					var str = $(this).attr('src');
 					str = str.substr(0, str.indexOf('douban'));
 					s360 = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"_pprid&ctype=phone";
 					$('#media').attr('src',s360);
 					$('#media').attr("autoplay","autoplay");
+					mui.toast('正在解析，请稍等..');
 				}
-				if(hText=="imgo"){
+				if(dataTitle=="imgo"){
 					var str = $(this).attr('src');
 					str = str.substr(0, str.indexOf('douban'));
 					imgo = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"_pprid&ctype=phone";
 					$('#media').attr('src',imgo);
 					$('#media').attr("autoplay","autoplay");
+					mui.toast('正在解析，请稍等..');
+				}
+				if(dataTitle=="qianmo"){
+					var str = $(this).attr('src');
+					str = str.substr(0, str.indexOf('douban'));
+					qianmo = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"_acsid&ctype=phone";
+					$('#media').attr('src',qianmo);
+					$('#media').attr("autoplay","autoplay");
+					mui.toast('正在解析，请稍等..');
+				}
+				if(dataTitle=="letvid"){
+					var str = $(this).attr('src');
+					str = str.substr(0, str.indexOf('douban'));
+					letid = "http://dqplayers.duapp.com/bshare/Yunflvco/parse.php?url="+str+"_letv&ctype=phone";
+					$('#media').attr('src',letid);
+					$('#media').attr("autoplay","autoplay");
+					mui.toast('正在解析，请稍等..');
+				}
+				if(dataTitle=="yukuid"){
+					var str = $(this).attr('src');
+					str = str.substr(0, str.indexOf('douban'));
+					yukuid = "http://dqplayers.duapp.com/bshare/Yunflvco/parse.php?url="+str+"_youku&ctype=phone";
+					$('#media').attr('src',yukuid);
+					$('#media').attr("autoplay","autoplay");
+					mui.toast('正在解析，请稍等..');
+				}
+				if(dataTitle=="qqid"){
+					var str = $(this).attr('src');
+					str = str.substr(0, str.indexOf('douban'));
+					qqid = "http://dqplayers.duapp.com/bshare/Yunflvco/parse.php?url="+str+"_qq&ctype=phone";
+					$('#media').attr('src',qqid);
+					$('#media').attr("autoplay","autoplay");
+					mui.toast('正在解析，请稍等..');
 				}
 				
 			
