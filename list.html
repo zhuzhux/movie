@@ -1,133 +1,151 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <title></title>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
     <script src="js/mui.min.js"></script>
     <script src="js/jquery.js"></script>
     <link href="css/mui.min.css" rel="stylesheet"/>
     <link href="css/list.css" rel="stylesheet"/>
-    
-    <style>
-    	body{max-width: 640px;margin: 0 auto;}
-    </style>
-    <style>
-		.mui-control-content {
-			background-color: white;
-			min-height: 1015px;
-		}
-		.mui-control-content .mui-loading {
-			margin-top: 50px;
-		}
-		
-#conul .lia .mui-media-body{
-	font-size: 10px;
-	line-height: 12px;
-}
-#title{color: cornflowerblue;}
-	</style>
-</head>
-<body>
-		<!-- 主界面菜单同时移动 -->
-		    <!-- 侧滑导航根容器 -->
-		    <div class="mui-off-canvas-wrap mui-draggable">
-		        <!-- 主页面容器 -->
-		        <div class="mui-inner-wrap">
-		            <!-- 菜单容器 -->
-		            <aside class="mui-off-canvas-left" id="offCanvasSide">
-		                <div class="mui-scroll-wrapper">
-		                    <div class="mui-scroll">
-		                        <!-- 菜单具体展示内容 -->
-		                        123123
-		                    </div>
-		                </div>
-		            </aside>
-		            <!-- 主页面标题 -->
-		            <header class="mui-bar mui-bar-nav">
-		                <a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left" href="#offCanvasSide"></a>
-		                <h1 class="mui-title" id="title">标题</h1>
-		            </header>
-		            <nav class="mui-bar mui-bar-tab">
-		    		    <a class="mui-tab-item mui-active">
-		    		        <span class="mui-icon mui-icon-home"></span>
-		    		        <span class="mui-tab-label">推荐</span>
-		    		    </a>
-		    		    <a class="mui-tab-item">
-		    		        <span class="mui-icon mui-icon-phone"></span>
-		    		        <span class="mui-tab-label">最新电影</span>
-		    		    </a>
-		    		    <a class="mui-tab-item">
-		    		        <span class="mui-icon mui-icon-email"></span>
-		    		        <span class="mui-tab-label">邮件</span>
-		    		    </a>
-		    		    <a class="mui-tab-item">
-		    		        <span class="mui-icon mui-icon-gear"></span>
-		    		        <span class="mui-tab-label">设置</span>
-		    		    </a>
-		    		</nav>
-		            <!-- 主页面内容容器 -->
-		            <div class="mui-content mui-scroll-wrapper">
-		                <div class="mui-scroll">
-		                    <!-- 主界面具体展示内容 -->
+		<!--<link rel="stylesheet" type="text/css" href="../css/app.css" />-->
+		<style>
+			/*.mui-card .mui-control-content {
+				padding: 10px;
+			}
+			
+			.mui-control-content {
+				height: 150px;
+			}*/
+		</style>
+	</head>
 
-		                    <ul class="mui-table-view mui-grid-view" id="conul">
-		                        <!--内容-->
-		                    </ul>
-		                    
-		                    
-		                    <script type="text/javascript">
-		                    	
-		                    </script>
-		                </div>
-		            </div>
-		       	 <div class="mui-off-canvas-backdrop"></div>
-		        </div>
-		    </div>
-		    
-		
+	<body>
+<style>
+			.mui-control-content {
+				background-color: white;
+				min-height: 500px;
+				height: auto;
+			}
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+		</style>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">...</h1>
+		</header>
+		<div class="mui-content">
+			<!--滑动-->
+			<div id="slider" class="mui-slider">
+				<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<div class="mui-scroll">
+						<a class="mui-control-item mui-active" href="#item1mobile">推荐</a>
+						<a class="mui-control-item" href="#item2mobile">电影</a>
+						<a class="mui-control-item" href="#item3mobile">电视剧</a>
+						<a class="mui-control-item" href="#item4mobile">推荐</a>
+						<a class="mui-control-item" href="#item5mobile">电影</a>
+						<a class="mui-control-item" href="#item6mobile">电影</a>
+					</div>
+				</div>
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view mui-grid-view">
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll2" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="mui-loading">
+									<div class="mui-spinner">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="item3mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll3" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="mui-loading">
+									<div class="mui-spinner">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="item4mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll4" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="mui-loading">
+									<div class="mui-spinner">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="item5mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll5" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="mui-loading">
+									<div class="mui-spinner">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="item6mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll6" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="mui-loading">
+									<div class="mui-spinner">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
 		</div>
-		<div id="contents" style="display: none"></div>
-		<script>
-			mui.init();
+		<nav class="mui-bar mui-bar-tab">
+		    <a class="mui-tab-item mui-active">
+		        <span class="mui-icon mui-icon-home"></span>
+		        <span class="mui-tab-label">首页</span>
+		    </a>
+		    <a class="mui-tab-item">
+		        <span class="mui-icon mui-icon-weixin"></span>
+		        <span class="mui-tab-label">233</span>
+		    </a>
+		    <a class="mui-tab-item">
+		        <span class="mui-icon mui-icon-gear"></span>
+		        <span class="mui-tab-label">设置</span>
+		    </a>
+		</nav>
+
+<script>
 			mui.init({
 				swipeBack: false
 			});
 			(function($) {
+				//阻尼系数
+				var deceleration = mui.os.ios?0.003:0.0009;
 				$('.mui-scroll-wrapper').scroll({
-					indicators: false //是否显示滚动条
+					bounce: false,
+					indicators: true, //是否显示滚动条
+					deceleration:deceleration
 				});
-//				var html2 = '<ul class="mui-table-view"><li class="mui-table-view-cell">第二个选项卡子项-1</li><li class="mui-table-view-cell">第二个选项卡子项-2</li><li class="mui-table-view-cell">第二个选项卡子项-3</li><li class="mui-table-view-cell">第二个选项卡子项-4</li><li class="mui-table-view-cell">第二个选项卡子项-5</li></ul>';
-//				var html3 = '<ul class="mui-table-view"><li class="mui-table-view-cell">第三个选项卡子项-1</li><li class="mui-table-view-cell">第三个选项卡子项-2</li><li class="mui-table-view-cell">第三个选项卡子项-3</li><li class="mui-table-view-cell">第三个选项卡子项-4</li><li class="mui-table-view-cell">第三个选项卡子项-5</li></ul>';
-//				var item2 = document.getElementById('item2mobile');
-//				var item3 = document.getElementById('item3mobile');
-//				document.getElementById('slider').addEventListener('slide', function(e) { 
-//					if (e.detail.slideNumber === 1) {
-//						if (item2.querySelector('.mui-loading')) {
-//							setTimeout(function() {
-//								item2.querySelector('.mui-scroll').innerHTML = html2;
-//							}, 500);
-//						}
-//					} else if (e.detail.slideNumber === 2) {
-//						if (item3.querySelector('.mui-loading')) {
-//							setTimeout(function() {
-//								item3.querySelector('.mui-scroll').innerHTML = html3;
-//							}, 500);
-//						}
-//					}
-//				});
-				var sliderSegmentedControl = document.getElementById('sliderSegmentedControl');
-				$('.mui-input-group').on('change', 'input', function() {
-					if (this.checked) {
-						sliderSegmentedControl.className = 'mui-slider-indicator mui-segmented-control mui-segmented-control-inverted mui-segmented-control-' + this.value;
-						//force repaint
-						sliderProgressBar.setAttribute('style', sliderProgressBar.getAttribute('style'));
-					}
-				});
+	
 			})(mui);
+			
 			var a = $('.mui-table-view .mui-table-view-cell .mui-media-object').width();
 			$('.mui-table-view .mui-table-view-cell .mui-media-object').css({height:a*1.4})
-		</script>
+</script>
 </body>
 </html>
 <script type="text/javascript">
@@ -146,32 +164,124 @@
 				str +='<li class="mui-table-view-cell mui-media mui-col-xs-4"><a class="lia" id="list_'+i+'" href="'+data.data[i].href+'"><img class="mui-media-object" src="'+data.data[i].imgSrc+'"><p class="mui-media-body">'+data.data[i].filmName+'</p><p class="mui-media-body">'+data.data[i].actor+'</p></a></li>';
 //							console.log(data.data[i].href);
 				$('ul.mui-table-view').html(str);
-			}
-
-
+			}			
 		}
 	});
 	
-//	$.ajax({
-//		type:"post",
-//		dataType:'json',
-//		url:"php/movieA.php",
-//		success:function(data){
-//			var str = '';
-//			for(var i = 0;i<data.data.length;i++){
-//				str +='<li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="http://movie.wxjii.cn/index2.html"><img class="mui-media-object" src="'+data.data[i].imgSrc+'"><p class="mui-media-body">'+data.data[i].filmName+'</p><p class="mui-media-body">'+data.data[i].actor+'</p></a></li>';
-//				
-//				$('ul.mui-table-view').html(str);
-//			}
-//			console.log(data.data);
-//			console.log(str);
-////			$('#contents').html(data);
-//		},
-//		async:false
-//	});
+
 	
-	
+//function()
+mui.ajax("http://movie.wxjii.cn/php/movieHome.php",{
+		data:{
+			type:1,
+			pid:1,
+			page:1
+		},
+		async:true,
+		dataType:'json',
+		type:'post',
+		timeout:1000,
+		success:function(data){
+			var str = '';
+			for(var i = 0;i<data.data.length;i++){
+				str +='<li class="mui-table-view-cell mui-media mui-col-xs-4"><a class="lia" id="list_'+i+'" href="'+data.data[i].href+'"><img class="mui-media-object" src="'+data.data[i].imgSrc+'"><p class="mui-media-body">'+data.data[i].filmName+'</p><p class="mui-media-body">'+data.data[i].actor+'</p></a></li>';
+			}
+		str1 ='<ul class="mui-table-view mui-grid-view">'+str+'</ul>';
+				var item2 = document.getElementById('item2mobile');
+				var item3 = document.getElementById('item3mobile');
+				var item4 = document.getElementById('item4mobile');
+				document.getElementById('slider').addEventListener('slide', function(e) {
+					if (e.detail.slideNumber === 1) {
+						if (item2.querySelector('.mui-loading')) {
+							setTimeout(function() {
+								item2.querySelector('.mui-scroll').innerHTML = str1;
+							}, 500);
+						}
+					} else if (e.detail.slideNumber === 2) {
+						if (item3.querySelector('.mui-loading')) {
+							setTimeout(function() {
+								item3.querySelector('.mui-scroll').innerHTML = str1;
+							}, 500);
+						}
+					}
+					 else if (e.detail.slideNumber === 3) {
+						if (item4.querySelector('.mui-loading')) {
+							setTimeout(function() {
+								item4.querySelector('.mui-scroll').innerHTML = str1;
+							}, 500);
+						}
+					}
+				});
+				
+				var sliderSegmentedControl = document.getElementById('sliderSegmentedControl');
+				
+				$('.mui-input-group').on('change', 'input', function() {
+					if (this.checked) {
+						sliderSegmentedControl.className = 'mui-slider-indicator mui-segmented-control mui-segmented-control-inverted mui-segmented-control-' + this.value;
+						//force repaint
+						sliderProgressBar.setAttribute('style', sliderProgressBar.getAttribute('style'));
+					}
+				});
+
+		}			
+		
+	});
+
+/*	mui.ajax("http://movie.wxjii.cn/php/movieA.php",{
+		data:{
+			type:1
+		},
+		async:false,
+		dataType:'json',
+		type:'post',
+		timeout:1000,
+		success:function(data){
+			var str = '';
+			for(var i = 0;i<data.data.length;i++){
+				str +='<li class="mui-table-view-cell mui-media mui-col-xs-4"><a class="lia" id="list_'+i+'" href="'+data.data[i].href+'"><img class="mui-media-object" src="'+data.data[i].imgSrc+'"><p class="mui-media-body">'+data.data[i].filmName+'</p><p class="mui-media-body">'+data.data[i].actor+'</p></a></li>';
+				
+				str1 ='<ul class="mui-table-view mui-grid-view">'+str+'</ul>';
+				var item2 = document.getElementById('item2mobile');
+				var item3 = document.getElementById('item3mobile');
+				var item4 = document.getElementById('item4mobile');
+				document.getElementById('slider').addEventListener('slide', function(e) {
+					if (e.detail.slideNumber === 1) {
+						if (item2.querySelector('.mui-loading')) {
+							setTimeout(function() {
+								item2.querySelector('.mui-scroll').innerHTML = str1;
+							}, 500);
+						}
+					} else if (e.detail.slideNumber === 2) {
+						if (item3.querySelector('.mui-loading')) {
+							setTimeout(function() {
+								item3.querySelector('.mui-scroll').innerHTML = str1;
+							}, 500);
+						}
+					}
+					 else if (e.detail.slideNumber === 3) {
+						if (item4.querySelector('.mui-loading')) {
+							setTimeout(function() {
+								item4.querySelector('.mui-scroll').innerHTML = str1;
+							}, 500);
+						}
+					}
+				});
+				
+				var sliderSegmentedControl = document.getElementById('sliderSegmentedControl');
+				
+				$('.mui-input-group').on('change', 'input', function() {
+					if (this.checked) {
+						sliderSegmentedControl.className = 'mui-slider-indicator mui-segmented-control mui-segmented-control-inverted mui-segmented-control-' + this.value;
+						//force repaint
+						sliderProgressBar.setAttribute('style', sliderProgressBar.getAttribute('style'));
+					}
+				});
+			}			
+		}
+	});*/
 </script>
+
+
 <script type="text/javascript" charset="utf-8">
         var detailPage = null;
         //添加列表项的点击事件
@@ -204,3 +314,5 @@
         });
 
 </script>
+
+
