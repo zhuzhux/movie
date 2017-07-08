@@ -212,7 +212,7 @@
 				},
 				"android": {
 					"mdpi": "", /*普通屏启动图片，分辨率：240x282*/
-					"ldpi": ""
+					"ldpi": "","hdpi":"C:/Users/Administrator/Desktop/web/480.png","xhdpi":"C:/Users/Administrator/Desktop/web/720.png","xxhdpi":"C:/Users/Administrator/Desktop/web/1080.png"
 				}
 			}
 		}
@@ -238,7 +238,8 @@
 				"priority": 0,
 				"refer": [
 					"index2.html",
-					"movie.html"
+					"movie.html",
+					"home.html"
 				]
 			},
 			"index2.html": {
@@ -272,6 +273,16 @@
 				],
 				"refer": [],
 				"priority": 0
+			},
+			"home.html": {
+				"resources": [
+					"css/list.css",
+					"fonts/mui.ttf",
+					"js/jquery.js",
+					"movie.html"
+				],
+				"refer": [],
+				"priority": 0
 			}
 		},
 		"idle": {
@@ -281,5 +292,10 @@
 				"css/mui.css"
 			]
 		}
-	}
+	},
+	"unpackage":[
+	  "css/mui.css",
+	  "img/img1.jpg",
+	  "js/mui.js"
+	]
 }
