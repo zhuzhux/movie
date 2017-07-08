@@ -269,7 +269,8 @@
 					"movie.html",
 					"/movie.html",
 					"fonts/mui.ttf",
-					"css/list.css"
+					"css/list.css",
+					"js/mui.min.js"
 				],
 				"refer": [],
 				"priority": 0

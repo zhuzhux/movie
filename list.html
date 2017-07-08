@@ -43,11 +43,17 @@
 				<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
 					<div class="mui-scroll">
 						<a class="mui-control-item mui-active" href="#item1mobile">推荐</a>
-						<a class="mui-control-item" href="#item2mobile">电影</a>
-						<a class="mui-control-item" href="#item3mobile">电视剧</a>
-						<a class="mui-control-item" href="#item4mobile">推荐</a>
-						<a class="mui-control-item" href="#item5mobile">电影</a>
-						<a class="mui-control-item" href="#item6mobile">电影</a>
+						<a class="mui-control-item" href="#item2mobile">动作片</a>
+						<a class="mui-control-item" href="#item3mobile">喜剧片</a>
+						<a class="mui-control-item" href="#item4mobile">爱情片</a>
+						<a class="mui-control-item" href="#item5mobile">科幻片</a>
+						<a class="mui-control-item" href="#item6mobile">恐怖片</a>
+						<a class="mui-control-item" href="#item7mobile">战争片</a>
+						<a class="mui-control-item" href="#item8mobile">国产剧</a>
+						<a class="mui-control-item" href="#item9mobile">港台剧</a>
+						<a class="mui-control-item" href="#item10mobile">欧美剧</a>
+						<a class="mui-control-item" href="#item11mobile">日韩剧</a>
+						<a class="mui-control-item" href="#item12mobile">海外剧</a>
 					</div>
 				</div>
 				<div class="mui-slider-group">
@@ -66,6 +72,8 @@
 									<div class="mui-spinner">
 									</div>
 								</div>
+								<ul class="mui-table-view mui-grid-view">
+								</ul>
 							</div>
 						</div>
 					</div>
@@ -76,6 +84,8 @@
 									<div class="mui-spinner">
 									</div>
 								</div>
+								<ul class="mui-table-view mui-grid-view">
+								</ul>
 							</div>
 						</div>
 					</div>
@@ -86,6 +96,8 @@
 									<div class="mui-spinner">
 									</div>
 								</div>
+								<ul class="mui-table-view mui-grid-view">
+								</ul>
 							</div>
 						</div>
 					</div>
@@ -96,6 +108,8 @@
 									<div class="mui-spinner">
 									</div>
 								</div>
+								<ul class="mui-table-view mui-grid-view">
+								</ul>
 							</div>
 						</div>
 					</div>
@@ -106,6 +120,80 @@
 									<div class="mui-spinner">
 									</div>
 								</div>
+								<ul class="mui-table-view mui-grid-view">
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item7mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll7" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="mui-loading">
+									<div class="mui-spinner">
+									</div>
+								</div>
+								<ul class="mui-table-view mui-grid-view">
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item8mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll8" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="mui-loading">
+									<div class="mui-spinner">
+									</div>
+								</div>
+								<ul class="mui-table-view mui-grid-view">
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item9mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll9" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="mui-loading">
+									<div class="mui-spinner">
+									</div>
+								</div>
+								<ul class="mui-table-view mui-grid-view">
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item10mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll10" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="mui-loading">
+									<div class="mui-spinner">
+									</div>
+								</div>
+								<ul class="mui-table-view mui-grid-view">
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item11mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll11" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="mui-loading">
+									<div class="mui-spinner">
+									</div>
+								</div>
+								<ul class="mui-table-view mui-grid-view">
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item12mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll12" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="mui-loading">
+									<div class="mui-spinner">
+									</div>
+								</div>
+								<ul class="mui-table-view mui-grid-view">
+								</ul>
 							</div>
 						</div>
 					</div>
@@ -163,21 +251,87 @@
 			for(var i = 0;i<data.data.length;i++){
 				str +='<li class="mui-table-view-cell mui-media mui-col-xs-4"><a class="lia" id="list_'+i+'" href="'+data.data[i].href+'"><img class="mui-media-object" src="'+data.data[i].imgSrc+'"><p class="mui-media-body">'+data.data[i].filmName+'</p><p class="mui-media-body">'+data.data[i].actor+'</p></a></li>';
 //							console.log(data.data[i].href);
-				$('ul.mui-table-view').html(str);
+				$('#scroll1 ul.mui-table-view').html(str);
 			}			
 		}
 	});
-	
 
-	
-//function()
+
+document.getElementById('slider').addEventListener('slide', function(e) {
+	if (e.detail.slideNumber == 1) {
+		movieHome(8,1,$('#item2mobile'));						
+	} 
+});
+document.getElementById('slider').addEventListener('slide', function(e) {
+	if (e.detail.slideNumber == 2) {
+		movieHome(9,1,$('#item3mobile'));
+	} 
+});
+document.getElementById('slider').addEventListener('slide', function(e) {
+	if (e.detail.slideNumber == 3) {
+		movieHome(10,1,$('#item4mobile'));					
+	} 
+});
+document.getElementById('slider').addEventListener('slide', function(e) {
+	if (e.detail.slideNumber == 4) {
+		movieHome(11,1,$('#item5mobile'));					
+	} 
+});
+document.getElementById('slider').addEventListener('slide', function(e) {
+	if (e.detail.slideNumber == 5) {
+		movieHome(12,1,$('#item6mobile'));				
+	} 
+});
+document.getElementById('slider').addEventListener('slide', function(e) {
+	if (e.detail.slideNumber == 6) {
+		movieHome(13,1,$('#item7mobile'));
+	} 
+});
+document.getElementById('slider').addEventListener('slide', function(e) {
+	if (e.detail.slideNumber == 7) {
+		movieHome(15,1,$('#item8mobile'));
+	} 
+});
+document.getElementById('slider').addEventListener('slide', function(e) {
+	if (e.detail.slideNumber == 8) {
+		movieHome(16,1,$('#item9mobile'));
+	} 
+});
+document.getElementById('slider').addEventListener('slide', function(e) {
+	if (e.detail.slideNumber == 9) {
+		movieHome(17,1,$('#item10mobile'));			
+	} 
+});
+document.getElementById('slider').addEventListener('slide', function(e) {
+	if (e.detail.slideNumber == 10) {
+		movieHome(18,1,$('#item11mobile'));				
+	} 
+});
+document.getElementById('slider').addEventListener('slide', function(e) {
+	if (e.detail.slideNumber == 11) {
+		movieHome(19,1,$('#item12mobile'));			
+	} 
+});
+//	movieHome(8,1,$('#item2mobile'));						
+//	movieHome(9,1,$('#item3mobile'));
+//	movieHome(10,1,$('#item4mobile'));
+//	movieHome(11,1,$('#item5mobile'));
+//	movieHome(12,1,$('#item6mobile'));
+//	movieHome(13,1,$('#item7mobile'));
+//	movieHome(15,1,$('#item8mobile'));
+//	movieHome(16,1,$('#item9mobile'));
+//	movieHome(17,1,$('#item10mobile'));
+//	movieHome(18,1,$('#item11mobile'));
+//	movieHome(19,1,$('#item12mobile'));
+//	movieHome(12,1,$('#item6mobile'));
+function movieHome(pid,page,getId){
 mui.ajax("http://movie.wxjii.cn/php/movieHome.php",{
 		data:{
 			type:1,
-			pid:1,
-			page:1
+			pid:pid,
+			page:page
 		},
-		async:true,
+		async:false,
 		dataType:'json',
 		type:'post',
 		timeout:1000,
@@ -187,31 +341,17 @@ mui.ajax("http://movie.wxjii.cn/php/movieHome.php",{
 				str +='<li class="mui-table-view-cell mui-media mui-col-xs-4"><a class="lia" id="list_'+i+'" href="'+data.data[i].href+'"><img class="mui-media-object" src="'+data.data[i].imgSrc+'"><p class="mui-media-body">'+data.data[i].filmName+'</p><p class="mui-media-body">'+data.data[i].actor+'</p></a></li>';
 			}
 		str1 ='<ul class="mui-table-view mui-grid-view">'+str+'</ul>';
-				var item2 = document.getElementById('item2mobile');
-				var item3 = document.getElementById('item3mobile');
-				var item4 = document.getElementById('item4mobile');
-				document.getElementById('slider').addEventListener('slide', function(e) {
-					if (e.detail.slideNumber === 1) {
-						if (item2.querySelector('.mui-loading')) {
+//				document.getElementById('slider').addEventListener('slide', function(e) {
+//					if (e.detail.slideNumber === 1) {
+						if (getId.find('.mui-loading')) {
 							setTimeout(function() {
-								item2.querySelector('.mui-scroll').innerHTML = str1;
+								getId.find('.mui-loading').css({'display':'none'});
+								getId.find('ul.mui-table-view').html(str1);
 							}, 500);
 						}
-					} else if (e.detail.slideNumber === 2) {
-						if (item3.querySelector('.mui-loading')) {
-							setTimeout(function() {
-								item3.querySelector('.mui-scroll').innerHTML = str1;
-							}, 500);
-						}
-					}
-					 else if (e.detail.slideNumber === 3) {
-						if (item4.querySelector('.mui-loading')) {
-							setTimeout(function() {
-								item4.querySelector('.mui-scroll').innerHTML = str1;
-							}, 500);
-						}
-					}
-				});
+//					} 
+//				});
+				
 				
 				var sliderSegmentedControl = document.getElementById('sliderSegmentedControl');
 				
@@ -222,11 +362,11 @@ mui.ajax("http://movie.wxjii.cn/php/movieHome.php",{
 						sliderProgressBar.setAttribute('style', sliderProgressBar.getAttribute('style'));
 					}
 				});
-
+				
 		}			
 		
 	});
-
+}
 /*	mui.ajax("http://movie.wxjii.cn/php/movieA.php",{
 		data:{
 			type:1
