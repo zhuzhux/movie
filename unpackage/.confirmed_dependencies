@@ -45,7 +45,9 @@
 			"/movie.html",
 			"fonts/mui.ttf",
 			"css/list.css",
-			"js/mui.min.js"
+			"js/mui.min.js",
+			"js/mui.pullToRefresh.js",
+			"js/mui.pullToRefresh.material.js"
 		],
 		"refer": [
 			"movie.html"
