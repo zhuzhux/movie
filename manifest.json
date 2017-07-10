@@ -212,7 +212,7 @@
 				},
 				"android": {
 					"mdpi": "", /*普通屏启动图片，分辨率：240x282*/
-					"ldpi": ""
+					"ldpi": "","hdpi":"img/480.png","xhdpi":"img/720.png","xxhdpi":"img/1080.png"
 				}
 			}
 		}
