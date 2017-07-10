@@ -1,53 +1,56 @@
 {
-  "index.html": {
-    "href": "index.html",
-    "resources": [
-      "js/mui.min.js",
-      "js/jquery.js",
-      "css/mui.min.css",
-      "img/tb4.jpg",
-      "img/tb1.jpg",
-      "img/tb2.jpg",
-      "img/tb3.jpg",
-      "fonts/mui.ttf",
-      "/php/movieA.php",
-      "list.html"
-    ],
-    "refer": [
-      "index2.html",
-      "movie.html",
-      "list.html"
-    ],
-    "priority": 0
-  },
-  "index2.html": {
-    "resources": [
-      "css/mui.min.css"
-    ],
-    "refer": []
-  },
-  "movie.html": {
-    "resources": [
-      "css/mui.min.css",
-      "/php/movieA.php"
-    ],
-    "refer": []
-  },
-  "list.html": {
-    "resources": [
-      "img/tb1.jpg",
-      "img/tb2.jpg",
-      "img/tb3.jpg",
-      "img/tb4.jpg",
-      "js/jquery.js",
-      "css/mui.min.css",
-      "/php/movieA.php",
-      "/movie.html",
-      "fonts/mui.ttf",
-      "css/list.css"
-    ],
-    "refer": [
-      "movie.html"
-    ]
-  }
+	"index.html": {
+		"href": "index.html",
+		"resources": [
+			"js/mui.min.js",
+			"js/jquery.js",
+			"css/mui.min.css",
+			"img/tb4.jpg",
+			"img/tb1.jpg",
+			"img/tb2.jpg",
+			"img/tb3.jpg",
+			"fonts/mui.ttf",
+			"/php/movieA.php",
+			"list.html"
+		],
+		"refer": [
+			"index2.html",
+			"movie.html",
+			"list.html"
+		],
+		"priority": 0
+	},
+	"index2.html": {
+		"resources": [
+			"css/mui.min.css"
+		],
+		"refer": []
+	},
+	"movie.html": {
+		"resources": [
+			"css/mui.min.css",
+			"/php/movieA.php"
+		],
+		"refer": []
+	},
+	"list.html": {
+		"resources": [
+			"img/tb1.jpg",
+			"img/tb2.jpg",
+			"img/tb3.jpg",
+			"img/tb4.jpg",
+			"js/jquery.js",
+			"css/mui.min.css",
+			"/php/movieA.php",
+			"/movie.html",
+			"fonts/mui.ttf",
+			"css/list.css",
+			"js/mui.min.js",
+			"js/mui.pullToRefresh.js",
+			"js/mui.pullToRefresh.material.js"
+		],
+		"refer": [
+			"movie.html"
+		]
+	}
 }

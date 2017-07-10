@@ -212,7 +212,7 @@
 				},
 				"android": {
 					"mdpi": "", /*普通屏启动图片，分辨率：240x282*/
-					"ldpi": "","hdpi":"C:/Users/Administrator/Desktop/web/480.png","xhdpi":"C:/Users/Administrator/Desktop/web/720.png","xxhdpi":"C:/Users/Administrator/Desktop/web/1080.png"
+					"ldpi": ""
 				}
 			}
 		}
@@ -269,7 +269,10 @@
 					"movie.html",
 					"/movie.html",
 					"fonts/mui.ttf",
-					"css/list.css"
+					"css/list.css",
+					"js/mui.min.js",
+					"js/mui.pullToRefresh.js",
+					"js/mui.pullToRefresh.material.js"
 				],
 				"refer": [],
 				"priority": 0
