@@ -7,10 +7,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <script src="js/mui.min.js"></script>
-    <script src="js/jquery.js"></script>
-    <link href="css/mui.min.css" rel="stylesheet"/>
-    <link href="css/list.css" rel="stylesheet"/>
+    	<script src="js/mui.min.js"></script>
+    	<script src="js/jquery.js"></script>
+    	<link href="css/mui.min.css" rel="stylesheet"/>
+    	<link href="css/list.css" rel="stylesheet"/>
     
     	<script src="js/mui.pullToRefresh.js"></script>
 		<script src="js/mui.pullToRefresh.material.js"></script>
@@ -27,92 +27,7 @@
 	</head>
 
 	<body>
-	<style>
-			.mui-control-content {
-				background-color: white;
-				min-height: 500px;
-				height: auto;
-			}
-			.mui-control-content .mui-loading {
-				margin-top: 50px;
-			}
 
-			.mui-bar~.mui-content .mui-fullscreen {
-				top: 44px;
-				height: auto;
-			}
-			.mui-pull-top-tips {
-				position: absolute;
-				top: -20px;
-				left: 50%;
-				margin-left: -25px;
-				width: 40px;
-				height: 40px;
-				border-radius: 100%;
-				z-index: 1;
-			}
-			.mui-bar~.mui-pull-top-tips {
-				top: 24px;
-			}
-			.mui-pull-top-wrapper {
-				width: 42px;
-				height: 42px;
-				display: block;
-				text-align: center;
-				background-color: #efeff4;
-				border: 1px solid #ddd;
-				border-radius: 25px;
-				background-clip: padding-box;
-				box-shadow: 0 4px 10px #bbb;
-				overflow: hidden;
-			}
-			.mui-pull-top-tips.mui-transitioning {
-				-webkit-transition-duration: 200ms;
-				transition-duration: 200ms;
-			}
-			.mui-pull-top-tips .mui-pull-loading {
-				/*-webkit-backface-visibility: hidden;
-				-webkit-transition-duration: 400ms;
-				transition-duration: 400ms;*/
-				
-				margin: 0;
-			}
-			.mui-pull-top-wrapper .mui-icon,
-			.mui-pull-top-wrapper .mui-spinner {
-				margin-top: 7px;
-			}
-			.mui-pull-top-wrapper .mui-icon.mui-reverse {
-				/*-webkit-transform: rotate(180deg) translateZ(0);*/
-			}
-			.mui-pull-bottom-tips {
-				text-align: center;
-				background-color: #efeff4;
-				font-size: 15px;
-				line-height: 40px;
-				color: #777;
-			}
-			.mui-pull-top-canvas {
-				overflow: hidden;
-				background-color: #fafafa;
-				border-radius: 40px;
-				box-shadow: 0 4px 10px #bbb;
-				width: 40px;
-				height: 40px;
-				margin: 0 auto;
-			}
-			.mui-pull-top-canvas canvas {
-				width: 40px;
-			}
-			.mui-slider-indicator.mui-segmented-control {
-				background-color: #efeff4;
-			}
-			
-			
-			.mui-table-view {min-height: 600px;}
-			#slider .lia p{font-size: .75rem;}
-			.mui-table-view.mui-grid-view{padding-right: 8px;}
-			#slider .mui-slider-item{border: 0;}
-		</style>
 		<header class="mui-bar mui-bar-nav">
 			<h1 class="mui-title">...</h1>
 		</header>
@@ -473,9 +388,8 @@ movieIndex();
 
 document.getElementById('slider').addEventListener('slide', function(e) {
 	i_page = 2;
-	
 	if (e.detail.slideNumber == 1) {
-		movieHome(8,1,$('#item2mobile'));	
+		movieHome(8,1,$('#item2mobile'));
 	} 	
 });
 document.getElementById('slider').addEventListener('slide', function(e) {
@@ -536,6 +450,7 @@ document.getElementById('slider').addEventListener('slide', function(e) {
 		movieHome(19,1,$('#item12mobile'));			
 	} 
 });
+
 //	movieHome(8,1,$('#item2mobile'));						
 //	movieHome(9,1,$('#item3mobile'));
 //	movieHome(10,1,$('#item4mobile'));
@@ -564,6 +479,51 @@ var str = '';
 			for(var i = 0;i<data.data.length;i++){
 				str +='<li class="mui-table-view-cell mui-media mui-col-xs-4"><div class="lia" id="list_'+i+'" data-href="'+data.data[i].href+'"><img class="mui-media-object" src="'+data.data[i].imgSrc+'"><p class="mui-media-body">'+data.data[i].filmName+'</p><p class="mui-media-body">'+data.data[i].actor+'</p></div></li>';
 			}
+			
+			var item2 = document.getElementById('item2mobile');
+				var item3 = document.getElementById('item3mobile');
+				document.getElementById('slider').addEventListener('slide', function(e) {
+					if (e.detail.slideNumber === 1) {
+						if (item2.querySelector('.mui-loading')) {
+							setTimeout(function() {
+								getid.find('.mui-loading').remove();
+								getid.find('ul.mui-table-view').html(str);
+							}, 500);
+						}
+					} else if (e.detail.slideNumber === 2) {
+						if (item3.querySelector('.mui-loading')) {
+							setTimeout(function() {
+								getid.find('.mui-loading').remove();
+								getid.find('ul.mui-table-view').html(str);
+							}, 500);
+						}
+					}
+				});
+			//加载有问题 好像是用loading判断 不确定 还要测试一下
+				/*var item2 = document.getElementById('item2mobile');
+				var item3 = document.getElementById('item3mobile');
+				var item4 = document.getElementById('item4mobile');
+				document.getElementById('slider').addEventListener('slide', function(e) {
+					if (e.detail.slideNumber === 1) {
+						if (item2.querySelector('.mui-loading')) {
+								getId.find('.mui-loading').remove();
+								getId.find('ul.mui-table-view').html(str);
+						}
+					}
+					if (e.detail.slideNumber === 2) {
+						if (item3.querySelector('.mui-loading')) {
+								getId.find('.mui-loading').remove();
+								getId.find('ul.mui-table-view').html(str);
+						}
+					}
+					if (e.detail.slideNumber === 3) {
+						if (item4.querySelector('.mui-loading')) {
+								getId.find('.mui-loading').remove();
+								getId.find('ul.mui-table-view').html(str);
+						}
+					}
+				});*/
+		
 //			if (getId.find('.mui-loading')) {
 					getId.find('.mui-loading').remove();
 					getId.find('ul.mui-table-view').html(str);
