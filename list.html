@@ -11,23 +11,11 @@
     	<script src="js/jquery.js"></script>
     	<link href="css/mui.min.css" rel="stylesheet"/>
     	<link href="css/list.css" rel="stylesheet"/>
-    
     	<script src="js/mui.pullToRefresh.js"></script>
 		<script src="js/mui.pullToRefresh.material.js"></script>
-		<!--<link rel="stylesheet" type="text/css" href="../css/app.css" />-->
-		<style>
-			/*.mui-card .mui-control-content {
-				padding: 10px;
-			}
-			
-			.mui-control-content {
-				height: 150px;
-			}*/
-		</style>
 	</head>
 
 	<body>
-
 		<header class="mui-bar mui-bar-nav">
 			<h1 class="mui-title">...</h1>
 		</header>
@@ -220,17 +208,18 @@
 				//阻尼系数
 				var deceleration = mui.os.ios?0.003:0.0009;
 				$('.mui-scroll-wrapper').scroll({
-					bounce: false,
+					bounce: true,
 					indicators: true, //是否显示滚动条
 					deceleration:deceleration
+					,startY: 0, //初始化时滚动至y
 				});
-
 
 				$.ready(function() {
 					//循环初始化所有下拉刷新，上拉加载。
 					$.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
 
 						$(pullRefreshEl).pullToRefresh({
+							//下拉
 							down: {
 								callback: function() {
 									var self = this;
@@ -239,13 +228,12 @@
 									}, 500);
 								}
 							},
+							//上拉
 							up: {
 								callback: function() {
 									var self = this;
-									
 									setTimeout(function() {
 										var ul = self.element.querySelector('.mui-table-view');
-											
 										switch (index){
 											case 1:
 												ul.appendChild(movieHomee(8,i_page,ul));
@@ -294,12 +282,8 @@
 											default:
 												break;
 										}
-
-//ul.appendChild(createFragment(ul, index, 5));
-								
 										self.endPullUpToRefresh();
-										
-									}, 50);
+									}, 500);
 								}
 							}
 						});
@@ -341,11 +325,8 @@
 								fragment.append(li);
 							}			
 						});
-						
 						return fragment;
 					}
-
-
 				});
 	
 			})(mui);
@@ -354,11 +335,6 @@
 				var a = $('.mui-table-view .mui-table-view-cell .mui-media-object').width();
 				$('.mui-table-view .mui-table-view-cell .mui-media-object').css({'height':a*1.4});
 			}
-//				$('.lia').css('color':'red')
-				
-
-
-			
 </script>
 </body>
 </html>
@@ -386,70 +362,50 @@ function movieIndex(){
 }
 movieIndex();
 
+//监听侧滑,
+var item2Show = false,item3Show = false,item4Show = false,item5Show = false,item6Show = false,item7Show = false,item8Show = false,item9Show = false,item10Show = false,item11Show = false,item12Show = false;//子选项卡是否显示标志
 document.getElementById('slider').addEventListener('slide', function(e) {
-	i_page = 2;
-	if (e.detail.slideNumber == 1) {
+	i_page = 2;//
+	if (event.detail.slideNumber === 1&&!item2Show) {
+		//切换到第二个选项卡
+    	//动态获得第二个选项卡内容
+    	//显示内容
 		movieHome(8,1,$('#item2mobile'));
-	} 	
-});
-document.getElementById('slider').addEventListener('slide', function(e) {
-	i_page = 2;
-
-	
-	if (e.detail.slideNumber == 2) {
+		//改变标志位，下次直接显示
+	    item2Show = true;
+	}else if (event.detail.slideNumber === 2&&!item3Show) {
 		movieHome(9,1,$('#item3mobile'));
-	} 
-});
-document.getElementById('slider').addEventListener('slide', function(e) {
-	i_page = 2;
-
-	
-	if (e.detail.slideNumber == 3) {
+	    item3Show = true;
+	}else if (e.detail.slideNumber == 3&&!item4Show) {
 		movieHome(10,1,$('#item4mobile'));
-	}
-});
-document.getElementById('slider').addEventListener('slide', function(e) {
-	i_page = 2;
-	
-	if (e.detail.slideNumber == 4) {
+	    item4Show = true;
+	}else if (e.detail.slideNumber == 4&&!item5Show) {
 		movieHome(11,1,$('#item5mobile'));
-	} 
-});
-document.getElementById('slider').addEventListener('slide', function(e) {
-	if (e.detail.slideNumber == 5) {
-		movieHome(12,1,$('#item6mobile'));				
-	} 
-});
-document.getElementById('slider').addEventListener('slide', function(e) {
-	if (e.detail.slideNumber == 6) {
+		item5Show = true;
+	}else if (e.detail.slideNumber == 5&&!item6Show) {
+		movieHome(12,1,$('#item6mobile'));
+		item6Show = true;
+	}else if (e.detail.slideNumber == 6&&!item7Show) {
 		movieHome(13,1,$('#item7mobile'));
-	} 
-});
-document.getElementById('slider').addEventListener('slide', function(e) {
-	if (e.detail.slideNumber == 7) {
+		item7Show = true;
+	}else if (e.detail.slideNumber == 7&&!item8Show) {
 		movieHome(15,1,$('#item8mobile'));
-	} 
-});
-document.getElementById('slider').addEventListener('slide', function(e) {
-	if (e.detail.slideNumber == 8) {
+		item8Show = true;
+	}else if (e.detail.slideNumber == 8&&!item9Show) {
 		movieHome(16,1,$('#item9mobile'));
-	} 
-});
-document.getElementById('slider').addEventListener('slide', function(e) {
-	if (e.detail.slideNumber == 9) {
+		item9Show = true;
+	}else if (e.detail.slideNumber == 9&&!item10Show) {
 		movieHome(17,1,$('#item10mobile'));			
-	} 
-});
-document.getElementById('slider').addEventListener('slide', function(e) {
-	if (e.detail.slideNumber == 10) {
+		item10Show = true;
+	}else if (e.detail.slideNumber == 10&&!item11Show) {
 		movieHome(18,1,$('#item11mobile'));				
-	} 
-});
-document.getElementById('slider').addEventListener('slide', function(e) {
-	if (e.detail.slideNumber == 11) {
+		item11Show = true;
+	}else if (e.detail.slideNumber == 11&&!item12Show) {
 		movieHome(19,1,$('#item12mobile'));			
+		item12Show = true;
 	} 
 });
+
 
 //	movieHome(8,1,$('#item2mobile'));						
 //	movieHome(9,1,$('#item3mobile'));
@@ -475,64 +431,17 @@ function movieHome(pid,page,getId){
 		type:'get',
 		timeout:1000,
 		success:function(data){
-var str = '';
+			var str = '';
 			for(var i = 0;i<data.data.length;i++){
 				str +='<li class="mui-table-view-cell mui-media mui-col-xs-4"><div class="lia" id="list_'+i+'" data-href="'+data.data[i].href+'"><img class="mui-media-object" src="'+data.data[i].imgSrc+'"><p class="mui-media-body">'+data.data[i].filmName+'</p><p class="mui-media-body">'+data.data[i].actor+'</p></div></li>';
 			}
-			
-			var item2 = document.getElementById('item2mobile');
-				var item3 = document.getElementById('item3mobile');
-				document.getElementById('slider').addEventListener('slide', function(e) {
-					if (e.detail.slideNumber === 1) {
-						if (item2.querySelector('.mui-loading')) {
-							setTimeout(function() {
-								getid.find('.mui-loading').remove();
-								getid.find('ul.mui-table-view').html(str);
-							}, 500);
-						}
-					} else if (e.detail.slideNumber === 2) {
-						if (item3.querySelector('.mui-loading')) {
-							setTimeout(function() {
-								getid.find('.mui-loading').remove();
-								getid.find('ul.mui-table-view').html(str);
-							}, 500);
-						}
-					}
-				});
-			//加载有问题 好像是用loading判断 不确定 还要测试一下
-				/*var item2 = document.getElementById('item2mobile');
-				var item3 = document.getElementById('item3mobile');
-				var item4 = document.getElementById('item4mobile');
-				document.getElementById('slider').addEventListener('slide', function(e) {
-					if (e.detail.slideNumber === 1) {
-						if (item2.querySelector('.mui-loading')) {
-								getId.find('.mui-loading').remove();
-								getId.find('ul.mui-table-view').html(str);
-						}
-					}
-					if (e.detail.slideNumber === 2) {
-						if (item3.querySelector('.mui-loading')) {
-								getId.find('.mui-loading').remove();
-								getId.find('ul.mui-table-view').html(str);
-						}
-					}
-					if (e.detail.slideNumber === 3) {
-						if (item4.querySelector('.mui-loading')) {
-								getId.find('.mui-loading').remove();
-								getId.find('ul.mui-table-view').html(str);
-						}
-					}
-				});*/
-		
 //			if (getId.find('.mui-loading')) {
-					getId.find('.mui-loading').remove();
-					getId.find('ul.mui-table-view').html(str);
+				getId.find('.mui-loading').remove();
+				getId.find('ul.mui-table-view').html(str);
 //			}
 			imgWH();
-		}			
-		
+		}
 	});
-
 }
 
 /*	mui.ajax("http://movie.wxjii.cn/php/movieA.php",{
@@ -591,8 +500,7 @@ var str = '';
 
 
 <script type="text/javascript" charset="utf-8">
-
-
+		//下面是点击列表显示详情页
         var detailPage = null;
         //添加列表项的点击事件
         mui('.mui-table-view ').on('tap', 'div', function(e) {
@@ -620,9 +528,7 @@ var str = '';
                   title:title
                 }
             });
-        
         });
-        
 </script>
 
 

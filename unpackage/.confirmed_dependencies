@@ -47,7 +47,8 @@
       "css/list.css",
       "js/mui.min.js",
       "js/mui.pullToRefresh.js",
-      "js/mui.pullToRefresh.material.js"
+      "js/mui.pullToRefresh.material.js",
+      "img/bg.jpg"
     ],
     "refer": [
       "movie.html"

@@ -1,8 +1,4 @@
-.mui-control-content {
-	background-color: white;
-	min-height: 500px;
-	height: auto;
-}
+
 /*上拉刷新，下来加载的样式*/
 .mui-control-content .mui-loading {
 	margin-top: 50px;
@@ -83,3 +79,9 @@
 #slider .lia p{font-size: .75rem;}
 .mui-table-view.mui-grid-view{padding-right: 8px;}
 #slider .mui-slider-item{border: 0;}
+.mui-control-content {
+	/*background-color: white;*/
+	min-height: 600px;
+	height: auto;
+}
+.mui-slider-group .mui-scroll{background: white;}
