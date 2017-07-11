@@ -34,7 +34,7 @@
 	    <h1 class="mui-title"></h1>
 	</header>
 		<div class="mui-content">
-			<div id="" style="width: 100%;height:auto;margin-top: 40px;">
+			<div id="" style="width: 100%;height:auto;">
 				<video width="100%" height="200" controls="" id="media" src="">
 					
 					<!--<source id="video1" src="">-->
@@ -47,12 +47,17 @@
 					当前浏览器不支持 video直接播放，点击这里下载视频： <a href="myvideo.webm">下载视频</a>
 				</video>
 			</div>
-			
+
 			<div class="mui-card">
-			    <div class="mui-card-content"  id="jieshao">
-			      
-			    </div>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right">影片简介</a>
+						<div class="mui-collapse-content" id="jieshao">
+						</div>
+					</li>
+				</ul>
 			</div>
+
 			<div class="mui-card" >
 			    <div class="mui-card-content" id="rUrl">
 			    </div>
@@ -67,7 +72,7 @@
 			
 	
 	<!--<button id="url">点击播放</button>-->
-	<!--<video id="videoId" src="http://dqplayers.duapp.com/bshare/Yunflvco/parse.php?url=vH2gnWmwiLuvgK2O3YCZc3Q_youku&ctype=phone" width="100%" height="200" controls="controls">-->
+	<!--<video id="videoId" src="http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url=zKSqpqucY5Wtqqpjx5yen5mdn6FkxtXOY9zMm5mnaJXaYWdvbpprl2li&ctype=phone" width="100%" height="200" controls="controls">-->
 <script>
 //	mui.init({
 //		swipeBack: false
@@ -160,7 +165,8 @@
 				success:function(data){
 					var str = '<div class="mui-card-content-inner">';
 					for(var i = 0;i<data.Data.length;i++){
-						var noPlay = data.Data[i].playname!="xigua"&&data.Data[i].playname!="xigua1"&&data.Data[i].playname!="down1"&&data.Data[i].playname!="down3"&&data.Data[i].playname!="down4"&&data.Data[i].playname!="ed2k"&&data.Data[i].playname!="ffhd"&&data.Data[i].playname!="real"&&data.Data[i].playname!="web9";
+						var noPlay = data.Data[i].playname!="xigua"&&data.Data[i].playname!="xigua1"&&data.Data[i].playname!="down1"&&data.Data[i].playname!="down3"&&data.Data[i].playname!="down4"&&data.Data[i].playname!="ed2k"&&data.Data[i].playname!="ffhd"&&data.Data[i].playname!="real"&&data.Data[i].playname!="web9"&&data.Data[i].playname!="qiyiid"&&data.Data[i].playname!="duyun
+						";
 						if(noPlay){
 							str+='<div><h5 dataTitle='+data.Data[i].playname+'>'+data.Data[i].playname+' 在线播放(点击开始)</h5>';
 							for(var j=0;j<data.Data[i].playurls.length;j++){
@@ -244,6 +250,22 @@
 					str = str.substr(0, str.indexOf('douban'));
 					qqid = "http://dqplayers.duapp.com/bshare/Yunflvco/parse.php?url="+str+"_qq&ctype=phone";
 					$('#media').attr('src',qqid);
+					$('#media').attr("autoplay","autoplay");
+					mui.toast('正在解析，请稍等..');
+				}
+				if(dataTitle=="superm3u8"){
+					var str = $(this).attr('src');
+					str = str.substr(0, str.indexOf('douban'));
+					superm3u8 = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"_youkuyun&ctype=phone";
+					$('#media').attr('src',superm3u8);
+					$('#media').attr("autoplay","autoplay");
+					mui.toast('正在解析，请稍等..');
+				}
+				if(dataTitle=="bilibili"){
+					var str = $(this).attr('src');
+					str = str.substr(0, str.indexOf('douban'));
+					bilibili = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"&ctype=phone";
+					$('#media').attr('src',bilibili);
 					$('#media').attr("autoplay","autoplay");
 					mui.toast('正在解析，请稍等..');
 				}
