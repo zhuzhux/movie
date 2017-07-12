@@ -56,7 +56,8 @@
 			"movie.html",
 			"search.html",
 			"ck/index.htm",
-			"video.html"
+			"video.html",
+			"testVideo.html"
 		]
 	},
 	"search.html": {
@@ -81,6 +82,13 @@
 		],
 		"refer": [
 			"ck/demo1.htm"
+		]
+	},
+	"testVideo.html": {
+		"resources": [
+			"js/videojs-ie8.min.js",
+			"css/video-js.css",
+			"css/mui.min.css"
 		]
 	}
 }

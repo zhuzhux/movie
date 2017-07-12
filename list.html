@@ -311,7 +311,6 @@
 									fragment.appendChild(li);
 								}
 								fragment.append(li);
-								
 							}			
 						});
 						return fragment;
@@ -531,8 +530,10 @@ function movieHome(pid,page,getId){
 	  });
 	});
 	//窗口高度
-	var sHeight=window.screen.availHeight-44;
-	$('ul.mui-table-view').css({"minHeight":sHeight+"px"});
+	var sHeight=window.screen.availHeight-45-50-45;
+//	$('ul.mui-table-view').css({"minHeight":sHeight+"px"});
+	$('.mui-slider-group>div').css({"minHeight":sHeight+"px"});
+	
 //	mui.init({
 //	  preloadPages:[
 //	    {
