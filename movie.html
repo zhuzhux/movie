@@ -35,19 +35,15 @@
 	</header>
 		<div class="mui-content">
 			<div id="" style="width: 100%;height:auto;">
-				<video width="100%" height="200" controls="" id="media" src="">
-					
+				<video width="100%" height="200" controls="controls" preload="auto"  id="media" src="">
 					<!--<source id="video1" src="">-->
 					<!--<source id="video1" src="https://dqplayers.duapp.com/bshare/supurl.php?url=zaWq1nBnYazYrJKam5munmSYp1.pZJaUZG5oZ3BlnA,,&ctype=phone">-->
-		
 					<object width="" height="" type="application/x-shockwave-flash" data="myvideo.swf">
 						<param name="movie" value="myvideo.swf" />
 						<param name="flashvars" value="autostart=true&amp;file=myvideo.swf" />
 					</object>
-					当前浏览器不支持 video直接播放，点击这里下载视频： <a href="myvideo.webm">下载视频</a>
 				</video>
 			</div>
-
 			<div class="mui-card">
 				<ul class="mui-table-view">
 					<li class="mui-table-view-cell mui-collapse">
@@ -62,8 +58,6 @@
 			    <div class="mui-card-content" id="rUrl">
 			    </div>
 			</div>
-			<!--<div id="rUrl">
-			</div>-->
 			<i id="htmlurl"></i>
 		    
 		</div>
@@ -72,7 +66,16 @@
 			
 	
 	<!--<button id="url">点击播放</button>-->
-	<!--<video id="videoId" src="http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url=zKSqpqucY5Wtqqpjx5yen5mdn6FkxtXOY9zMm5mnaJXaYWdvbpprl2li&ctype=phone" width="100%" height="200" controls="controls">-->
+	<!--<video id="videoId" src="https://dqplayers.duapp.com/bshare/supurl.php?url=zaWq1nBnYazYrJKam5munmSYp1.pZJaUZG5oZ3BlnA,,&ctype=phone" width="100%" height="200" controls="controls">
+	</video>-->
+	
+		<!--<div class="video">
+			<video id="video" controls="controls" preload="auto" poster="http://download.dcloud.net.cn/FastAndroid-mini.jpg" width="100%" height="auto" src="http://download.dcloud.net.cn/FastAndroid-mini.m4v">
+			</video>
+		</div>-->
+	
+
+
 <script>
 //	mui.init({
 //		swipeBack: false
@@ -90,186 +93,234 @@
 //			}
 //		});
 //	})(mui);
-
 </script>
 </body>
 </html>
 <script type="text/javascript" charset="utf-8">
-      	mui.init();
-        window.onload = function(){
-            //从服务器获取数据
-	//http://movie.wxjii.cn
-            //业务数据获取完毕，并已插入当前页面DOM；
-            //注意：若为ajax请求，则需将如下代码放在处理完ajax响应数据之后；
-            mui.plusReady(function(){
-                var self = plus.webview.currentWebview();
-                var ahref = self.href;
-                var headerTitle = self.title;
-                localStorage.aHref = ahref;
-
-				getHtmlUrl();
-				$('header h1').text(headerTitle);
-				
-				//获取真实地址，输出到页面按钮，传递的值是
-                getrUrl($('#htmlurl').attr('src'));
-                //点击真实地址按钮，自动播放
-				clickrUrl();
+		
+		
+  	mui.init();
+    window.onload = function(){
+        //从服务器获取数据
+//http://movie.wxjii.cn
+        //业务数据获取完毕，并已插入当前页面DOM；
+        //注意：若为ajax请求，则需将如下代码放在处理完ajax响应数据之后；
+        mui.plusReady(function(){
+            var self = plus.webview.currentWebview();
+            var ahref = self.href;
+            var headerTitle = self.title;
+            localStorage.aHref = ahref;
+            
+//alert(localStorage.getItem("SSHref"))
+			getHtmlUrl();
+			$('header h1').text(headerTitle);
+			
+			//获取真实地址，输出到页面按钮
+            getrUrl($('#htmlurl').attr('src'));
+            //点击真实地址按钮，自动播放
+			clickrUrl();
 
 //				console.log($('#rUrl').html());
-				
-                //关闭等待框
-                plus.nativeUI.closeWaiting();
-                
-                //显示当前页面
-                mui.currentWebview.show();
-				//清空aHref
-				localStorage.removeItem("aHref");
-            });
-        }
-
-          
-        function getHtmlUrl(){//获取播放页面的地址： http://m.yingshidaquan.cc/play/DQ236764-4-1.html
-				mui.ajax("http://movie.wxjii.cn/php/movieU.php",{
-					data:{
-						aHref:localStorage.aHref,
-						type:2
-					},
-					async:false,
-					dataType:'json',
-					type:'post',
-					timeout:1000,
-					success:function(data){
-						//赋值给<i>,不显示，用在存储当前视频的第二次详细
-						$('#htmlurl').attr('src',data.data[0].href);
-						console.log(data)
-						console.log()
-						var str = '<div class="mui-card-content-inner">';
-						for(i = 0;i<data.details.length;i++){
-							str += '<div>'+data.details[i].details+'</div>';
+			
+            //关闭等待框
+            plus.nativeUI.closeWaiting();
+            
+            //显示当前页面
+            mui.currentWebview.show();
+			//清空aHref
+			localStorage.removeItem("aHref");
+        });
+        /**
+			 * 视频全屏播放旋转目前的逻辑
+			 * 视频全屏，即锁定屏幕为横屏。
+			 * 视频恢复，则解除屏幕方向的锁定。
+			 * 具体的切换，根据自己的实际业务做相应的操作。
+			 */
+			// Android平台的视频全屏旋转
+			var fullScreenOfAndroid = function() {
+				if(true) {
+					// 最新5+API的支持
+					var self = plus.webview.currentWebview();
+					self.setStyle({
+						videoFullscreen: 'landscape'
+					});
+				} else {
+					// 如果暂未更新sdk，可以先使用差量升级等方式，做出兼容处理；
+					// 旧版本下的兼容处理
+					document.addEventListener('webkitfullscreenchange', function() {
+						var el = document.webkitFullscreenElement; //获取全屏元素
+						if(el) {
+							plus.screen.lockOrientation('landscape'); //锁死屏幕方向为横屏
+						} else {
+							plus.screen.unlockOrientation(); //解除屏幕方向的锁定
 						}
-						str += '<div>'+data.introduction[0].introduction+'</div></div>';
-						$('#jieshao').html(str);
-					}
+					});
+
+				}
+			};
+			// iOS平台的视频全屏旋转
+			var fullScreenOfIos = function(videoElem) {
+				// 监听的事件与Android平台有很大区别
+				videoElem.addEventListener('webkitbeginfullscreen', function() {
+					plus.screen.lockOrientation('landscape'); //锁死屏幕方向为横屏
 				});
-			}
-        
-		function getrUrl(href_a){
-			mui.ajax("http://movie.wxjii.cn/php/movieU2.php",{
+				videoElem.addEventListener('webkitendfullscreen', function() {
+					plus.screen.unlockOrientation(); //解除屏幕方向的锁定
+				});
+			};
+			// 涉及到5+API的内容，均在plusready事件后调用；
+			document.addEventListener('plusready', function() {
+				var osName = plus.os.name;
+				if(osName === 'Android') {
+					fullScreenOfAndroid();
+				} else if(osName === 'iOS') {
+					var videoElem = document.getElementById('media');
+					fullScreenOfIos(videoElem);
+				}
+			});
+    }
+
+    function getHtmlUrl(){//获取播放页面的地址： http://m.yingshidaquan.cc/play/DQ236764-4-1.html
+			mui.ajax("http://movie.wxjii.cn/php/movieU.php",{
 				data:{
-					aHref:href_a
+					aHref:localStorage.aHref,
+					type:2
 				},
 				async:false,
 				dataType:'json',
 				type:'post',
 				timeout:1000,
 				success:function(data){
+					//赋值给<i>,不显示，用在存储当前视频的第二次详细
+					$('#htmlurl').attr('src',data.data[0].href);
+					console.log(data)
+					console.log()
 					var str = '<div class="mui-card-content-inner">';
-					for(var i = 0;i<data.Data.length;i++){
-						var noPlay = data.Data[i].playname!="xigua"&&data.Data[i].playname!="xigua1"&&data.Data[i].playname!="down1"&&data.Data[i].playname!="down3"&&data.Data[i].playname!="down4"&&data.Data[i].playname!="ed2k"&&data.Data[i].playname!="ffhd"&&data.Data[i].playname!="real"&&data.Data[i].playname!="web9"&&data.Data[i].playname!="qiyiid"&&data.Data[i].playname!="duyun
-						";
-						if(noPlay){
-							str+='<div><h5 dataTitle='+data.Data[i].playname+'>'+data.Data[i].playname+' 在线播放(点击开始)</h5>';
-							for(var j=0;j<data.Data[i].playurls.length;j++){
-								str+='<button style="max-width:100%;width:auto;overflow: hidden;text-align: left;" src="'+data.Data[i].playurls[j][1]+'">'+data.Data[i].playurls[j][0]+'</button>';
-							}
-							str+='</div>'
-						}
+					for(i = 0;i<data.details.length;i++){
+						str += '<div>'+data.details[i].details+'</div>';
 					}
-					str+='</div>'
-					$('#rUrl').html(str);
-				}
-			});
-        }
-		
-		function clickrUrl(){//点击真实地址的按钮
-			$('#rUrl>div>div>button').click(function(){
-				var dataTitle = $(this).prevAll("h5:first").attr("dataTitle");
-				if(dataTitle=="dusk360"){
-					$('#media').attr('src',$(this).attr('src'));
-					$('#media').attr("autoplay","autoplay");
-					mui.toast('正在解析，请稍等..');
-				}
-				if(dataTitle=="acfun"){
-					var str = $(this).attr('src');
-					str = str.substr(0, str.indexOf('douban'));
-					acfun = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"&ctype=phone";
-					$('#media').attr('src',acfun);
-					$('#media').attr("autoplay","autoplay");
-					mui.toast('正在解析，请稍等..');
-				}
-				if(dataTitle=="yuku"){
-					var str = $(this).attr('src');
-					str = str.substr(0, str.indexOf('douban'));
-					yuku = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"&ctype=phone";
-					$('#media').attr('src',yuku);
-					$('#media').attr("autoplay","autoplay");
-					mui.toast('正在解析，请稍等..');
-				}
-				if(dataTitle=="360"){
-					var str = $(this).attr('src');
-					str = str.substr(0, str.indexOf('douban'));
-					s360 = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"_pprid&ctype=phone";
-					$('#media').attr('src',s360);
-					$('#media').attr("autoplay","autoplay");
-					mui.toast('正在解析，请稍等..');
-				}
-				if(dataTitle=="imgo"){
-					var str = $(this).attr('src');
-					str = str.substr(0, str.indexOf('douban'));
-					imgo = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"_pprid&ctype=phone";
-					$('#media').attr('src',imgo);
-					$('#media').attr("autoplay","autoplay");
-					mui.toast('正在解析，请稍等..');
-				}
-				if(dataTitle=="qianmo"){
-					var str = $(this).attr('src');
-					str = str.substr(0, str.indexOf('douban'));
-					qianmo = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"_acsid&ctype=phone";
-					$('#media').attr('src',qianmo);
-					$('#media').attr("autoplay","autoplay");
-					mui.toast('正在解析，请稍等..');
-				}
-				if(dataTitle=="letvid"){
-					var str = $(this).attr('src');
-					str = str.substr(0, str.indexOf('douban'));
-					letid = "http://dqplayers.duapp.com/bshare/Yunflvco/parse.php?url="+str+"_letv&ctype=phone";
-					$('#media').attr('src',letid);
-					$('#media').attr("autoplay","autoplay");
-					mui.toast('正在解析，请稍等..');
-				}
-				if(dataTitle=="yukuid"){
-					var str = $(this).attr('src');
-					str = str.substr(0, str.indexOf('douban'));
-					yukuid = "http://dqplayers.duapp.com/bshare/Yunflvco/parse.php?url="+str+"_youku&ctype=phone";
-					$('#media').attr('src',yukuid);
-					$('#media').attr("autoplay","autoplay");
-					mui.toast('正在解析，请稍等..');
-				}
-				if(dataTitle=="qqid"){
-					var str = $(this).attr('src');
-					str = str.substr(0, str.indexOf('douban'));
-					qqid = "http://dqplayers.duapp.com/bshare/Yunflvco/parse.php?url="+str+"_qq&ctype=phone";
-					$('#media').attr('src',qqid);
-					$('#media').attr("autoplay","autoplay");
-					mui.toast('正在解析，请稍等..');
-				}
-				if(dataTitle=="superm3u8"){
-					var str = $(this).attr('src');
-					str = str.substr(0, str.indexOf('douban'));
-					superm3u8 = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"_youkuyun&ctype=phone";
-					$('#media').attr('src',superm3u8);
-					$('#media').attr("autoplay","autoplay");
-					mui.toast('正在解析，请稍等..');
-				}
-				if(dataTitle=="bilibili"){
-					var str = $(this).attr('src');
-					str = str.substr(0, str.indexOf('douban'));
-					bilibili = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"&ctype=phone";
-					$('#media').attr('src',bilibili);
-					$('#media').attr("autoplay","autoplay");
-					mui.toast('正在解析，请稍等..');
+					str += '<div>'+data.introduction[0].introduction+'</div></div>';
+					$('#jieshao').html(str);
 				}
 			});
 		}
-		
+    
+	function getrUrl(href_a){//输出按钮等
+		mui.ajax("http://movie.wxjii.cn/php/movieU2.php",{
+			data:{
+				aHref:href_a
+			},
+			async:false,
+			dataType:'json',
+			type:'post',
+			timeout:1000,
+			success:function(data){
+				var str = '<div class="mui-card-content-inner">';
+				for(var i = 0;i<data.Data.length;i++){
+					var noPlay = data.Data[i].playname!="xigua"&&data.Data[i].playname!="xigua1"&&data.Data[i].playname!="down1"&&data.Data[i].playname!="down3"&&data.Data[i].playname!="down4"&&data.Data[i].playname!="ed2k"&&data.Data[i].playname!="ffhd"&&data.Data[i].playname!="real"&&data.Data[i].playname!="web9"&&data.Data[i].playname!="qiyiid"&&data.Data[i].playname!="duyun";
+					if(noPlay){
+						str+='<div><h5 dataTitle='+data.Data[i].playname+'>'+data.Data[i].playname+' 在线播放(点击开始)</h5>';
+						for(var j=0;j<data.Data[i].playurls.length;j++){
+							str+='<button style="max-width:100%;width:auto;overflow: hidden;text-align: left;" src="'+data.Data[i].playurls[j][1]+'">'+data.Data[i].playurls[j][0]+'</button>';
+						}
+						str+='</div>'
+					}
+				}
+				str+='</div>'
+				$('#rUrl').html(str);
+			}
+		});
+    }
+	
+	function clickrUrl(){//点击真实地址的按钮
+		$('#rUrl>div>div>button').click(function(){
+			var dataTitle = $(this).prevAll("h5:first").attr("dataTitle");
+			if(dataTitle=="dusk360"){
+				$('#media').attr('src',$(this).attr('src'));
+				$('#media').attr("autoplay","autoplay");
+				mui.toast('正在解析，请稍等..');
+			}
+			if(dataTitle=="acfun"){
+				var str = $(this).attr('src');
+				str = str.substr(0, str.indexOf('douban'));
+				acfun = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"&ctype=phone";
+				$('#media').attr('src',acfun);
+				$('#media').attr("autoplay","autoplay");
+				mui.toast('正在解析，请稍等..');
+			}
+			if(dataTitle=="yuku"){
+				var str = $(this).attr('src');
+				str = str.substr(0, str.indexOf('douban'));
+				yuku = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"&ctype=phone";
+				$('#media').attr('src',yuku);
+				$('#media').attr("autoplay","autoplay");
+				mui.toast('正在解析，请稍等..');
+			}
+			if(dataTitle=="360"){
+				var str = $(this).attr('src');
+				str = str.substr(0, str.indexOf('douban'));
+				s360 = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"_pprid&ctype=phone";
+				$('#media').attr('src',s360);
+				$('#media').attr("autoplay","autoplay");
+				mui.toast('正在解析，请稍等..');
+			}
+			if(dataTitle=="imgo"){
+				var str = $(this).attr('src');
+				str = str.substr(0, str.indexOf('douban'));
+				imgo = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"_pprid&ctype=phone";
+				$('#media').attr('src',imgo);
+				$('#media').attr("autoplay","autoplay");
+				mui.toast('正在解析，请稍等..');
+			}
+			if(dataTitle=="qianmo"){
+				var str = $(this).attr('src');
+				str = str.substr(0, str.indexOf('douban'));
+				qianmo = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"_acsid&ctype=phone";
+				$('#media').attr('src',qianmo);
+				$('#media').attr("autoplay","autoplay");
+				mui.toast('正在解析，请稍等..');
+			}
+			if(dataTitle=="letvid"){
+				var str = $(this).attr('src');
+				str = str.substr(0, str.indexOf('douban'));
+				letid = "http://dqplayers.duapp.com/bshare/Yunflvco/parse.php?url="+str+"_letv&ctype=phone";
+				$('#media').attr('src',letid);
+				$('#media').attr("autoplay","autoplay");
+				mui.toast('正在解析，请稍等..');
+			}
+			if(dataTitle=="yukuid"){
+				var str = $(this).attr('src');
+				str = str.substr(0, str.indexOf('douban'));
+				yukuid = "http://dqplayers.duapp.com/bshare/Yunflvco/parse.php?url="+str+"_youku&ctype=phone";
+				$('#media').attr('src',yukuid);
+				$('#media').attr("autoplay","autoplay");
+				mui.toast('正在解析，请稍等..');
+			}
+			if(dataTitle=="qqid"){
+				var str = $(this).attr('src');
+				str = str.substr(0, str.indexOf('douban'));
+				qqid = "http://dqplayers.duapp.com/bshare/Yunflvco/parse.php?url="+str+"_qq&ctype=phone";
+				$('#media').attr('src',qqid);
+				$('#media').attr("autoplay","autoplay");
+				mui.toast('正在解析，请稍等..');
+			}
+			if(dataTitle=="superm3u8"){
+				var str = $(this).attr('src');
+				str = str.substr(0, str.indexOf('douban'));
+				superm3u8 = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"_youkuyun&ctype=phone";
+				$('#media').attr('src',superm3u8);
+				$('#media').attr("autoplay","autoplay");
+				mui.toast('正在解析，请稍等..');
+			}
+			if(dataTitle=="bilibili"){
+				var str = $(this).attr('src');
+				str = str.substr(0, str.indexOf('douban'));
+				bilibili = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"&ctype=phone";
+				$('#media').attr('src',bilibili);
+				$('#media').attr("autoplay","autoplay");
+				mui.toast('正在解析，请稍等..');
+			}
+		});
+	}
+
     </script>

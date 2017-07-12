@@ -8,6 +8,8 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
     	<script src="js/mui.min.js"></script>
+    	<script src="js/mui.lazyload.js"></script>
+		<script src="js/mui.lazyload.img.js"></script>
     	<script src="js/jquery.js"></script>
     	<link href="css/mui.min.css" rel="stylesheet"/>
     	<link href="css/list.css" rel="stylesheet"/>
@@ -18,6 +20,7 @@
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<h1 class="mui-title">...</h1>
+			<a class="mui-icon mui-icon-search mui-pull-right" href="#" id="search"></a>
 		</header>
 		<div class="mui-content">
 			<!--滑动-->
@@ -54,7 +57,7 @@
 									<div class="mui-spinner">
 									</div>
 								</div>
-								<ul class="mui-table-view mui-grid-view" style="min-height: 600px;">
+								<ul class="mui-table-view mui-grid-view">
 								</ul>
 							</div>
 						</div>
@@ -223,7 +226,7 @@
 									var self = this;
 									setTimeout(function() {
 										self.endPullDownToRefresh();
-									}, 500);
+									}, 1000);
 								}
 							},
 							//上拉
@@ -280,27 +283,14 @@
 											default:
 												break;
 										}
+										imgWH();
 										self.endPullUpToRefresh();
-									}, 500);
+									}, 50);
 								}
 							}
 						});
 					});
-					
-					var createFragment = function(ul, index, count, reverse) {
-//						var length = ul.querySelectorAll('li').length;
-						var fragment = document.createDocumentFragment();
-						for (var i = 0; i < count; i++) {
-							li = document.createElement('li');
-							li.className = 'mui-table-view-cell';
-							li.innerHTML = '第个选项卡子项-';
-							
-							fragment.appendChild(li);
-						}
-						fragment.append(li);
-						return fragment;
-					};
-					
+								
 					var movieHomee = function(pid,page,getId){
 						var fragment = document.createDocumentFragment();
 						mui.ajax("http://movie.wxjii.cn/php/movieHome.php",{
@@ -321,12 +311,12 @@
 									fragment.appendChild(li);
 								}
 								fragment.append(li);
+								
 							}			
 						});
 						return fragment;
 					}
 				});
-	
 			})(mui);
 			
 			function imgWH(){
@@ -350,7 +340,7 @@ function movieIndex(){
 		success:function(data){
 			var str = '';
 			for(var i = 0;i<data.data.length;i++){
-				str +='<li class="mui-table-view-cell mui-media mui-col-xs-4"><div class="lia" id="list_'+i+'" data-href="'+data.data[i].href+'"><img class="mui-media-object" src="'+data.data[i].imgSrc+'"><p class="mui-media-body">'+data.data[i].filmName+'</p><p class="mui-media-body">'+data.data[i].actor+'</p></div></li>';
+				str +='<li class="mui-table-view-cell mui-media mui-col-xs-4"><div class="lia" id="list_'+i+'" data-href="'+data.data[i].href+'" ><img class="mui-media-object" src="'+data.data[i].imgSrc+'"><p class="mui-media-body">'+data.data[i].filmName+'</p><p class="mui-media-body">'+data.data[i].actor+'</p></div></li>';
 //							console.log(data.data[i].href);
 				$('#scroll1 ul.mui-table-view').html(str);
 			}		
@@ -492,6 +482,7 @@ function movieHome(pid,page,getId){
 </script>
 
 
+
 <script type="text/javascript" charset="utf-8">
 		//下面是点击列表显示详情页
         var detailPage = null;
@@ -500,6 +491,7 @@ function movieHome(pid,page,getId){
             var id = this.getAttribute('id');
             var href = this.getAttribute('data-href');
             var title = this.getElementsByTagName('p')[0].innerHTML;
+            
             //获得详情页面
             if(!detailPage){
                 detailPage = plus.webview.getWebviewById('movie.html');
@@ -512,8 +504,15 @@ function movieHome(pid,page,getId){
             mui.openWindow({
             	url: "movie.html",
                 id:'movie.html',
+                show:{
+                	autoShow:false,//页面loaded事件发生后自动显示，默认为true
+			      	aniShow:"slide-in-right",//页面显示动画，默认为”slide-in-right“；
+			      	duration:200,//页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+			      	event:'loaded',//页面显示时机，默认为titleUpdate事件时显示
+			      	extras:{}//窗口动画是否使用图片加速	
+                },
                 waiting: {
-                    autoShow: true,      
+                    autoShow: true,
                     title:'正在加载...',//等待对话框上显示的提示内容
                 },
                 extras:{
@@ -522,4 +521,31 @@ function movieHome(pid,page,getId){
                 }
             });
         });
+
+
+	document.getElementById('search').addEventListener('tap', function() {
+	  //打开关于页面
+	  mui.openWindow({
+	    url: 'search.html', 
+	    id:'search'
+	  });
+	});
+	//窗口高度
+	var sHeight=window.screen.availHeight-44;
+	$('ul.mui-table-view').css({"minHeight":sHeight+"px"});
+//	mui.init({
+//	  preloadPages:[
+//	    {
+//	      url:'search.html',
+//	      id:'search'
+//	    },
+//	    {
+//	      url:'movie.html',
+//	      id:'movie'
+//	    }
+//	  ],
+//	  preloadLimit:5//预加载窗口数量限制(一旦超出,先进先出)默认不限制
+//	});
+
+
 </script>

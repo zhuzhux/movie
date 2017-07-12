@@ -273,9 +273,14 @@
 					"js/mui.min.js",
 					"js/mui.pullToRefresh.js",
 					"js/mui.pullToRefresh.material.js",
-					"img/bg.jpg"
+					"img/bg.jpg",
+					"search.html",
+					"img/60x60.gif"
 				],
-				"refer": [],
+				"refer": [
+					"ck/index.htm",
+					"video.html"
+				],
 				"priority": 0
 			},
 			"home.html": {
@@ -284,6 +289,32 @@
 					"fonts/mui.ttf",
 					"js/jquery.js",
 					"movie.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"search.html": {
+				"resources": [
+					"css/mui.min.css"
+				],
+				"refer": [
+					"search_ok.html",
+					"movie.html"
+				],
+				"priority": 0
+			},
+			"search_ok.html": {
+				"resources": [
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"ck/index.htm": {
+				"resources": [
+					"ck/js/offlights.js",
+					"ck/ckplayer/ckplayer.js",
+					"ck/demo1.htm"
 				],
 				"refer": [],
 				"priority": 0
