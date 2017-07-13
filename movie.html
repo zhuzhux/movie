@@ -235,91 +235,81 @@
 	function clickrUrl(){//点击真实地址的按钮
 		$('#rUrl>div>div>button').click(function(){
 			var dataTitle = $(this).prevAll("h5:first").attr("dataTitle");
-			if(dataTitle=="dusk360"){
-				$('#media').attr('src',$(this).attr('src'));
+			mui.toast('正在解析，请稍等..');
+			function goPlay(url){
+				$('#media').attr('src',url);
 				$('#media').attr("autoplay","autoplay");
-				mui.toast('正在解析，请稍等..');
+			};
+			if(dataTitle=="dusk360"){
+//				$('#media').attr('src',$(this).attr('src'));
+//				$('#media').attr("autoplay","autoplay");
+				goPlay($(this).attr('src'));
 			}
 			if(dataTitle=="acfun"){
 				var str = $(this).attr('src');
 				str = str.substr(0, str.indexOf('douban'));
 				acfun = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"&ctype=phone";
-				$('#media').attr('src',acfun);
-				$('#media').attr("autoplay","autoplay");
-				mui.toast('正在解析，请稍等..');
+				goPlay(acfun);
 			}
 			if(dataTitle=="yuku"){
 				var str = $(this).attr('src');
 				str = str.substr(0, str.indexOf('douban'));
 				yuku = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"&ctype=phone";
-				$('#media').attr('src',yuku);
-				$('#media').attr("autoplay","autoplay");
-				mui.toast('正在解析，请稍等..');
+				goPlay(yuku);
 			}
 			if(dataTitle=="360"){
 				var str = $(this).attr('src');
 				str = str.substr(0, str.indexOf('douban'));
 				s360 = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"_pprid&ctype=phone";
-				$('#media').attr('src',s360);
-				$('#media').attr("autoplay","autoplay");
-				mui.toast('正在解析，请稍等..');
+				goPlay(s360);
 			}
 			if(dataTitle=="imgo"){
 				var str = $(this).attr('src');
 				str = str.substr(0, str.indexOf('douban'));
 				imgo = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"_pprid&ctype=phone";
-				$('#media').attr('src',imgo);
-				$('#media').attr("autoplay","autoplay");
-				mui.toast('正在解析，请稍等..');
+				goPlay(imgo);
 			}
 			if(dataTitle=="qianmo"){
 				var str = $(this).attr('src');
 				str = str.substr(0, str.indexOf('douban'));
 				qianmo = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"_acsid&ctype=phone";
-				$('#media').attr('src',qianmo);
-				$('#media').attr("autoplay","autoplay");
-				mui.toast('正在解析，请稍等..');
+				goPlay(qianmo);
 			}
 			if(dataTitle=="letvid"){
 				var str = $(this).attr('src');
 				str = str.substr(0, str.indexOf('douban'));
-				letid = "http://dqplayers.duapp.com/bshare/Yunflvco/parse.php?url="+str+"_letv&ctype=phone";
-				$('#media').attr('src',letid);
-				$('#media').attr("autoplay","autoplay");
-				mui.toast('正在解析，请稍等..');
+				letvid = "http://dqplayers.duapp.com/bshare/Yunflvco/parse.php?url="+str+"_letv&ctype=phone";
+				goPlay(letvid);
 			}
 			if(dataTitle=="yukuid"){
 				var str = $(this).attr('src');
 				str = str.substr(0, str.indexOf('douban'));
 				yukuid = "http://dqplayers.duapp.com/bshare/Yunflvco/parse.php?url="+str+"_youku&ctype=phone";
-				$('#media').attr('src',yukuid);
-				$('#media').attr("autoplay","autoplay");
-				mui.toast('正在解析，请稍等..');
+				goPlay(yukuid);
 			}
 			if(dataTitle=="qqid"){
 				var str = $(this).attr('src');
 				str = str.substr(0, str.indexOf('douban'));
 				qqid = "http://dqplayers.duapp.com/bshare/Yunflvco/parse.php?url="+str+"_qq&ctype=phone";
-				$('#media').attr('src',qqid);
-				$('#media').attr("autoplay","autoplay");
-				mui.toast('正在解析，请稍等..');
+				goPlay(qqid);
 			}
 			if(dataTitle=="superm3u8"){
 				var str = $(this).attr('src');
 				str = str.substr(0, str.indexOf('douban'));
 				superm3u8 = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"_youkuyun&ctype=phone";
-				$('#media').attr('src',superm3u8);
-				$('#media').attr("autoplay","autoplay");
-				mui.toast('正在解析，请稍等..');
+				goPlay(superm3u8);
 			}
 			if(dataTitle=="bilibili"){
 				var str = $(this).attr('src');
 				str = str.substr(0, str.indexOf('douban'));
 				bilibili = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"&ctype=phone";
-				$('#media').attr('src',bilibili);
-				$('#media').attr("autoplay","autoplay");
-				mui.toast('正在解析，请稍等..');
+				goPlay(bilibili);
 			}
+			setTimeout(function(){
+				if($('#media').attr('src')==''){
+					mui.toast('解析失败');
+				}
+			},100);
 		});
 	}
 

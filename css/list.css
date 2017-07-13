@@ -1,7 +1,7 @@
 
 .mui-control-content {
 	background-color: white;
-	min-height: 500px;
+	/*min-height: 500px;*/
 	height: auto;
 }
 /*上拉刷新，下来加载的样式*/

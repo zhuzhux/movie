@@ -7,214 +7,253 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-    	<script src="js/mui.min.js"></script>
-    	<script src="js/mui.lazyload.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.lazyload.js"></script>
 		<script src="js/mui.lazyload.img.js"></script>
-    	<script src="js/jquery.js"></script>
-    	<link href="css/mui.min.css" rel="stylesheet"/>
-    	<link href="css/list.css" rel="stylesheet"/>
-    	<script src="js/mui.pullToRefresh.js"></script>
+		<script src="js/jquery.js"></script>
+		<script src="js/mui.pullToRefresh.js"></script>
 		<script src="js/mui.pullToRefresh.material.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/icons-extra.css" rel="stylesheet" />
+		<link href="css/list.css" rel="stylesheet" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<style type="text/css">
+			#slider p{margin-top: 0px;}
+			#slider .mui-card{margin-right: 5px;}
+			#slider h5{color: #0f0f0f;}
+		</style>
 	</head>
-
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<h1 class="mui-title">...</h1>
 			<a class="mui-icon mui-icon-search mui-pull-right" href="#" id="search"></a>
 		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="#tabbar">
+				<span class="mui-icon iconfont icon-dianying"></span>
+				<span class="mui-tab-label">电影</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-bd">
+				<span class="mui-icon iconfont icon-paixing"></span>
+				<span class="mui-tab-label">排行榜</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-gr">
+				<span class="mui-icon iconfont icon-set"></span>
+				<span class="mui-tab-label">设置</span>
+			</a>
+		</nav>
 		<div class="mui-content">
-			<!--滑动-->
-			<div id="slider" class="mui-slider">
-				<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-					<div class="mui-scroll">
-						<a class="mui-control-item mui-active" href="#item1mobile">推荐</a>
-						<a class="mui-control-item" href="#item2mobile">动作片</a>
-						<a class="mui-control-item" href="#item3mobile">喜剧片</a>
-						<a class="mui-control-item" href="#item4mobile">爱情片</a>
-						<a class="mui-control-item" href="#item5mobile">科幻片</a>
-						<a class="mui-control-item" href="#item6mobile">恐怖片</a>
-						<a class="mui-control-item" href="#item7mobile">战争片</a>
-						<a class="mui-control-item" href="#item8mobile">国产剧</a>
-						<a class="mui-control-item" href="#item9mobile">港台剧</a>
-						<a class="mui-control-item" href="#item10mobile">欧美剧</a>
-						<a class="mui-control-item" href="#item11mobile">日韩剧</a>
-						<a class="mui-control-item" href="#item12mobile">海外剧</a>
-					</div>
-				</div>
-				<div class="mui-slider-group">
-					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
-						<div id="scroll1" class="mui-scroll-wrapper">
-							<div class="mui-scroll">
-								<ul class="mui-table-view mui-grid-view">
-								</ul>
-							</div>
+			<div id="tabbar" class="mui-control-content mui-active">
+				<!--滑动-->
+				<div id="slider" class="mui-slider">
+					<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+						<div class="mui-scroll">
+							<a class="mui-control-item mui-active" href="#item1mobile">推荐</a>
+							<a class="mui-control-item" href="#item2mobile">动作片</a>
+							<a class="mui-control-item" href="#item3mobile">喜剧片</a>
+							<a class="mui-control-item" href="#item4mobile">爱情片</a>
+							<a class="mui-control-item" href="#item5mobile">科幻片</a>
+							<a class="mui-control-item" href="#item6mobile">恐怖片</a>
+							<a class="mui-control-item" href="#item7mobile">战争片</a>
+							<a class="mui-control-item" href="#item13mobile">剧情片</a>
+							<a class="mui-control-item" href="#item8mobile">国产剧</a>
+							<a class="mui-control-item" href="#item9mobile">港台剧</a>
+							<a class="mui-control-item" href="#item10mobile">欧美剧</a>
+							<a class="mui-control-item" href="#item11mobile">日韩剧</a>
+							<a class="mui-control-item" href="#item12mobile">海外剧</a>
 						</div>
 					</div>
-					<div id="item2mobile" class="mui-slider-item mui-control-content">
-						<div id="scroll2" class="mui-scroll-wrapper">
-							<div class="mui-scroll">
-								<div class="mui-loading">
-									<div class="mui-spinner">
-									</div>
+					<div class="mui-slider-group">
+						<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+							<div id="scroll1" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
 								</div>
-								<ul class="mui-table-view mui-grid-view">
-								</ul>
 							</div>
 						</div>
-					</div>
-					<div id="item3mobile" class="mui-slider-item mui-control-content">
-						<div id="scroll3" class="mui-scroll-wrapper">
-							<div class="mui-scroll">
-								<div class="mui-loading">
-									<div class="mui-spinner">
+						<div id="item2mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll2" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
 									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
 								</div>
-								<ul class="mui-table-view mui-grid-view">
-								</ul>
 							</div>
 						</div>
-					</div>
-					<div id="item4mobile" class="mui-slider-item mui-control-content">
-						<div id="scroll4" class="mui-scroll-wrapper">
-							<div class="mui-scroll">
-								<div class="mui-loading">
-									<div class="mui-spinner">
+						<div id="item3mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll3" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
 									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
 								</div>
-								<ul class="mui-table-view mui-grid-view">
-								</ul>
 							</div>
 						</div>
-					</div>
-					<div id="item5mobile" class="mui-slider-item mui-control-content">
-						<div id="scroll5" class="mui-scroll-wrapper">
-							<div class="mui-scroll">
-								<div class="mui-loading">
-									<div class="mui-spinner">
+						<div id="item4mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll4" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
 									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
 								</div>
-								<ul class="mui-table-view mui-grid-view">
-								</ul>
 							</div>
 						</div>
-					</div>
-					<div id="item6mobile" class="mui-slider-item mui-control-content">
-						<div id="scroll6" class="mui-scroll-wrapper">
-							<div class="mui-scroll">
-								<div class="mui-loading">
-									<div class="mui-spinner">
+						<div id="item5mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll5" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
 									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
 								</div>
-								<ul class="mui-table-view mui-grid-view">
-								</ul>
 							</div>
 						</div>
-					</div>
-					<div id="item7mobile" class="mui-slider-item mui-control-content">
-						<div id="scroll7" class="mui-scroll-wrapper">
-							<div class="mui-scroll">
-								<div class="mui-loading">
-									<div class="mui-spinner">
+						<div id="item6mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll6" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
 									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
 								</div>
-								<ul class="mui-table-view mui-grid-view">
-								</ul>
 							</div>
 						</div>
-					</div>
-					<div id="item8mobile" class="mui-slider-item mui-control-content">
-						<div id="scroll8" class="mui-scroll-wrapper">
-							<div class="mui-scroll">
-								<div class="mui-loading">
-									<div class="mui-spinner">
+						<div id="item7mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll7" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
 									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
 								</div>
-								<ul class="mui-table-view mui-grid-view">
-								</ul>
 							</div>
 						</div>
-					</div>
-					<div id="item9mobile" class="mui-slider-item mui-control-content">
-						<div id="scroll9" class="mui-scroll-wrapper">
-							<div class="mui-scroll">
-								<div class="mui-loading">
-									<div class="mui-spinner">
+						<div id="item13mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll13" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
 									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
 								</div>
-								<ul class="mui-table-view mui-grid-view">
-								</ul>
 							</div>
 						</div>
-					</div>
-					<div id="item10mobile" class="mui-slider-item mui-control-content">
-						<div id="scroll10" class="mui-scroll-wrapper">
-							<div class="mui-scroll">
-								<div class="mui-loading">
-									<div class="mui-spinner">
+						<div id="item8mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll8" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
 									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
 								</div>
-								<ul class="mui-table-view mui-grid-view">
-								</ul>
 							</div>
 						</div>
-					</div>
-					<div id="item11mobile" class="mui-slider-item mui-control-content">
-						<div id="scroll11" class="mui-scroll-wrapper">
-							<div class="mui-scroll">
-								<div class="mui-loading">
-									<div class="mui-spinner">
+						<div id="item9mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll9" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
 									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
 								</div>
-								<ul class="mui-table-view mui-grid-view">
-								</ul>
 							</div>
 						</div>
-					</div>
-					<div id="item12mobile" class="mui-slider-item mui-control-content">
-						<div id="scroll12" class="mui-scroll-wrapper">
-							<div class="mui-scroll">
-								<div class="mui-loading">
-									<div class="mui-spinner">
+						<div id="item10mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll10" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
 									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
 								</div>
-								<ul class="mui-table-view mui-grid-view">
-								</ul>
 							</div>
 						</div>
+						<div id="item11mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll11" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
+									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="item12mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll12" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
+									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
+								</div>
+							</div>
+						</div>
+	
 					</div>
-					
 				</div>
 			</div>
+			<div id="tabbar-bd" class="mui-control-content">
+				排行榜
+			</div>
+			<div id="tabbar-gr" class="mui-control-content">
+				<ul class="mui-table-view">
+				    <li class="mui-table-view-cell mui-collapse">
+				        <a class="mui-navigate-right" href="#">切换源</a>
+				        <div class="mui-collapse-content">
+				            <p>
+				            	<a href="#"><button type="button" id="yuan1" class="mui-btn mui-btn-blue mui-btn-outlined">源一</button></a>
+				            </p>
+				            <p>
+				            	<a href="listA.html"><button type="button" id="yuan2" class="mui-btn mui-btn-blue mui-btn-outlined">源二</button></a>
+				            </p>
+				        </div>
+				    </li>
+				</ul>
+			</div>
 		</div>
-		<nav class="mui-bar mui-bar-tab">
-		    <a class="mui-tab-item mui-active">
-		        <span class="mui-icon mui-icon-home"></span>
-		        <span class="mui-tab-label">首页</span>
-		    </a>
-		    <a class="mui-tab-item">
-		        <span class="mui-icon mui-icon-weixin"></span>
-		        <span class="mui-tab-label">233</span>
-		    </a>
-		    <a class="mui-tab-item">
-		        <span class="mui-icon mui-icon-gear"></span>
-		        <span class="mui-tab-label">设置</span>
-		    </a>
-		</nav>
 
-	<script>
+		<script>
 			mui.init({
 				swipeBack: false
 			});
-				var i_page = 2;
-			
+			var i_page = 2;
+
 			(function($) {
 				//阻尼系数
-				var deceleration = mui.os.ios?0.003:0.0009;
+				var deceleration = mui.os.ios ? 0.003 : 0.0009;
 				$('.mui-scroll-wrapper').scroll({
 					bounce: true,
 					indicators: true, //是否显示滚动条
-					deceleration:deceleration
-					,startY: 0, //初始化时滚动至y
+					deceleration: deceleration,
+					startY: 0, //初始化时滚动至y
 				});
 				$.ready(function() {
 					//循环初始化所有下拉刷新，上拉加载。
@@ -235,50 +274,54 @@
 									var self = this;
 									setTimeout(function() {
 										var ul = self.element.querySelector('.mui-table-view');
-										switch (index){
+										switch(index) {
 											case 1:
-												ul.appendChild(movieHomee(8,i_page,ul));
+												ul.appendChild(movieHomee(8, i_page, ul));
 												i_page++
 												break;
 											case 2:
-												ul.appendChild(movieHomee(9,i_page,ul));
-												i_page++ 
+												ul.appendChild(movieHomee(9, i_page, ul));
+												i_page++
 												break;
 											case 3:
-												ul.appendChild(movieHomee(10,i_page,ul));
+												ul.appendChild(movieHomee(10, i_page, ul));
 												i_page++
 												break;
 											case 4:
-												ul.appendChild(movieHomee(11,i_page,ul));
-												i_page++ 
+												ul.appendChild(movieHomee(11, i_page, ul));
+												i_page++
 												break;
 											case 5:
-												ul.appendChild(movieHomee(12,i_page,ul));
+												ul.appendChild(movieHomee(12, i_page, ul));
 												i_page++
 												break;
 											case 6:
-												ul.appendChild(movieHomee(13,i_page,ul));
-												i_page++ 
+												ul.appendChild(movieHomee(13, i_page, ul));
+												i_page++
+												break;
+											case 12:
+												ul.appendChild(movieHomee(14, i_page, ul));
+												i_page++
 												break;
 											case 7:
-												ul.appendChild(movieHomee(15,i_page,ul));
-												i_page++ 
+												ul.appendChild(movieHomee(15, i_page, ul));
+												i_page++
 												break;
 											case 8:
-												ul.appendChild(movieHomee(16,i_page,ul));
-												i_page++ 
+												ul.appendChild(movieHomee(16, i_page, ul));
+												i_page++
 												break;
 											case 9:
-												ul.appendChild(movieHomee(17,i_page,ul));
-												i_page++ 
+												ul.appendChild(movieHomee(17, i_page, ul));
+												i_page++
 												break;
 											case 10:
-												ul.appendChild(movieHomee(18,i_page,ul));
-												i_page++ 
+												ul.appendChild(movieHomee(18, i_page, ul));
+												i_page++
 												break;
 											case 11:
-												ul.appendChild(movieHomee(19,i_page,ul));
-												i_page++ 
+												ul.appendChild(movieHomee(19, i_page, ul));
+												i_page++
 												break;
 											default:
 												break;
@@ -290,263 +333,215 @@
 							}
 						});
 					});
-								
-					var movieHomee = function(pid,page,getId){
+
+					var movieHomee = function(pid, page, getId) {
 						var fragment = document.createDocumentFragment();
-						mui.ajax("http://movie.wxjii.cn/php/movieHome.php",{
-							data:{
-								type:1,
-								pid:pid,
-								page:page
+						mui.ajax("http://movie.wxjii.cn/php/movieHome.php", {
+							data: {
+								type: 1,
+								pid: pid,
+								page: page
 							},
-							async:false,
-							dataType:'json',
-							type:'get',
-							timeout:1000,
-							success:function(data){
-								for (var i = 0; i < data.data.length; i++) {
+							async: false,
+							dataType: 'json',
+							type: 'get',
+							timeout: 1000,
+							success: function(data) {
+								for(var i = 0; i < data.data.length; i++) {
 									li = document.createElement('li');
 									li.className = 'mui-table-view-cell mui-media mui-col-xs-4';
-									li.innerHTML = '<div class="lia" id="list_'+i+'" data-href="'+data.data[i].href+'"><img class="mui-media-object" src="'+data.data[i].imgSrc+'"><p class="mui-media-body">'+data.data[i].filmName+'</p><p class="mui-media-body">'+data.data[i].actor+'</p></div>';
+									li.innerHTML = '<div class="lia" id="list_' + i + '" data-href="' + data.data[i].href + '"><img class="mui-media-object" src="' + data.data[i].imgSrc + '"><p class="mui-media-body">' + data.data[i].filmName + '</p><p class="mui-media-body">' + data.data[i].actor + '</p></div>';
 									fragment.appendChild(li);
 								}
 								fragment.append(li);
-							}			
+							}
 						});
 						return fragment;
 					}
 				});
 			})(mui);
-			
-			function imgWH(){
+
+			function imgWH() {
 				var a = $('.mui-table-view .mui-table-view-cell .mui-media-object').width();
-				$('.mui-table-view .mui-table-view-cell .mui-media-object').css({'height':a*1.4});
+				$('.mui-table-view .mui-table-view-cell .mui-media-object').css({
+					'height': a * 1.4
+				});
 			}
-</script>
-</body>
+		</script>
+	</body>
+
 </html>
 <script type="text/javascript">
-//http://movie.wxjii.cn
-function movieIndex(){
-	mui.ajax("http://movie.wxjii.cn/php/movieA.php",{
-		data:{
-			type:1
-		},
-		async:false,
-		dataType:'json',
-		type:'get',
-		timeout:1000,
-		success:function(data){
-			var str = '';
-			for(var i = 0;i<data.data.length;i++){
-				str +='<li class="mui-table-view-cell mui-media mui-col-xs-4"><div class="lia" id="list_'+i+'" data-href="'+data.data[i].href+'" ><img class="mui-media-object" src="'+data.data[i].imgSrc+'"><p class="mui-media-body">'+data.data[i].filmName+'</p><p class="mui-media-body">'+data.data[i].actor+'</p></div></li>';
-//							console.log(data.data[i].href);
-				$('#scroll1 ul.mui-table-view').html(str);
-			}		
-			imgWH();
+	//http://movie.wxjii.cn
+	function movieIndex() {
+		mui.ajax("http://movie.wxjii.cn/php/movieB.php", {
+			data: {
+				type: 1
+			},
+			async: false,
+			dataType: 'json',
+			type: 'GET',
+			timeout: 1000,
+			success: function(data) {
+				var str = '';
+				for(var i = 0; i < data.data.length; i++) {
+					str += '<div class="mui-card" style="margin-bottom: 0;"><div class="mui-card-content"><h5 class="mui-text-center">'+data.data[i].title+'</h5></div></div>';
+					for(var j = 0; j < data.data[i].data.length; j++) {
+						str += '<li class="mui-table-view-cell mui-media mui-col-xs-4"><div class="lia" id="list_'+j+'" data-href="'+data.data[i].data[j].href+'" ><img class="mui-media-object" src="'+data.data[i].data[j].imgSrc+'"><p class="mui-media-body">'+data.data[i].data[j].filmName+'</p><p class="mui-media-body">'+data.data[i].data[j].actor+'</p></div></li>';
+						$('#scroll1 ul.mui-table-view').html(str);
+					}
+				}	
+				imgWH();
+			}
+		});
+	}
+	movieIndex();
+	//监听侧滑,
+	var item2Show = false,
+		item3Show = false,
+		item4Show = false,
+		item5Show = false,
+		item6Show = false,
+		item7Show = false,
+		item8Show = false,
+		item9Show = false,
+		item10Show = false,
+		item11Show = false,
+		item12Show = false; 
+		item13Show = false; //子选项卡是否显示标志
+	document.getElementById('slider').addEventListener('slide', function(e) {
+		i_page = 2; //
+		if(event.detail.slideNumber === 1 && !item2Show) {
+			//切换到第二个选项卡
+			//动态获得第二个选项卡内容
+			//显示内容
+			movieHome(8, 1, $('#item2mobile'));
+			//改变标志位，下次直接显示
+			item2Show = true;
+		} else if(event.detail.slideNumber === 2 && !item3Show) {
+			movieHome(9, 1, $('#item3mobile'));
+			item3Show = true;
+		} else if(e.detail.slideNumber == 3 && !item4Show) {
+			movieHome(10, 1, $('#item4mobile'));
+			item4Show = true;
+		} else if(e.detail.slideNumber == 4 && !item5Show) {
+			movieHome(11, 1, $('#item5mobile'));
+			item5Show = true;
+		} else if(e.detail.slideNumber == 5 && !item6Show) {
+			movieHome(12, 1, $('#item6mobile'));
+			item6Show = true;
+		} else if(e.detail.slideNumber == 6 && !item7Show) {
+			movieHome(13, 1, $('#item7mobile'));
+			item7Show = true;
+		} else if(e.detail.slideNumber == 7 && !item8Show) {
+			movieHome(15, 1, $('#item8mobile'));
+			item8Show = true;
+		} else if(e.detail.slideNumber == 8 && !item9Show) {
+			movieHome(16, 1, $('#item9mobile'));
+			item9Show = true;
+		} else if(e.detail.slideNumber == 9 && !item10Show) {
+			movieHome(17, 1, $('#item10mobile'));
+			item10Show = true;
+		} else if(e.detail.slideNumber == 10 && !item11Show) {
+			movieHome(18, 1, $('#item11mobile'));
+			item11Show = true;
+		} else if(e.detail.slideNumber == 11 && !item12Show) {
+			movieHome(19, 1, $('#item12mobile'));
+			item12Show = true;
+		} else if(e.detail.slideNumber == 12 && !item13Show) {
+			movieHome(14, 1, $('#item13mobile'));
+			item12Show = true;
 		}
 	});
-}
-movieIndex();
-//监听侧滑,
-var item2Show = false,item3Show = false,item4Show = false,item5Show = false,item6Show = false,item7Show = false,item8Show = false,item9Show = false,item10Show = false,item11Show = false,item12Show = false;//子选项卡是否显示标志
-document.getElementById('slider').addEventListener('slide', function(e) {
-	i_page = 2;//
-	if (event.detail.slideNumber === 1&&!item2Show) {
-		//切换到第二个选项卡
-    	//动态获得第二个选项卡内容
-    	//显示内容
-		movieHome(8,1,$('#item2mobile'));
-		//改变标志位，下次直接显示
-	    item2Show = true;
-	}else if (event.detail.slideNumber === 2&&!item3Show) {
-		movieHome(9,1,$('#item3mobile'));
-	    item3Show = true;
-	}else if (e.detail.slideNumber == 3&&!item4Show) {
-		movieHome(10,1,$('#item4mobile'));
-	    item4Show = true;
-	}else if (e.detail.slideNumber == 4&&!item5Show) {
-		movieHome(11,1,$('#item5mobile'));
-		item5Show = true;
-	}else if (e.detail.slideNumber == 5&&!item6Show) {
-		movieHome(12,1,$('#item6mobile'));
-		item6Show = true;
-	}else if (e.detail.slideNumber == 6&&!item7Show) {
-		movieHome(13,1,$('#item7mobile'));
-		item7Show = true;
-	}else if (e.detail.slideNumber == 7&&!item8Show) {
-		movieHome(15,1,$('#item8mobile'));
-		item8Show = true;
-	}else if (e.detail.slideNumber == 8&&!item9Show) {
-		movieHome(16,1,$('#item9mobile'));
-		item9Show = true;
-	}else if (e.detail.slideNumber == 9&&!item10Show) {
-		movieHome(17,1,$('#item10mobile'));			
-		item10Show = true;
-	}else if (e.detail.slideNumber == 10&&!item11Show) {
-		movieHome(18,1,$('#item11mobile'));				
-		item11Show = true;
-	}else if (e.detail.slideNumber == 11&&!item12Show) {
-		movieHome(19,1,$('#item12mobile'));			
-		item12Show = true;
-	} 
-});
-//	movieHome(8,1,$('#item2mobile'));						
-//	movieHome(9,1,$('#item3mobile'));
-//	movieHome(10,1,$('#item4mobile'));
-//	movieHome(11,1,$('#item5mobile'));
-//	movieHome(12,1,$('#item6mobile'));
-//	movieHome(13,1,$('#item7mobile'));
-//	movieHome(15,1,$('#item8mobile'));
-//	movieHome(16,1,$('#item9mobile'));
-//	movieHome(17,1,$('#item10mobile'));
-//	movieHome(18,1,$('#item11mobile'));
-//	movieHome(19,1,$('#item12mobile'));
-function movieHome(pid,page,getId){
-	mui.ajax("http://movie.wxjii.cn/php/movieHome.php",{
-		data:{
-			type:1,
-			pid:pid,
-			page:page
-		},
-//		async:false,
-		dataType:'json',
-		type:'get',
-		timeout:1000,
-		success:function(data){
-			var str = '';
-			for(var i = 0;i<data.data.length;i++){
-				str +='<li class="mui-table-view-cell mui-media mui-col-xs-4"><div class="lia" id="list_'+i+'" data-href="'+data.data[i].href+'"><img class="mui-media-object" src="'+data.data[i].imgSrc+'"><p class="mui-media-body">'+data.data[i].filmName+'</p><p class="mui-media-body">'+data.data[i].actor+'</p></div></li>';
-			}
-//			if (getId.find('.mui-loading')) {
+	function movieHome(pid, page, getId) {
+		mui.ajax("http://movie.wxjii.cn/php/movieHome.php", {
+			data: {
+				type: 1,
+				pid: pid,
+				page: page
+			},
+			//		async:false,
+			dataType: 'json',
+			type: 'get',
+			timeout: 1000,
+			success: function(data) {
+				var str = '';
+				for(var i = 0; i < data.data.length; i++) {
+					str += '<li class="mui-table-view-cell mui-media mui-col-xs-4"><div class="lia" id="list_' + i + '" data-href="' + data.data[i].href + '"><img class="mui-media-object" src="' + data.data[i].imgSrc + '"><p class="mui-media-body">' + data.data[i].filmName + '</p><p class="mui-media-body">' + data.data[i].actor + '</p></div></li>';
+				}
 				getId.find('.mui-loading').remove();
 				getId.find('ul.mui-table-view').html(str);
-//			}
-			imgWH();
-		}
-	});
-}
-/*	mui.ajax("http://movie.wxjii.cn/php/movieA.php",{
-		data:{
-			type:1
-		},
-		async:false,
-		dataType:'json',
-		type:'post',
-		timeout:1000,
-		success:function(data){
-			var str = '';
-			for(var i = 0;i<data.data.length;i++){
-				str +='<li class="mui-table-view-cell mui-media mui-col-xs-4"><a class="lia" id="list_'+i+'" href="'+data.data[i].href+'"><img class="mui-media-object" src="'+data.data[i].imgSrc+'"><p class="mui-media-body">'+data.data[i].filmName+'</p><p class="mui-media-body">'+data.data[i].actor+'</p></a></li>';
-				
-				str1 ='<ul class="mui-table-view mui-grid-view">'+str+'</ul>';
-				var item2 = document.getElementById('item2mobile');
-				var item3 = document.getElementById('item3mobile');
-				var item4 = document.getElementById('item4mobile');
-				document.getElementById('slider').addEventListener('slide', function(e) {
-					if (e.detail.slideNumber === 1) {
-						if (item2.querySelector('.mui-loading')) {
-							setTimeout(function() {
-								item2.querySelector('.mui-scroll').innerHTML = str1;
-							}, 500);
-						}
-					} else if (e.detail.slideNumber === 2) {
-						if (item3.querySelector('.mui-loading')) {
-							setTimeout(function() {
-								item3.querySelector('.mui-scroll').innerHTML = str1;
-							}, 500);
-						}
-					}
-					 else if (e.detail.slideNumber === 3) {
-						if (item4.querySelector('.mui-loading')) {
-							setTimeout(function() {
-								item4.querySelector('.mui-scroll').innerHTML = str1;
-							}, 500);
-						}
-					}
-				});
-				
-				var sliderSegmentedControl = document.getElementById('sliderSegmentedControl');
-				
-				$('.mui-input-group').on('change', 'input', function() {
-					if (this.checked) {
-						sliderSegmentedControl.className = 'mui-slider-indicator mui-segmented-control mui-segmented-control-inverted mui-segmented-control-' + this.value;
-						//force repaint
-						sliderProgressBar.setAttribute('style', sliderProgressBar.getAttribute('style'));
-					}
-				});
-			}			
-		}
-	});*/
+				imgWH();
+			}
+		});
+	}
 </script>
 
-
-
 <script type="text/javascript" charset="utf-8">
-		//下面是点击列表显示详情页
-        var detailPage = null;
-        //添加列表项的点击事件
-        mui('.mui-table-view ').on('tap', 'div', function(e) {
-            var id = this.getAttribute('id');
-            var href = this.getAttribute('data-href');
-            var title = this.getElementsByTagName('p')[0].innerHTML;
-            
-            //获得详情页面
-            if(!detailPage){
-                detailPage = plus.webview.getWebviewById('movie.html');
-            }
-            //触发详情页面的topicId事件
-            mui.fire(detailPage,'topicId',{
-            	id:id
-            });
-            //打开详情页面          
-            mui.openWindow({
-            	url: "movie.html",
-                id:'movie.html',
-                show:{
-                	autoShow:false,//页面loaded事件发生后自动显示，默认为true
-			      	aniShow:"slide-in-right",//页面显示动画，默认为”slide-in-right“；
-			      	duration:200,//页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
-			      	event:'loaded',//页面显示时机，默认为titleUpdate事件时显示
-			      	extras:{}//窗口动画是否使用图片加速	
-                },
-                waiting: {
-                    autoShow: true,
-                    title:'正在加载...',//等待对话框上显示的提示内容
-                },
-                extras:{
-                  href:href,
-                  title:title
-                }
-            });
-        });
+	//下面是点击列表显示详情页
+	var detailPage = null;
+	//添加列表项的点击事件
+	mui('#tabbar').on('tap', 'div', function(e) {
+		var id = this.getAttribute('id');
+		var href = this.getAttribute('data-href');
+		var title = this.getElementsByTagName('p')[0].innerHTML;
 
+		//获得详情页面
+		if(!detailPage) {
+			detailPage = plus.webview.getWebviewById('movie.html');
+		}
+		//触发详情页面的topicId事件
+		mui.fire(detailPage, 'topicId', {
+			id: id
+		});
+		//打开详情页面          
+		mui.openWindow({
+			url: "movie.html",
+			id: 'movie.html',
+			show: {
+				autoShow: false, //页面loaded事件发生后自动显示，默认为true
+				aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+				duration: 200, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+				event: 'loaded', //页面显示时机，默认为titleUpdate事件时显示
+				extras: {} //窗口动画是否使用图片加速	
+			},
+			waiting: {
+				autoShow: true,
+				title: '正在加载...', //等待对话框上显示的提示内容
+			},
+			extras: {
+				href: href,
+				title: title
+			}
+		});
+	});
 
 	document.getElementById('search').addEventListener('tap', function() {
-	  //打开关于页面
-	  mui.openWindow({
-	    url: 'search.html', 
-	    id:'search'
-	  });
+		//打开关于页面
+		mui.openWindow({
+			url: 'search.html',
+			id: 'search'
+		});
+	});
+	
+//	$('#yuan2').on('tap',function(){
+//		mui.openWindow({
+//			url: 'listA.html',
+//			id: 'listA'
+//		});
+//	});
+	document.getElementById('search').addEventListener('tap', function() {
+		//打开关于页面
+		mui.openWindow({
+			url: 'search.html',
+			id: 'search'
+		});
 	});
 	//窗口高度
-	var sHeight=window.screen.availHeight-45-50-45;
-//	$('ul.mui-table-view').css({"minHeight":sHeight+"px"});
-	$('.mui-slider-group>div').css({"minHeight":sHeight+"px"});
-	
-//	mui.init({
-//	  preloadPages:[
-//	    {
-//	      url:'search.html',
-//	      id:'search'
-//	    },
-//	    {
-//	      url:'movie.html',
-//	      id:'movie'
-//	    }
-//	  ],
-//	  preloadLimit:5//预加载窗口数量限制(一旦超出,先进先出)默认不限制
-//	});
-
+	var sHeight = window.screen.availHeight - 45 - 50 - 50;
+	$('.mui-slider-group>div').css({"minHeight": sHeight + "px"});
+	$('#tabbar.mui-control-content').css({"minHeight": sHeight + "px"});
+	$('#tabbar-bd.mui-control-content').css({"minHeight": sHeight+40 + "px"});
+	$('#tabbar-gr.mui-control-content').css({"minHeight": sHeight + "px"});
 
 </script>

@@ -5,9 +5,9 @@
 		"iPad"
 	],
 	"id": "H59174772",/*应用的标识，创建应用时自动生成，勿手动修改*/
-	"name": "movie",/*应用名称，程序桌面图标名称*/
+	"name": "Ursa",/*应用名称，程序桌面图标名称*/
 	"version": {
-		"name": "1.0.2",/*应用版本名称*/
+		"name": "1.0.3",/*应用版本名称*/
 		"code": "83"
 	},
 	"description": "WebApp",/*应用描述信息*/
@@ -275,7 +275,10 @@
 					"js/mui.pullToRefresh.material.js",
 					"img/bg.jpg",
 					"search.html",
-					"img/60x60.gif"
+					"img/60x60.gif",
+					"css/iconfont.css",
+					"fonts/iconfont.ttf",
+					"listA.html"
 				],
 				"refer": [
 					"ck/index.htm",
@@ -327,6 +330,16 @@
 					"css/mui.min.css"
 				],
 				"refer": [],
+				"priority": 0
+			},
+			"listA.html": {
+				"resources": [
+					"css/mui.min.css"
+				],
+				"refer": [
+					"search.html",
+					"movie.html"
+				],
 				"priority": 0
 			}
 		},

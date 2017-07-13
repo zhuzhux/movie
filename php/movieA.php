@@ -57,9 +57,3 @@ if($type==1){
 	
 	$crawler->setFetchJobs($arrJobs)->run();
 }
-
-if($type ==2){
-	
-	echo 1;
-	
-}
