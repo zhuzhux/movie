@@ -5,15 +5,24 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>视频播放</title>
+		<script src="js/mui.min.js"></script>  
+        <link href="css/mui.min.css" rel="stylesheet" />  
 	</head>
 
 	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">标题</h1>
+		</header>
 		<div class="video">
 			<video id="video" controls="controls" preload="auto" poster="http://download.dcloud.net.cn/FastAndroid-mini.jpg" width="100%" height="auto" src="http://download.dcloud.net.cn/FastAndroid-mini.m4v">
 				<!--<source src="http://download.dcloud.net.cn/FastAndroid-mini.m4v" type="video/mp4">-->
 			</video>
 		</div>
 		<script type="text/javascript">
+			mui.init({
+				plus.nativeUI.closeWaiting()
+			})
 			/**
 			 * 视频全屏播放旋转目前的逻辑
 			 * 视频全屏，即锁定屏幕为横屏。

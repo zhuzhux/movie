@@ -66,8 +66,8 @@
 			
 	
 	<!--<button id="url">点击播放</button>-->
-	<!--<video id="videoId" src="https://dqplayers.duapp.com/bshare/supurl.php?url=zaWq1nBnYazYrJKam5munmSYp1.pZJaUZG5oZ3BlnA,,&ctype=phone" width="100%" height="200" controls="controls">
-	</video>-->
+	<video id="videoId" src="https://v.qq.com/x/cover/gwmjlphvhf0mol6.html" width="100%" height="200" controls="controls">
+	</video>
 	
 		<!--<div class="video">
 			<video id="video" controls="controls" preload="auto" poster="http://download.dcloud.net.cn/FastAndroid-mini.jpg" width="100%" height="auto" src="http://download.dcloud.net.cn/FastAndroid-mini.m4v">
@@ -175,7 +175,7 @@
 					fullScreenOfAndroid();
 				} else if(osName === 'iOS') {
 					var videoElem = document.getElementById('media');
-					fullScreenOfIos(videoElem);
+//					fullScreenOfIos(videoElem);
 				}
 			});
     }
@@ -192,15 +192,18 @@
 				timeout:1000,
 				success:function(data){
 					//赋值给<i>,不显示，用在存储当前视频的第二次详细
-					$('#htmlurl').attr('src',data.data[0].href);
-					console.log(data)
-					console.log()
+
 					var str = '<div class="mui-card-content-inner">';
 					for(i = 0;i<data.details.length;i++){
 						str += '<div>'+data.details[i].details+'</div>';
 					}
 					str += '<div>'+data.introduction[0].introduction+'</div></div>';
 					$('#jieshao').html(str);
+					if(data.data.length === 0){//data.data空
+						mui.toast('暂无可用片源');
+					}else{
+						$('#htmlurl').attr('src',data.data[0].href);	
+					}
 				}
 			});
 		}
@@ -217,7 +220,7 @@
 			success:function(data){
 				var str = '<div class="mui-card-content-inner">';
 				for(var i = 0;i<data.Data.length;i++){
-					var noPlay = data.Data[i].playname!="xigua"&&data.Data[i].playname!="xigua1"&&data.Data[i].playname!="down1"&&data.Data[i].playname!="down3"&&data.Data[i].playname!="down4"&&data.Data[i].playname!="ed2k"&&data.Data[i].playname!="ffhd"&&data.Data[i].playname!="real"&&data.Data[i].playname!="web9"&&data.Data[i].playname!="qiyiid"&&data.Data[i].playname!="duyun";
+					var noPlay = data.Data[i].playname!="xigua"&&data.Data[i].playname!="xigua1"&&data.Data[i].playname!="down1"&&data.Data[i].playname!="down3"&&data.Data[i].playname!="down4"&&data.Data[i].playname!="ed2k"&&data.Data[i].playname!="ffhd"&&data.Data[i].playname!="real"&&data.Data[i].playname!="web9"&&data.Data[i].playname!="qiyiid"&&data.Data[i].playname!="duyun"&&data.Data[i].playname!="qq";
 					if(noPlay){
 						str+='<div><h5 dataTitle='+data.Data[i].playname+'>'+data.Data[i].playname+' 在线播放(点击开始)</h5>';
 						for(var j=0;j<data.Data[i].playurls.length;j++){
@@ -312,5 +315,8 @@
 			},100);
 		});
 	}
+if($('#media').ended){
+	alert(233)
+}
 
     </script>

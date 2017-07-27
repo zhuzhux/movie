@@ -26,9 +26,9 @@
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<h1 class="mui-title">...</h1>
-			<a class="mui-icon mui-icon-search mui-pull-right" href="#" id="search"></a>
+			<a class="mui-icon iconfont icon-sousuo mui-pull-right" href="#" id="search"></a>
 		</header>
-		<nav class="mui-bar mui-bar-tab">
+		<nav id="bottom-nav" class="mui-bar mui-bar-tab">
 			<a class="mui-tab-item mui-active" href="#tabbar">
 				<span class="mui-icon iconfont icon-dianying"></span>
 				<span class="mui-tab-label">电影</span>
@@ -46,7 +46,7 @@
 			<div id="tabbar" class="mui-control-content mui-active">
 				<!--滑动-->
 				<div id="slider" class="mui-slider">
-					<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted ">
 						<div class="mui-scroll">
 							<a class="mui-control-item mui-active" href="#item1mobile">推荐</a>
 							<a class="mui-control-item" href="#item2mobile">动作片</a>
@@ -241,6 +241,9 @@
 		</div>
 
 		<script>
+			function click_toast(){
+				mui.toast('暂未开放');
+			}
 			mui.init({
 				swipeBack: false
 			});
@@ -350,7 +353,7 @@
 								for(var i = 0; i < data.data.length; i++) {
 									li = document.createElement('li');
 									li.className = 'mui-table-view-cell mui-media mui-col-xs-4';
-									li.innerHTML = '<div class="lia" id="list_' + i + '" data-href="' + data.data[i].href + '"><img class="mui-media-object" src="' + data.data[i].imgSrc + '"><p class="mui-media-body">' + data.data[i].filmName + '</p><p class="mui-media-body">' + data.data[i].actor + '</p></div>';
+									li.innerHTML = '<div class="lia" id="list_' + i + '" data-href="' + data.data[i].href + '"><img class="mui-media-object" src="' + data.data[i].imgSrc + '"><p class="mui-media-body">' + data.data[i].filmName + '</p><p class="mui-media-body p-actor">' + data.data[i].actor + '</p></div>';
 									fragment.appendChild(li);
 								}
 								fragment.append(li);
@@ -367,6 +370,9 @@
 					'height': a * 1.4
 				});
 			}
+			$(window).resize(function() {
+			  imgWH();
+			});
 		</script>
 	</body>
 
@@ -387,7 +393,7 @@
 				for(var i = 0; i < data.data.length; i++) {
 					str += '<div class="mui-card" style="margin-bottom: 0;"><div class="mui-card-content"><h5 class="mui-text-center">'+data.data[i].title+'</h5></div></div>';
 					for(var j = 0; j < data.data[i].data.length; j++) {
-						str += '<li class="mui-table-view-cell mui-media mui-col-xs-4"><div class="lia" id="list_'+j+'" data-href="'+data.data[i].data[j].href+'" ><img class="mui-media-object" src="'+data.data[i].data[j].imgSrc+'"><p class="mui-media-body">'+data.data[i].data[j].filmName+'</p><p class="mui-media-body">'+data.data[i].data[j].actor+'</p></div></li>';
+						str += '<li class="mui-table-view-cell mui-media mui-col-xs-4"><div class="lia" id="list_'+j+'" data-href="'+data.data[i].data[j].href+'" ><img class="mui-media-object" src="'+data.data[i].data[j].imgSrc+'"><p class="mui-media-body">'+data.data[i].data[j].filmName+'</p><p class="mui-media-body p-actor" >'+data.data[i].data[j].actor+'</p></div></li>';
 						$('#scroll1 ul.mui-table-view').html(str);
 					}
 				}	
@@ -410,6 +416,7 @@
 		item12Show = false; 
 		item13Show = false; //子选项卡是否显示标志
 	document.getElementById('slider').addEventListener('slide', function(e) {
+
 		i_page = 2; //
 		if(event.detail.slideNumber === 1 && !item2Show) {
 			//切换到第二个选项卡
@@ -467,7 +474,7 @@
 			success: function(data) {
 				var str = '';
 				for(var i = 0; i < data.data.length; i++) {
-					str += '<li class="mui-table-view-cell mui-media mui-col-xs-4"><div class="lia" id="list_' + i + '" data-href="' + data.data[i].href + '"><img class="mui-media-object" src="' + data.data[i].imgSrc + '"><p class="mui-media-body">' + data.data[i].filmName + '</p><p class="mui-media-body">' + data.data[i].actor + '</p></div></li>';
+					str += '<li class="mui-table-view-cell mui-media mui-col-xs-4"><div class="lia" id="list_' + i + '" data-href="' + data.data[i].href + '"><img class="mui-media-object" src="' + data.data[i].imgSrc + '"><p class="mui-media-body">' + data.data[i].filmName + '</p><p class="mui-media-body p-actor">' + data.data[i].actor + '</p></div></li>';
 				}
 				getId.find('.mui-loading').remove();
 				getId.find('ul.mui-table-view').html(str);
@@ -481,7 +488,7 @@
 	//下面是点击列表显示详情页
 	var detailPage = null;
 	//添加列表项的点击事件
-	mui('#tabbar').on('tap', 'div', function(e) {
+	mui('.mui-table-view').on('tap', 'div', function(e) {
 		var id = this.getAttribute('id');
 		var href = this.getAttribute('data-href');
 		var title = this.getElementsByTagName('p')[0].innerHTML;
@@ -496,7 +503,7 @@
 		});
 		//打开详情页面          
 		mui.openWindow({
-			url: "movie.html",
+			url: "/movie.html",
 			id: 'movie.html',
 			show: {
 				autoShow: false, //页面loaded事件发生后自动显示，默认为true
@@ -515,33 +522,35 @@
 			}
 		});
 	});
-
-	document.getElementById('search').addEventListener('tap', function() {
-		//打开关于页面
-		mui.openWindow({
-			url: 'search.html',
-			id: 'search'
-		});
-	});
 	
-//	$('#yuan2').on('tap',function(){
-//		mui.openWindow({
-//			url: 'listA.html',
-//			id: 'listA'
-//		});
-//	});
+	//预加载search，不然ios会转圈圈会卡主
+	mui.preload({
+		url:"search.html",
+		id:"search"
+	});
 	document.getElementById('search').addEventListener('tap', function() {
 		//打开关于页面
 		mui.openWindow({
-			url: 'search.html',
+			url: '/search.html',
 			id: 'search'
 		});
 	});
-	//窗口高度
-	var sHeight = window.screen.availHeight - 45 - 50 - 50;
-	$('.mui-slider-group>div').css({"minHeight": sHeight + "px"});
-	$('#tabbar.mui-control-content').css({"minHeight": sHeight + "px"});
-	$('#tabbar-bd.mui-control-content').css({"minHeight": sHeight+40 + "px"});
-	$('#tabbar-gr.mui-control-content').css({"minHeight": sHeight + "px"});
 
+//计算窗口高度
+window.onload = function(){
+	var ua = navigator.userAgent.toLowerCase();	
+	if (/iphone|ipad|ipod/.test(ua)) {
+		var sHeight = window.screen.availHeight - 132;
+		$('.mui-slider-group>div').css({"minHeight": sHeight + "px"});
+		$('#tabbar.mui-control-content').css({"minHeight": sHeight + "px"});
+		$('#tabbar-bd.mui-control-content').css({"minHeight": sHeight+40 + "px"});
+		$('#tabbar-gr.mui-control-content').css({"minHeight": sHeight + "px"});
+	} else if (/android/.test(ua)) {
+		var sHeight = window.screen.availHeight - 150;
+		$('.mui-slider-group>div').css({"minHeight": sHeight + "px"});
+		$('#tabbar.mui-control-content').css({"minHeight": sHeight + "px"});
+		$('#tabbar-bd.mui-control-content').css({"minHeight": sHeight+40 + "px"});
+		$('#tabbar-gr.mui-control-content').css({"minHeight": sHeight + "px"});
+	}
+}
 </script>

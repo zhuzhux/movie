@@ -13,9 +13,9 @@ function show($status,$message,$data=array()){
 		);
 	return json_encode($reuslt);
 }
-$type = $_GET['type'];
+//$type = $_GET['type'];
 
-if($type==1){
+//if($type==1){
 class mycrawler extends Phpfetcher_Crawler_Default {
     public function handlePage($page) {
 	       	$arr1 =array();
@@ -65,4 +65,4 @@ $arrJobs = array(
     ) ,   
 );
 $crawler->setFetchJobs($arrJobs)->run();
-}
+//}
