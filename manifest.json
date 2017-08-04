@@ -7,7 +7,7 @@
 	"id": "H59174772",/*应用的标识，创建应用时自动生成，勿手动修改*/
 	"name": "Ursa",/*应用名称，程序桌面图标名称*/
 	"version": {
-		"name": "1.0.3",/*应用版本名称*/
+		"name": "1.0.11",/*应用版本名称*/
 		"code": "83"
 	},
 	"description": "WebApp",/*应用描述信息*/
@@ -87,9 +87,6 @@
 		},
 		"Barcode": {
 			"description": "管理二维码扫描插件"
-		},
-		"Maps": {
-			"description": "管理地图插件"
 		},
 		"Speech": {
 			"description": "管理语音识别插件"
@@ -254,7 +251,8 @@
 					"css/mui.min.css",
 					"/php/movieA.php",
 					"js/mui.min.js",
-					"js/jquery.js"
+					"js/jquery.js",
+					"fonts/mui.ttf"
 				],
 				"refer": [],
 				"priority": 0
@@ -303,7 +301,8 @@
 				"resources": [
 					"css/mui.min.css",
 					"js/mui.min.js",
-					"js/jquery.js"
+					"js/jquery.js",
+					"fonts/mui.ttf"
 				],
 				"refer": [
 					"search_ok.html",

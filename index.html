@@ -28,21 +28,20 @@
 		<script type="text/javascript" charset="UTF-8" src="js/mui.min.js"></script>
 		<script type="text/javascript" charset="UTF-8" src="js/app.js"></script>
 		<script>
-			 //预加载
+			//预加载
 			mui.init({
-				subpages:[//先加载首页 
-				{ 
-					url:'list.html', 
-					id:'list', 
-					styles:{ 
-						top:'0px', 
-						bottom:'50px' 
-					} 
-				} 
-				
-				], 
-				preloadPages: [
-				{
+				subpages: [ //先加载首页 
+					{
+						url: 'list.html',
+						id: 'list',
+						styles: {
+							top: '0px',
+							bottom: '50px'
+						}
+					}
+
+				],
+				preloadPages: [{
 					"id": "list",
 					"url": "/list.html",
 					"styles": {
@@ -52,11 +51,10 @@
 						"id": "movie",
 						"url": "/movie.html",
 						"styles": {
-						"popGesture": "hide"
+							"popGesture": "hide"
 						}
 					}]
-				}
-				]
+				}]
 			});
 			mui.plusReady(function() {
 				//关闭splash界面
@@ -66,11 +64,11 @@
 					top: "0px",
 					bottom: "0px"
 				}));
-				if (mui.os.stream) {
+				if(mui.os.stream) {
 					//创建桌面快捷方式
-					if (mui.isFunction(plus.navigator.createShortcut)) {
+					if(mui.isFunction(plus.navigator.createShortcut)) {
 						var shortcut = plus.storage.getItem("SHORTCUT");
-						if (!shortcut) {
+						if(!shortcut) {
 							plus.navigator.createShortcut({
 								name: "wxjii",
 								icon: "img/icon.png"
@@ -89,63 +87,197 @@
 					});
 				}
 			});
-			 //右上角设置按钮点击事件
-//			var setting_view = null;
-//			document.getElementById("setting").addEventListener('tap', function() {
-//				if (!setting_view) {
-//					setting_view = plus.webview.getWebviewById('setting');
-//				}
-//				setting_view.show('slide-in-bottom', 200);
-//			});
-			 //首页退出事件
-//			mui.back = function() {
-//				mui.confirm('确定退出应用？', '提示', ['确定', '取消'], function(e) {
-//					if (e.index === 0) {
-//						plus.runtime.quit();
-//					}
-//				});
-//			};
+			//右上角设置按钮点击事件
+			//			var setting_view = null;
+			//			document.getElementById("setting").addEventListener('tap', function() {
+			//				if (!setting_view) {
+			//					setting_view = plus.webview.getWebviewById('setting');
+			//				}
+			//				setting_view.show('slide-in-bottom', 200);
+			//			});
+			//首页退出事件
+			//			mui.back = function() {
+			//				mui.confirm('确定退出应用？', '提示', ['确定', '取消'], function(e) {
+			//					if (e.index === 0) {
+			//						plus.runtime.quit();
+			//					}
+			//				});
+			//			};
 
-			
 			//防止白屏，转圈圈等待
 			mui.plusReady(function() {
-                    setTimeout(function() {
-                        mui.preload({
-                            id: '/list.html',
-                            url: '/list.html'
-                        })//预打开登录页
-                    }, 100);//延时加载登录页，这个可以不用演示，你可以放在mui.int里面
-                    setTimeout(function() {//这里面也用了一个延时，因为一般登陆页面，只要不是太多的东西，200毫秒应该能满足了，时间长短，自己把控了。
-                            /*
-                             * 这里获取本地存储中的字段，来判定是否第一次打开app；
-                             * 注意，只需要判定有这个值就可以了，因为只有两种情况：
-                             * 1、有这个值，并且值是true
-                             * 2、压根就没有这个值
-                             * http://www.html5plus.org/doc/zh_cn/storage.html#plus.storage.getItem
-                             */
-                            /*
-                            这里用的是版本的名字，是为了后续更新版本后，我们更新应用或者升级版本的时候，把这个相应的修改
-                            一下即可进入新的引导页面了，如果固定一个，以后更新版本，就看不到欢迎页了，这个看个人需求了。
-                            */
-                            var first = plus.storage.getItem("version1.3");
-                            if (first) { //如果已经有值，那么就代表不是第一次打开，则直接进入主页
-                                plus.navigator.closeSplashscreen();//关闭启动页
-                                mui.openWindow({
-                                    id: "html/login.html",
-                                    waiting: {
-                                        autoShow: true
-                                    },
-                                    show: {
-                                        aniShow: 'pop-in'
-                                    }
-                                });
-                            } else { //否则将打开欢迎界面    
-                                plus.navigator.closeSplashscreen();
-                                
-                            }
-                        }, 500)
-                        
-                }, false)
+				setTimeout(function() {
+					mui.preload({
+						id: '/list.html',
+						url: '/list.html'
+					}) //预打开登录页
+				}, 100); //延时加载登录页，这个可以不用演示，你可以放在mui.int里面
+				setTimeout(function() { //这里面也用了一个延时，因为一般登陆页面，只要不是太多的东西，200毫秒应该能满足了，时间长短，自己把控了。
+					/*
+					 * 这里获取本地存储中的字段，来判定是否第一次打开app；
+					 * 注意，只需要判定有这个值就可以了，因为只有两种情况：
+					 * 1、有这个值，并且值是true
+					 * 2、压根就没有这个值
+					 * http://www.html5plus.org/doc/zh_cn/storage.html#plus.storage.getItem
+					 */
+					/*
+					这里用的是版本的名字，是为了后续更新版本后，我们更新应用或者升级版本的时候，把这个相应的修改
+					一下即可进入新的引导页面了，如果固定一个，以后更新版本，就看不到欢迎页了，这个看个人需求了。
+					*/
+					var first = plus.storage.getItem("version1.3");
+					if(first) { //如果已经有值，那么就代表不是第一次打开，则直接进入主页
+						plus.navigator.closeSplashscreen(); //关闭启动页
+						mui.openWindow({
+							id: "html/login.html",
+							waiting: {
+								autoShow: true
+							},
+							show: {
+								aniShow: 'pop-in'
+							}
+						});
+					} else { //否则将打开欢迎界面    
+						plus.navigator.closeSplashscreen();
+
+					}
+				}, 500)
+
+			}, false);
+			
+			//检查更新
+			var wgtVer=null;
+			function plusReady(){
+			    // ......
+			    // 获取本地应用资源版本号
+			    plus.runtime.getProperty(plus.runtime.appid,function(inf){
+			        wgtVer=inf.version;
+			        console.log("当前应用版本："+wgtVer);
+			    });
+			}
+			if(window.plus){
+			    plusReady();
+			}else{
+			    document.addEventListener('plusready',plusReady,false);
+			   
+			}
+			
+			mui.plusReady(function(){
+				setTimeout(function(){checkUpdate();},500);
+				
+			});
+			var checkUrl="http://movie.wxjii.cn/update/update.php";
+			function checkUpdate(){
+			    plus.nativeUI.showWaiting("检测更新...");
+			    var xhr=new XMLHttpRequest();
+			    xhr.onreadystatechange=function(){
+			        switch(xhr.readyState){
+			            case 4:
+			            plus.nativeUI.closeWaiting();
+			            var btn = ['更新', '否']
+			            if(xhr.status==200){
+			                console.log("检测更新成功："+xhr.responseText);
+			                var newVer=xhr.responseText;
+
+			                if(wgtVer&&newVer&&(wgtVer!=newVer)){
+								mui.confirm('有新的版本啦', '更新', btn, function(e) {
+									if(e.index == 0){//点击更新
+										downWgt();
+									}else{//点击否
+										mui.currentWebview.close();
+									}
+								})
+//			                    downWgt();  // 下载升级包
+			                }else{
+//			                    plus.nativeUI.alert("无新版本可更新！");
+			                }
+			                return;
+			            }else{
+			                console.log("检测更新失败！");
+//			                plus.nativeUI.alert("检测更新失败！");
+			                mui.confirm('检测更新失败！', '更新哦', btn, function(e) {
+								if(e.index == 0){
+									alert(1)
+								}else{
+									mui.currentWebview.close();
+								}
+							})
+			            }
+			            break;
+			            default:
+			            break;
+			        }
+			    }
+			    xhr.open('GET',checkUrl);
+			    xhr.send();
+			}
+			var wgtUrl="http://movie.wxjii.cn/update/H59174772.wgt";
+			function downWgt(){
+			    plus.nativeUI.showWaiting("下载wgt文件...");
+			    plus.downloader.createDownload( wgtUrl, {filename:"_doc/update/"}, function(d,status){
+			        if ( status == 200 ) { 
+			            console.log("下载wgt成功："+d.filename);
+			            installWgt(d.filename); // 安装wgt包
+			        } else {
+			            console.log("下载wgt失败！");
+			            plus.nativeUI.alert("下载wgt失败！");
+			        }
+			        plus.nativeUI.closeWaiting();
+			    }).start();
+			}
+			function installWgt(path){
+			    plus.nativeUI.showWaiting("安装wgt文件...");
+			    plus.runtime.install(path,{},function(){
+			        plus.nativeUI.closeWaiting();
+			        console.log("安装wgt文件成功！");
+			        plus.nativeUI.alert("应用资源更新完成！",function(){
+			            plus.runtime.restart();
+			        });
+			    },function(e){
+			        plus.nativeUI.closeWaiting();
+			        console.log("安装wgt文件失败["+e.code+"]："+e.message);
+			        plus.nativeUI.alert("安装wgt文件失败["+e.code+"]："+e.message);
+			    });
+			}
+			
+			
+			
+			
+			
+			
+		//网络连接
+function plusReady1(){
+
+　　 var types = {};
+
+　　 types[plus.networkinfo.CONNECTION_UNKNOW] = "Unknown connection";
+
+　　 types[plus.networkinfo.CONNECTION_NONE] = "None connection";
+
+　　 types[plus.networkinfo.CONNECTION_ETHERNET] = "Ethernet connection";
+
+　　 types[plus.networkinfo.CONNECTION_WIFI] = "WiFi connection";
+
+　　 types[plus.networkinfo.CONNECTION_CELL2G] = "Cellular 2G connection";
+
+　　 types[plus.networkinfo.CONNECTION_CELL3G] = "Cellular 3G connection";
+
+　　 types[plus.networkinfo.CONNECTION_CELL4G] = "Cellular 4G connection";
+
+//　　 alert( "Network: " + types[plus.networkinfo.getCurrentType()] );
+
+}
+
+if(window.plus){
+
+　　plusReady();
+
+}else{
+
+　　document.addEventListener("plusready",plusReady,false);
+
+}
+
+
 		</script>
 	</body>
 

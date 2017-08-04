@@ -9,6 +9,15 @@
         <script type="text/javascript" charset="utf-8">  
             mui.init();  
         </script>  
+        <style type="text/css">
+        	.content{font-size: 0;position: fixed;bottom: 0;left: 0;width: 100%;}
+        	.mbtn{
+        		display: inline-block;
+        		border-radius: 0;
+        	}
+        	.blue{width: 40%;box-sizing: border-box;}
+        	.orange{/*background: orangered;border: 1px solid orangered;*/width: 60%;box-sizing: border-box;}
+        </style>
     </head>  
     <body>  
         <header class="mui-bar mui-bar-nav">  
@@ -16,19 +25,10 @@
             <h1 class="mui-title">折叠面板</h1>  
         </header>  
         <div class="mui-content">  
-            <div class="mui-card">  
-                <ul class="mui-table-view">  
-                    <li class="mui-table-view-cell mui-collapse">  
-                        <a class="mui-navigate-right">折叠标题</a>  
-                        <div class="mui-collapse-content">  
-                            <p>我是内容1</p>  
-                            <p>我是内容2</p>  
-                            <p>我是内容3</p>  
-                            <p>我是内容4</p>  
-                        </div>  
-                    </li>  
-                </ul>  
-            </div>  
+            <div class="content">
+				<button type="button" class="mui-btn mui-btn-blue mbtn blue">按钮</button>
+				<button type="button" class="mui-btn mui-btn-yellow mbtn orange">按钮</button>
+            </div>
         </div>
     </body>  
 </html> 

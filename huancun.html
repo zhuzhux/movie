@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</body>
+	<script type="text/javascript">
+var Intent = null,
+            File = null,
+            Uri = null,
+            main = null;
+        var cacheCaleState=false;
+var os=null;
+mui.plusReady(function() {
+     os=plus.os.name;
+            if(os == "Android") {
+                main = plus.android.runtimeMainActivity();
+                Intent = plus.android.importClass("android.content.Intent");
+                File = plus.android.importClass("java.io.File");
+                Uri = plus.android.importClass("android.net.Uri");
+            }
+         initCacheSize();
+
+      cacheDom.addEventListener('tap', function() {
+                plus.nativeUI.confirm("确定清除缓存？ 清除后App中的数据将会被清理，用户需重新登录", function(e) {
+                    if(e.index == 0) {
+                        console.log("cacheCaleState:"+cacheCaleState);
+                        if(os=="Android"){
+                            if(cacheCaleState==true){
+                            clearAllCache();    
+                        }else{
+                            mui.toast("缓存计算中……");
+                        }
+                        }else if(os=="iOS"){
+                            clearCache(function(){
+                                //再次计算缓存大小
+                                initCacheSize();
+                            });
+                        }
+                    }
+                }, "新消息通知", ["确定", "取消"]);
+            }, false);
+
+});
+
+
+
+
+
+
+
+
+function initCacheSize (){
+            var formatedSize;
+            if(os=="Android"){
+                formatedSize=formatSize(calcCache4Android());
+                cacheCaleState=true;
+                cacheDomChild.innerHTML="清除缓存<span class='mui-badge '>" + formatedSize + "</span>";
+            }else if(os=="iOS"){
+                calcCache(function(size) {
+                    cacheCaleState=true; 
+                formatedSize=formatSize(size);
+                cacheDomChild.innerHTML="清除缓存<span class='mui-badge '>" + formatedSize + "</span>";
+            });
+            }else{
+                mui.toast("未知的设备类型,无法计算缓存");
+                cacheCaleState=false;
+            }
+        }
+              /**
+         * 计算缓存大小  官方提供方法，用于iOS
+         */
+        function calcCache(callback) {
+            console.log("开始计算缓存大小");
+            var finalSize = -1;
+            plus.cache.calculate(function(size) {
+                console.log(size + "byte");
+                var sizeInt = parseInt(size);
+                console.log("sizeInt" + sizeInt);
+                return callback(finalSize);
+            });
+
+        }
+
+        function calcCache4Android() {
+            var cacheSize=0;
+            console.log("start calc android");
+                var sdRoot = main.getCacheDir();
+                var files = plus.android.invoke(sdRoot,"listFiles");
+                 cacheSize += getFolderSize(files); 
+            console.log("android size-->"+cacheSize);
+            return cacheSize;
+        }
+
+            function getFolderSize(files) {
+                var size = 0;
+                    var len = files.length;
+                    for(var i = 0; i < len; i++) {
+                        // 如果下面还有文件
+                        if(files[i].isDirectory()) {
+                            size = size + getFolderSize(files[i]);
+                        } else if(!files[i].isHidden()){
+                            size = size + files[i].length();
+                        }
+                    }
+                return size;
+        }
+
+                function formatSize(size){
+            var fileSizeString;
+            size=parseInt(size);
+            console.log("我是size"+size);
+                if(size == 0){
+                    fileSizeString = "0B";
+                }else if(size < 1024){
+                    fileSizeString = size + "B";
+                }else if(size < 1048576){
+                    fileSizeString = (size/1024).toFixed(2) + "KB";
+                }else if (size < 1073741824){
+                    console.log("Mb"+size);
+                    fileSizeString = (size/1048576).toFixed(2) + "MB";
+                    console.log("/ after"+fileSizeString);
+                }else{
+                    fileSizeString = (size/1073741824).toFixed(2) + "GB";
+                }
+                return fileSizeString;
+        }
+
+
+	</script>
+</html>

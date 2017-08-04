@@ -224,23 +224,89 @@
 				排行榜
 			</div>
 			<div id="tabbar-gr" class="mui-control-content">
+
 				<ul class="mui-table-view">
 				    <li class="mui-table-view-cell mui-collapse">
-				        <a class="mui-navigate-right" href="#">切换源</a>
+				        <a class="mui-navigate-right" href="#">切换视频源</a>
 				        <div class="mui-collapse-content">
 				            <p>
 				            	<a href="#"><button type="button" id="yuan1" class="mui-btn mui-btn-blue mui-btn-outlined">源一</button></a>
-				            </p>
-				            <p>
 				            	<a href="listA.html"><button type="button" id="yuan2" class="mui-btn mui-btn-blue mui-btn-outlined">源二</button></a>
 				            </p>
 				        </div>
 				    </li>
+				    <li class="mui-table-view-cell " onclick="huancun.qingli()">
+				    	<span>清理缓存</span><span id="huancun" class="mui-pull-right"></span>
+				        <div class="mui-collapse-content">
+				        </div>
+				    </li>
+				    <li class="mui-table-view-cell">
+				    	<span>当前版本</span><span id="banbenhao" class="mui-pull-right"></span>
+				    </li>
+				    <li class="mui-table-view-cell">
+				    	
+				    	
+				    </li>
+				    <li class="mui-table-view-cell mui-collapse">
+				    	
+				    </li>
 				</ul>
+
 			</div>
 		</div>
-
+			
 		<script>
+			
+			var huancun = {
+				qingli: function(){
+					mui.plusReady(function(){
+						plus.cache.calculate(function(size) {
+				            console.log(size)
+				            sizeCache = size;
+//				            $("#huancun").text(parseFloat(sizeCache / (1024 * 1024)).toFixed(2) + "M");
+			            	mui.confirm("您目前的系统缓存为" + parseFloat(sizeCache / (1024 * 1024)).toFixed(2) + "M？", "清除缓存", ["确认", "取消"], function(e) {
+				                if(e.index == 1) {} else {
+				                    plus.cache.clear(function() {
+				                        alert("缓存清除完毕")
+				                    });
+				                }
+				            });
+				        });
+					})
+				}
+			}
+			//版本号
+			var wgtVer=null;
+			function plusReady(){
+			    // 获取本地应用资源版本号
+			    plus.runtime.getProperty(plus.runtime.appid,function(inf){
+			        wgtVer=inf.version;
+			        console.log("当前应用版本："+wgtVer);
+			        $("#banbenhao").text(wgtVer);
+			    });
+			}
+			if(window.plus){
+			    plusReady();
+			}else{
+			    document.addEventListener('plusready',plusReady,false);
+			   
+			}
+			//缓存
+			mui.plusReady(function(){
+				plus.cache.calculate(function(size) {
+		            console.log(size)
+		            sizeCache = size;
+		            $("#huancun").text(parseFloat(sizeCache / (1024 * 1024)).toFixed(2) + "M");
+//	            	mui.confirm("您目前的系统缓存为" + parseFloat(sizeCache / (1024 * 1024)).toFixed(2) + "M？", "清除缓存", ["确认", "取消"], function(e) {
+//		                if(e.index == 1) {} else {
+//		                    plus.cache.clear(function() {
+//		                        alert("缓存清除完毕")
+//		                    });
+//		                }
+//		            });
+		        });
+			})
+			
 			function click_toast(){
 				mui.toast('暂未开放');
 			}
@@ -347,7 +413,7 @@
 							},
 							async: false,
 							dataType: 'json',
-							type: 'get',
+							type: 'POST',
 							timeout: 1000,
 							success: function(data) {
 								for(var i = 0; i < data.data.length; i++) {
@@ -386,7 +452,7 @@
 			},
 			async: false,
 			dataType: 'json',
-			type: 'GET',
+			type: 'POST',
 			timeout: 1000,
 			success: function(data) {
 				var str = '';
@@ -469,7 +535,7 @@
 			},
 			//		async:false,
 			dataType: 'json',
-			type: 'get',
+			type: 'POST',
 			timeout: 1000,
 			success: function(data) {
 				var str = '';
