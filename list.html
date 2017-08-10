@@ -14,13 +14,18 @@
 		<script src="js/mui.pullToRefresh.js"></script>
 		<script src="js/mui.pullToRefresh.material.js"></script>
 		<link href="css/mui.min.css" rel="stylesheet" />
-		<link href="css/icons-extra.css" rel="stylesheet" />
 		<link href="css/list.css" rel="stylesheet" />
 		<link href="css/iconfont.css" rel="stylesheet" />
 		<style type="text/css">
 			#slider p{margin-top: 0px;}
-			#slider .mui-card{margin-right: 5px;}
 			#slider h5{color: #0f0f0f;}
+			.lia.mui-card{margin: 0px 1px 1px 0px;border-radius: 5px;}/*内容card样式*/
+			.mui-slider-group>div:first-child{min-height: 600px;} /*初始高度 撑开没有灰色底*/
+			ul.mui-table-view.mui-grid-view{padding-right: 14px;}/*ul右侧margin*/
+			li.mui-table-view-cell.mui-media.mui-col-xs-4{margin-right: 0;}/*清除li右侧默认样式*/
+			#scroll1 ul>.mui-card{margin: 10px 1px 0 14px;}/*div标题margin*/
+			/*img{vertical-align: middle;}*/
+			
 		</style>
 	</head>
 	<body>
@@ -33,15 +38,20 @@
 				<span class="mui-icon iconfont icon-dianying"></span>
 				<span class="mui-tab-label">电影</span>
 			</a>
-			<a class="mui-tab-item" href="#tabbar-bd">
+			<a class="mui-tab-item tabbar-wkf" href="#tabbar-bd1">
 				<span class="mui-icon iconfont icon-paixing"></span>
 				<span class="mui-tab-label">排行榜</span>
 			</a>
-			<a class="mui-tab-item" href="#tabbar-gr">
+			<a class="mui-tab-item tabbar-wkf" href="#tabbar-gr1">
 				<span class="mui-icon iconfont icon-set"></span>
 				<span class="mui-tab-label">设置</span>
 			</a>
 		</nav>
+		<script type="text/javascript">
+			$('.tabbar-wkf').on("tap", function(){
+				mui.toast("未开放");
+			})
+		</script>
 		<div class="mui-content">
 			<div id="tabbar" class="mui-control-content mui-active">
 				<!--滑动-->
@@ -245,7 +255,6 @@
 				    </li>
 				    <li class="mui-table-view-cell">
 				    	
-				    	
 				    </li>
 				    <li class="mui-table-view-cell mui-collapse">
 				    	
@@ -254,7 +263,9 @@
 
 			</div>
 		</div>
-			
+	</body>
+
+</html>
 		<script>
 			
 			var huancun = {
@@ -294,7 +305,7 @@
 			//缓存
 			mui.plusReady(function(){
 				plus.cache.calculate(function(size) {
-		            console.log(size)
+//		            console.log(size)
 		            sizeCache = size;
 		            $("#huancun").text(parseFloat(sizeCache / (1024 * 1024)).toFixed(2) + "M");
 //	            	mui.confirm("您目前的系统缓存为" + parseFloat(sizeCache / (1024 * 1024)).toFixed(2) + "M？", "清除缓存", ["确认", "取消"], function(e) {
@@ -440,9 +451,6 @@
 			  imgWH();
 			});
 		</script>
-	</body>
-
-</html>
 <script type="text/javascript">
 	//http://movie.wxjii.cn
 	function movieIndex() {
@@ -457,9 +465,9 @@
 			success: function(data) {
 				var str = '';
 				for(var i = 0; i < data.data.length; i++) {
-					str += '<div class="mui-card" style="margin-bottom: 0;"><div class="mui-card-content"><h5 class="mui-text-center">'+data.data[i].title+'</h5></div></div>';
+					str += '<div class="mui-card"><div class="mui-card-content"><h5 class="mui-text-center">'+data.data[i].title+'</h5></div></div>';
 					for(var j = 0; j < data.data[i].data.length; j++) {
-						str += '<li class="mui-table-view-cell mui-media mui-col-xs-4"><div class="lia" id="list_'+j+'" data-href="'+data.data[i].data[j].href+'" ><img class="mui-media-object" src="'+data.data[i].data[j].imgSrc+'"><p class="mui-media-body">'+data.data[i].data[j].filmName+'</p><p class="mui-media-body p-actor" >'+data.data[i].data[j].actor+'</p></div></li>';
+						str += '<li class="mui-table-view-cell mui-media mui-col-xs-4"><div class="lia mui-card" id="list_'+j+'" data-href="'+data.data[i].data[j].href+'" ><img class="mui-media-object" src="'+data.data[i].data[j].imgSrc+'"><p class="mui-media-body">'+data.data[i].data[j].filmName+'</p><p class="mui-media-body p-actor" >'+data.data[i].data[j].actor+'</p></div></li>';
 						$('#scroll1 ul.mui-table-view').html(str);
 					}
 				}	
@@ -554,7 +562,7 @@
 	//下面是点击列表显示详情页
 	var detailPage = null;
 	//添加列表项的点击事件
-	mui('.mui-table-view').on('tap', 'div', function(e) {
+	mui('.mui-table-view.mui-grid-view').on('tap', 'div', function(e) {
 		var id = this.getAttribute('id');
 		var href = this.getAttribute('data-href');
 		var title = this.getElementsByTagName('p')[0].innerHTML;

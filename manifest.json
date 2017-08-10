@@ -22,7 +22,8 @@
 	},
 	"permissions": {
 		"Accelerometer": {
-			"description": "访问加速度感应器"
+			"description": "访问加速度感应器",
+			"mode": "default"
 		},
 		"Audio": {
 			"description": "访问麦克风"
@@ -252,7 +253,11 @@
 					"/php/movieA.php",
 					"js/mui.min.js",
 					"js/jquery.js",
-					"fonts/mui.ttf"
+					"fonts/mui.ttf",
+					"img/60x60.gif",
+					"img/bg.png",
+					"img/bg2.png",
+					"img/video_bg.png"
 				],
 				"refer": [],
 				"priority": 0
