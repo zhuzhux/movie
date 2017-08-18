@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+
+
+    <style>
+    	body{max-width: 640px;margin: 0 auto;}
+    </style>
+    <style>
+		.mui-control-content {
+			background-color: white;
+			min-height: 1015px;
+		}
+		.mui-control-content .mui-loading {
+			margin-top: 50px;
+		}
+		
+		#rUrl>div>div:not(:first-child){
+			border-top:1px dashed #ccc;
+			margin-top:10px;
+			padding-top: 4px;	
+		}
+	</style>
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?5d66bd0c136a6998ab02a25bd4034a87";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title"></h1>
+	</header>
+		<div class="mui-content">
+			<div id="" style="width: 100%;height:auto;">
+				<video width="100%" height="200" controls="controls" preload="auto"  id="media" src="" poster="img/video_bg.png">
+					<!--<source id="video1" src="">-->
+					<!--<source id="video1" src="https://dqplayers.duapp.com/bshare/supurl.php?url=zaWq1nBnYazYrJKam5munmSYp1.pZJaUZG5oZ3BlnA,,&ctype=phone">-->
+					<object width="" height="" type="application/x-shockwave-flash" data="myvideo.swf">
+						<param name="movie" value="myvideo.swf" />
+						<param name="flashvars" value="autostart=true&amp;file=myvideo.swf" />
+					</object>
+				</video>
+			</div>
+			<div class="mui-card">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right">影片简介</a>
+						<div class="mui-collapse-content" id="jieshao">
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="mui-card" >
+			    <div class="mui-card-content" id="rUrl">
+			    </div>
+			</div>
+			<i id="htmlurl"></i>
+		    
+		</div>
+		<!--<iframe src="http://vip.72du.com/api/?url=http://v.youku.com/v_show/id_XMjgwNjYyNjEwMA==.html?from=s1.8-1-1.1" width="" height=""></iframe>-->
+	
+			
+	
+	<!--<button id="url">点击播放</button>-->
+	<!--<video id="videoId" src="http://aikan-tv.com/?url=http://v.youku.com/v_show/id_XMjkzNDEwMzM3Mg==.html?spm=a2h03.8164468.2069780.11" width="100%" height="200" controls="controls"></video>-->
+	
+		<!--<div class="video">
+			<video id="video" controls="controls" preload="auto" poster="http://download.dcloud.net.cn/FastAndroid-mini.jpg" width="100%" height="auto" src="http://download.dcloud.net.cn/FastAndroid-mini.m4v">
+			</video>
+		</div>-->
+	
+
+
+<script>
+//	mui.init({
+//		swipeBack: false
+//	});
+//	(function($) {
+//		$('.mui-scroll-wrapper').scroll({
+//			indicators: false //是否显示滚动条
+//		});
+//
+//		$('.mui-input-group').on('change', 'input', function() {
+//			if (this.checked) {
+//				sliderSegmentedControl.className = 'mui-slider-indicator mui-segmented-control mui-segmented-control-inverted mui-segmented-control-' + this.value;
+//				//force repaint
+//				sliderProgressBar.setAttribute('style', sliderProgressBar.getAttribute('style'));
+//			}
+//		});
+//	})(mui);
+</script>
+<script type="text/javascript" charset="utf-8">
+		
+		
+  	mui.init();
+    window.onload = function(){
+        //从服务器获取数据
+//http://movie.wxjii.cn
+        //业务数据获取完毕，并已插入当前页面DOM；
+        //注意：若为ajax请求，则需将如下代码放在处理完ajax响应数据之后；
+        mui.plusReady(function(){
+            var self = plus.webview.currentWebview();
+            var ahref = self.href;
+            var headerTitle = self.title;
+            localStorage.aHref = ahref;
+            
+//alert(localStorage.getItem("SSHref"))
+			getHtmlUrl();
+			$('header h1').text(headerTitle);
+			
+			//获取真实地址，输出到页面按钮
+            getrUrl($('#htmlurl').attr('src'));
+            //点击真实地址按钮，自动播放
+			clickrUrl();
+
+//				console.log($('#rUrl').html());
+			
+            //关闭等待框
+            plus.nativeUI.closeWaiting();
+            
+            //显示当前页面
+            mui.currentWebview.show();
+			//清空aHref
+			localStorage.removeItem("aHref");
+        });
+        /**
+			 * 视频全屏播放旋转目前的逻辑
+			 * 视频全屏，即锁定屏幕为横屏。
+			 * 视频恢复，则解除屏幕方向的锁定。
+			 * 具体的切换，根据自己的实际业务做相应的操作。
+			 */
+			// Android平台的视频全屏旋转
+			var fullScreenOfAndroid = function() {
+				if(true) {
+					// 最新5+API的支持
+					var self = plus.webview.currentWebview();
+					self.setStyle({
+						videoFullscreen: 'landscape'
+					});
+				} else {
+					// 如果暂未更新sdk，可以先使用差量升级等方式，做出兼容处理；
+					// 旧版本下的兼容处理
+					document.addEventListener('webkitfullscreenchange', function() {
+						var el = document.webkitFullscreenElement; //获取全屏元素
+						if(el) {
+							plus.screen.lockOrientation('landscape'); //锁死屏幕方向为横屏
+						} else {
+							plus.screen.unlockOrientation(); //解除屏幕方向的锁定
+						}
+					});
+
+				}
+			};
+			// iOS平台的视频全屏旋转
+			var fullScreenOfIos = function(videoElem) {
+				// 监听的事件与Android平台有很大区别
+				videoElem.addEventListener('webkitbeginfullscreen', function() {
+					plus.screen.lockOrientation('landscape'); //锁死屏幕方向为横屏
+				});
+				videoElem.addEventListener('webkitendfullscreen', function() {
+					plus.screen.unlockOrientation(); //解除屏幕方向的锁定
+				});
+			};
+			// 涉及到5+API的内容，均在plusready事件后调用；
+			document.addEventListener('plusready', function() {
+				var osName = plus.os.name;
+				if(osName === 'Android') {
+					fullScreenOfAndroid();
+				} else if(osName === 'iOS') {
+					var videoElem = document.getElementById('media');
+//					fullScreenOfIos(videoElem);
+				}
+			});
+    }
+
+    function getHtmlUrl(){//获取播放页面的地址： http://m.yingshidaquan.cc/play/DQ236764-4-1.html
+			mui.ajax("http://movie.wxjii.cn/php/movieU.php",{
+				data:{
+					aHref:localStorage.aHref,
+					type:2
+				},
+				async:false,
+				dataType:'json',
+				type:'post',
+				timeout:1000,
+				success:function(data){
+					//赋值给<i>,不显示，用在存储当前视频的第二次详细
+
+					var str = '<div class="mui-card-content-inner">';
+					for(i = 0;i<data.details.length;i++){
+						str += '<div>'+data.details[i].details+'</div>';
+					}
+					str += '<div>'+data.introduction[0].introduction+'</div></div>';
+					$('#jieshao').html(str);
+					if(data.data.length === 0){//data.data空
+						mui.toast('暂无可用片源');
+					}else{
+						$('#htmlurl').attr('src',data.data[0].href);	
+					}
+				}
+			});
+		}
+    
+	function getrUrl(href_a){//输出按钮等
+		mui.ajax("http://movie.wxjii.cn/php/movieU2.php",{
+			data:{
+				aHref:href_a
+			},
+			async:false,
+			dataType:'json',
+			type:'post',
+			timeout:1000,
+			success:function(data){
+				var str = '<div class="mui-card-content-inner">';
+				for(var i = 0;i<data.Data.length;i++){
+					var noPlay = data.Data[i].playname!="xigua"&&data.Data[i].playname!="xigua1"&&data.Data[i].playname!="down1"&&data.Data[i].playname!="down3"&&data.Data[i].playname!="down4"&&data.Data[i].playname!="ed2k"&&data.Data[i].playname!="ffhd"&&data.Data[i].playname!="real"&&data.Data[i].playname!="web9"&&data.Data[i].playname!="qiyiid"&&data.Data[i].playname!="duyun"&&data.Data[i].playname!="qq";
+					if(noPlay){
+						str+='<div><h5 dataTitle='+data.Data[i].playname+'>'+data.Data[i].playname+' 在线播放(点击开始)</h5>';
+						for(var j=0;j<data.Data[i].playurls.length;j++){
+							str+='<button style="max-width:100%;width:auto;overflow: hidden;text-align: left;" src="'+data.Data[i].playurls[j][1]+'">'+data.Data[i].playurls[j][0]+'</button>';
+						}
+						str+='</div>'
+					}
+				}
+				str+='</div>'
+				$('#rUrl').html(str);
+			}
+		});
+    }
+	
+	function clickrUrl(){//点击真实地址的按钮
+		$('#rUrl>div>div>button').click(function(){
+			var dataTitle = $(this).prevAll("h5:first").attr("dataTitle");
+			mui.toast('正在解析，请稍等..');
+			function goPlay(url){
+				$('#media').attr('src',url);
+				$('#media').attr("autoplay","autoplay");
+			};
+			if(dataTitle=="dusk360"){
+//				$('#media').attr('src',$(this).attr('src'));
+//				$('#media').attr("autoplay","autoplay");
+				goPlay($(this).attr('src'));
+			}
+			if(dataTitle=="acfun"){
+				var str = $(this).attr('src');
+				str = str.substr(0, str.indexOf('douban'));
+				acfun = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"&ctype=phone";
+				goPlay(acfun);
+			}
+			if(dataTitle=="yuku"){
+				var str = $(this).attr('src');
+				str = str.substr(0, str.indexOf('douban'));
+				yuku = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"&ctype=phone";
+				goPlay(yuku);
+			}
+			if(dataTitle=="360"){
+				var str = $(this).attr('src');
+				str = str.substr(0, str.indexOf('douban'));
+				s360 = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"_pprid&ctype=phone";
+				goPlay(s360);
+			}
+			if(dataTitle=="imgo"){
+				var str = $(this).attr('src');
+				str = str.substr(0, str.indexOf('douban'));
+				imgo = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"_pprid&ctype=phone";
+				goPlay(imgo);
+			}
+			if(dataTitle=="qianmo"){
+				var str = $(this).attr('src');
+				str = str.substr(0, str.indexOf('douban'));
+				qianmo = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"_acsid&ctype=phone";
+				goPlay(qianmo);
+			}
+			if(dataTitle=="letvid"){
+				var str = $(this).attr('src');
+				str = str.substr(0, str.indexOf('douban'));
+				letvid = "http://dqplayers.duapp.com/bshare/Yunflvco/parse.php?url="+str+"_letv&ctype=phone";
+				goPlay(letvid);
+			}
+			if(dataTitle=="yukuid"){
+				var str = $(this).attr('src');
+				str = str.substr(0, str.indexOf('douban'));
+				yukuid = "http://dqplayers.duapp.com/bshare/Yunflvco/parse.php?url="+str+"_youku&ctype=phone";
+				goPlay(yukuid);
+			}
+			if(dataTitle=="qqid"){
+				var str = $(this).attr('src');
+				str = str.substr(0, str.indexOf('douban'));
+				qqid = "http://dqplayers.duapp.com/bshare/Yunflvco/parse.php?url="+str+"_qq&ctype=phone";
+				goPlay(qqid);
+			}
+			if(dataTitle=="superm3u8"){
+				var str = $(this).attr('src');
+				str = str.substr(0, str.indexOf('douban'));
+				superm3u8 = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"_youkuyun&ctype=phone";
+				goPlay(superm3u8);
+			}
+			if(dataTitle=="bilibili"){
+				var str = $(this).attr('src');
+				str = str.substr(0, str.indexOf('douban'));
+				bilibili = "http://dqplayers.duapp.com/bshare/Yunflvsing/parse.php?url="+str+"&ctype=phone";
+				goPlay(bilibili);
+			}
+			setTimeout(function(){
+				if($('#media').attr('src')==''){
+					mui.toast('解析失败');
+				}
+			},100);
+		});
+	}
+if($('#media').ended){
+	alert(233)
+}
+
+    </script>
+		<script>
+		var _mtac = {};
+		(function() {
+		    var mta = document.createElement("script");
+		    mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";
+		    mta.setAttribute("name", "MTAH5");
+		    mta.setAttribute("sid", "500507164");
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(mta, s);
+		})();
+		</script>
+</body>
+</html>

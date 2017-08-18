@@ -1,1 +1,15 @@
-null
+{
+  "listA.html": {
+    "href": "listA.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery.js",
+      "fonts/mui.ttf",
+      "css/list.css",
+      "js/mui.pullToRefresh.js",
+      "js/mui.pullToRefresh.material.js"
+    ],
+    "refer": [],
+    "priority": 2
+  }
+}

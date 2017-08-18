@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.lazyload.js"></script>
+		<script src="js/mui.lazyload.img.js"></script>
+		<script src="js/jquery.js"></script>
+		<script src="js/mui.pullToRefresh.js"></script>
+		<script src="js/mui.pullToRefresh.material.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/list.css" rel="stylesheet" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<style type="text/css">
+			#slider p{margin-top: 0px;}
+			#slider h5{color: #0f0f0f;}
+			.lia.mui-card{margin: 0px 1px 1px 0px;border-radius: 5px;}/*内容card样式*/
+			.mui-slider-group>div:first-child{min-height: 600px;} /*初始高度 撑开没有灰色底*/
+			ul.mui-table-view.mui-grid-view{padding-right: 14px;}/*ul右侧margin*/
+			li.mui-table-view-cell.mui-media.mui-col-xs-4{margin-right: 0;}/*清除li右侧默认样式*/
+			#scroll1 ul>.mui-card{margin: 10px 1px 0 14px;}/*div标题margin*/
+			/*img{vertical-align: middle;}*/
+		</style>
+		<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?5d66bd0c136a6998ab02a25bd4034a87";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+		</script>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">...</h1>
+			<a class="mui-icon iconfont icon-sousuo mui-pull-right" href="#" id="search"></a>
+		</header>
+		<nav id="bottom-nav" class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="#tabbar">
+				<span class="mui-icon iconfont icon-dianying"></span>
+				<span class="mui-tab-label">电影</span>
+			</a>
+			<a class="mui-tab-item tabbar-wkf" href="#tabbar-bd1">
+				<span class="mui-icon iconfont icon-paixing"></span>
+				<span class="mui-tab-label">排行榜</span>
+			</a>
+			<a class="mui-tab-item tabbar-wkf" href="#tabbar-gr1">
+				<span class="mui-icon iconfont icon-set"></span>
+				<span class="mui-tab-label">设置</span>
+			</a>
+		</nav>
+		<script type="text/javascript">
+			$('.tabbar-wkf').on("tap", function(){
+				mui.toast("未开放");
+			})
+		</script>
+		<div class="mui-content">
+			<div id="tabbar" class="mui-control-content mui-active">
+				<!--滑动-->
+				<div id="slider" class="mui-slider">
+					<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted ">
+						<div class="mui-scroll">
+							<a class="mui-control-item mui-active" href="#item1mobile">推荐</a>
+							<a class="mui-control-item" href="#item2mobile">动作片</a>
+							<a class="mui-control-item" href="#item3mobile">喜剧片</a>
+							<a class="mui-control-item" href="#item4mobile">爱情片</a>
+							<a class="mui-control-item" href="#item5mobile">科幻片</a>
+							<a class="mui-control-item" href="#item6mobile">恐怖片</a>
+							<a class="mui-control-item" href="#item7mobile">战争片</a>
+							<a class="mui-control-item" href="#item13mobile">剧情片</a>
+							<a class="mui-control-item" href="#item8mobile">国产剧</a>
+							<a class="mui-control-item" href="#item9mobile">港台剧</a>
+							<a class="mui-control-item" href="#item10mobile">欧美剧</a>
+							<a class="mui-control-item" href="#item11mobile">日韩剧</a>
+							<a class="mui-control-item" href="#item12mobile">海外剧</a>
+						</div>
+					</div>
+					<div class="mui-slider-group">
+						<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+							<div id="scroll1" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="item2mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll2" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
+									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="item3mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll3" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
+									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="item4mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll4" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
+									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="item5mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll5" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
+									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="item6mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll6" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
+									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="item7mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll7" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
+									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="item13mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll13" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
+									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="item8mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll8" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
+									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="item9mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll9" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
+									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="item10mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll10" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
+									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="item11mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll11" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
+									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="item12mobile" class="mui-slider-item mui-control-content">
+							<div id="scroll12" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="mui-loading">
+										<div class="mui-spinner">
+										</div>
+									</div>
+									<ul class="mui-table-view mui-grid-view">
+									</ul>
+								</div>
+							</div>
+						</div>
+	
+					</div>
+				</div>
+			</div>
+			<div id="tabbar-bd" class="mui-control-content">
+				排行榜
+			</div>
+			<div id="tabbar-gr" class="mui-control-content">
+
+				<ul class="mui-table-view">
+				    <li class="mui-table-view-cell mui-collapse">
+				        <a class="mui-navigate-right" href="#">切换视频源</a>
+				        <div class="mui-collapse-content">
+				            <p>
+				            	<a href="#"><button type="button" id="yuan1" class="mui-btn mui-btn-blue mui-btn-outlined">源一</button></a>
+				            	<a href="listA.html"><button type="button" id="yuan2" class="mui-btn mui-btn-blue mui-btn-outlined">源二</button></a>
+				            </p>
+				        </div>
+				    </li>
+				    <li class="mui-table-view-cell " onclick="huancun.qingli()">
+				    	<span>清理缓存</span><span id="huancun" class="mui-pull-right"></span>
+				        <div class="mui-collapse-content">
+				        </div>
+				    </li>
+				    <li class="mui-table-view-cell">
+				    	<span>当前版本</span><span id="banbenhao" class="mui-pull-right"></span>
+				    </li>
+				    <li class="mui-table-view-cell">
+				    	
+				    </li>
+				    <li class="mui-table-view-cell mui-collapse">
+				    	
+				    </li>
+				</ul>
+
+			</div>
+		</div>
+				<script>
+			
+			var huancun = {
+				qingli: function(){
+					mui.plusReady(function(){
+						plus.cache.calculate(function(size) {
+				            console.log(size)
+				            sizeCache = size;
+//				            $("#huancun").text(parseFloat(sizeCache / (1024 * 1024)).toFixed(2) + "M");
+			            	mui.confirm("您目前的系统缓存为" + parseFloat(sizeCache / (1024 * 1024)).toFixed(2) + "M？", "清除缓存", ["确认", "取消"], function(e) {
+				                if(e.index == 1) {} else {
+				                    plus.cache.clear(function() {
+				                        alert("缓存清除完毕")
+				                    });
+				                }
+				            });
+				        });
+					})
+				}
+			}
+			//版本号
+			var wgtVer=null;
+			function plusReady(){
+			    // 获取本地应用资源版本号
+			    plus.runtime.getProperty(plus.runtime.appid,function(inf){
+			        wgtVer=inf.version;
+			        console.log("当前应用版本："+wgtVer);
+			        $("#banbenhao").text(wgtVer);
+			    });
+			}
+			if(window.plus){
+			    plusReady();
+			}else{
+			    document.addEventListener('plusready',plusReady,false);
+			   
+			}
+			//缓存
+			mui.plusReady(function(){
+				plus.cache.calculate(function(size) {
+//		            console.log(size)
+		            sizeCache = size;
+		            $("#huancun").text(parseFloat(sizeCache / (1024 * 1024)).toFixed(2) + "M");
+//	            	mui.confirm("您目前的系统缓存为" + parseFloat(sizeCache / (1024 * 1024)).toFixed(2) + "M？", "清除缓存", ["确认", "取消"], function(e) {
+//		                if(e.index == 1) {} else {
+//		                    plus.cache.clear(function() {
+//		                        alert("缓存清除完毕")
+//		                    });
+//		                }
+//		            });
+		        });
+			})
+			
+			function click_toast(){
+				mui.toast('暂未开放');
+			}
+			mui.init({
+				swipeBack: false
+			});
+			var i_page = 2;
+
+			(function($) {
+				//阻尼系数
+				var deceleration = mui.os.ios ? 0.003 : 0.0009;
+				$('.mui-scroll-wrapper').scroll({
+					bounce: true,
+					indicators: true, //是否显示滚动条
+					deceleration: deceleration,
+					startY: 0, //初始化时滚动至y
+				});
+				$.ready(function() {
+					//循环初始化所有下拉刷新，上拉加载。
+					$.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
+						$(pullRefreshEl).pullToRefresh({
+							//下拉
+							down: {
+								callback: function() {
+									var self = this;
+									setTimeout(function() {
+										self.endPullDownToRefresh();
+									}, 1000);
+								}
+							},
+							//上拉
+							up: {
+								callback: function() {
+									var self = this;
+									setTimeout(function() {
+										var ul = self.element.querySelector('.mui-table-view');
+										switch(index) {
+											case 1:
+												ul.appendChild(movieHomee(8, i_page, ul));
+												i_page++
+												break;
+											case 2:
+												ul.appendChild(movieHomee(9, i_page, ul));
+												i_page++
+												break;
+											case 3:
+												ul.appendChild(movieHomee(10, i_page, ul));
+												i_page++
+												break;
+											case 4:
+												ul.appendChild(movieHomee(11, i_page, ul));
+												i_page++
+												break;
+											case 5:
+												ul.appendChild(movieHomee(12, i_page, ul));
+												i_page++
+												break;
+											case 6:
+												ul.appendChild(movieHomee(13, i_page, ul));
+												i_page++
+												break;
+											case 12:
+												ul.appendChild(movieHomee(14, i_page, ul));
+												i_page++
+												break;
+											case 7:
+												ul.appendChild(movieHomee(15, i_page, ul));
+												i_page++
+												break;
+											case 8:
+												ul.appendChild(movieHomee(16, i_page, ul));
+												i_page++
+												break;
+											case 9:
+												ul.appendChild(movieHomee(17, i_page, ul));
+												i_page++
+												break;
+											case 10:
+												ul.appendChild(movieHomee(18, i_page, ul));
+												i_page++
+												break;
+											case 11:
+												ul.appendChild(movieHomee(19, i_page, ul));
+												i_page++
+												break;
+											default:
+												break;
+										}
+										imgWH();
+										self.endPullUpToRefresh();
+									}, 50);
+								}
+							}
+						});
+					});
+
+					var movieHomee = function(pid, page, getId) {
+						var fragment = document.createDocumentFragment();
+						mui.ajax("http://movie.wxjii.cn/php/movieHome.php", {
+							data: {
+								type: 1,
+								pid: pid,
+								page: page
+							},
+							async: false,
+							dataType: 'json',
+							type: 'POST',
+							timeout: 1000,
+							success: function(data) {
+								for(var i = 0; i < data.data.length; i++) {
+									li = document.createElement('li');
+									li.className = 'mui-table-view-cell mui-media mui-col-xs-4';
+									li.innerHTML = '<div class="lia" id="list_' + i + '" data-href="' + data.data[i].href + '"><img class="mui-media-object" src="' + data.data[i].imgSrc + '"><p class="mui-media-body">' + data.data[i].filmName + '</p><p class="mui-media-body p-actor">' + data.data[i].actor + '</p></div>';
+									fragment.appendChild(li);
+								}
+								fragment.append(li);
+							}
+						});
+						return fragment;
+					}
+				});
+			})(mui);
+
+			function imgWH() {
+				var a = $('.mui-table-view .mui-table-view-cell .mui-media-object').width();
+				$('.mui-table-view .mui-table-view-cell .mui-media-object').css({
+					'height': a * 1.4
+				});
+			}
+			$(window).resize(function() {
+			  imgWH();
+			});
+		</script>
+<script type="text/javascript">
+	//http://movie.wxjii.cn
+	function movieIndex() {
+		mui.ajax("http://movie.wxjii.cn/php/movieB.php", {
+			data: {
+				type: 1
+			},
+			async: false,
+			dataType: 'json',
+			type: 'POST',
+			timeout: 1000,
+			success: function(data) {
+				var str = '';
+				for(var i = 0; i < data.data.length; i++) {
+					str += '<div class="mui-card"><div class="mui-card-content"><h5 class="mui-text-center">'+data.data[i].title+'</h5></div></div>';
+					for(var j = 0; j < data.data[i].data.length; j++) {
+						str += '<li class="mui-table-view-cell mui-media mui-col-xs-4"><div class="lia mui-card" id="list_'+j+'" data-href="'+data.data[i].data[j].href+'" ><img class="mui-media-object" src="'+data.data[i].data[j].imgSrc+'"><p class="mui-media-body">'+data.data[i].data[j].filmName+'</p><p class="mui-media-body p-actor" >'+data.data[i].data[j].actor+'</p></div></li>';
+						$('#scroll1 ul.mui-table-view').html(str);
+					}
+				}	
+				imgWH();
+			}
+		});
+	}
+	movieIndex();
+	//监听侧滑,
+	var item2Show = false,
+		item3Show = false,
+		item4Show = false,
+		item5Show = false,
+		item6Show = false,
+		item7Show = false,
+		item8Show = false,
+		item9Show = false,
+		item10Show = false,
+		item11Show = false,
+		item12Show = false; 
+		item13Show = false; //子选项卡是否显示标志
+	document.getElementById('slider').addEventListener('slide', function(e) {
+
+		i_page = 2; //
+		if(event.detail.slideNumber === 1 && !item2Show) {
+			//切换到第二个选项卡
+			//动态获得第二个选项卡内容
+			//显示内容
+			movieHome(8, 1, $('#item2mobile'));
+			//改变标志位，下次直接显示
+			item2Show = true;
+		} else if(event.detail.slideNumber === 2 && !item3Show) {
+			movieHome(9, 1, $('#item3mobile'));
+			item3Show = true;
+		} else if(e.detail.slideNumber == 3 && !item4Show) {
+			movieHome(10, 1, $('#item4mobile'));
+			item4Show = true;
+		} else if(e.detail.slideNumber == 4 && !item5Show) {
+			movieHome(11, 1, $('#item5mobile'));
+			item5Show = true;
+		} else if(e.detail.slideNumber == 5 && !item6Show) {
+			movieHome(12, 1, $('#item6mobile'));
+			item6Show = true;
+		} else if(e.detail.slideNumber == 6 && !item7Show) {
+			movieHome(13, 1, $('#item7mobile'));
+			item7Show = true;
+		} else if(e.detail.slideNumber == 7 && !item8Show) {
+			movieHome(15, 1, $('#item8mobile'));
+			item8Show = true;
+		} else if(e.detail.slideNumber == 8 && !item9Show) {
+			movieHome(16, 1, $('#item9mobile'));
+			item9Show = true;
+		} else if(e.detail.slideNumber == 9 && !item10Show) {
+			movieHome(17, 1, $('#item10mobile'));
+			item10Show = true;
+		} else if(e.detail.slideNumber == 10 && !item11Show) {
+			movieHome(18, 1, $('#item11mobile'));
+			item11Show = true;
+		} else if(e.detail.slideNumber == 11 && !item12Show) {
+			movieHome(19, 1, $('#item12mobile'));
+			item12Show = true;
+		} else if(e.detail.slideNumber == 12 && !item13Show) {
+			movieHome(14, 1, $('#item13mobile'));
+			item12Show = true;
+		}
+	});
+	function movieHome(pid, page, getId) {
+		mui.ajax("http://movie.wxjii.cn/php/movieHome.php", {
+			data: {
+				type: 1,
+				pid: pid,
+				page: page
+			},
+			//		async:false,
+			dataType: 'json',
+			type: 'POST',
+			timeout: 1000,
+			success: function(data) {
+				var str = '';
+				for(var i = 0; i < data.data.length; i++) {
+					str += '<li class="mui-table-view-cell mui-media mui-col-xs-4"><div class="lia" id="list_' + i + '" data-href="' + data.data[i].href + '"><img class="mui-media-object" src="' + data.data[i].imgSrc + '"><p class="mui-media-body">' + data.data[i].filmName + '</p><p class="mui-media-body p-actor">' + data.data[i].actor + '</p></div></li>';
+				}
+				getId.find('.mui-loading').remove();
+				getId.find('ul.mui-table-view').html(str);
+				imgWH();
+			}
+		});
+	}
+</script>
+
+<script type="text/javascript" charset="utf-8">
+	//下面是点击列表显示详情页
+	var detailPage = null;
+	//添加列表项的点击事件
+	mui('.mui-table-view.mui-grid-view').on('tap', 'div', function(e) {
+		var id = this.getAttribute('id');
+		var href = this.getAttribute('data-href');
+		var title = this.getElementsByTagName('p')[0].innerHTML;
+
+		//获得详情页面
+		if(!detailPage) {
+			detailPage = plus.webview.getWebviewById('movie.html');
+		}
+		//触发详情页面的topicId事件
+		mui.fire(detailPage, 'topicId', {
+			id: id
+		});
+		//打开详情页面          
+		mui.openWindow({
+			url: "/movie.html",
+			id: 'movie.html',
+			show: {
+				autoShow: false, //页面loaded事件发生后自动显示，默认为true
+				aniShow: "slide-in-right", //页面显示动画，默认为”slide-in-right“；
+				duration: 200, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+				event: 'loaded', //页面显示时机，默认为titleUpdate事件时显示
+				extras: {} //窗口动画是否使用图片加速	
+			},
+			waiting: {
+				autoShow: true,
+				title: '正在加载...', //等待对话框上显示的提示内容
+			},
+			extras: {
+				href: href,
+				title: title
+			}
+		});
+	});
+	
+	//预加载search，不然ios会转圈圈会卡主
+	mui.preload({
+		url:"search.html",
+		id:"search"
+	});
+	document.getElementById('search').addEventListener('tap', function() {
+		//打开关于页面
+		mui.openWindow({
+			url: '/search.html',
+			id: 'search'
+		});
+	});
+
+//计算窗口高度
+window.onload = function(){
+	var ua = navigator.userAgent.toLowerCase();	
+	if (/iphone|ipad|ipod/.test(ua)) {
+		var sHeight = window.screen.availHeight - 132;
+		$('.mui-slider-group>div').css({"minHeight": sHeight + "px"});
+		$('#tabbar.mui-control-content').css({"minHeight": sHeight + "px"});
+		$('#tabbar-bd.mui-control-content').css({"minHeight": sHeight+40 + "px"});
+		$('#tabbar-gr.mui-control-content').css({"minHeight": sHeight + "px"});
+	} else if (/android/.test(ua)) {
+		var sHeight = window.screen.availHeight - 150;
+		$('.mui-slider-group>div').css({"minHeight": sHeight + "px"});
+		$('#tabbar.mui-control-content').css({"minHeight": sHeight + "px"});
+		$('#tabbar-bd.mui-control-content').css({"minHeight": sHeight+40 + "px"});
+		$('#tabbar-gr.mui-control-content').css({"minHeight": sHeight + "px"});
+	}
+}
+</script>
+		
+		<script>
+		var _mtac = {};
+		(function() {
+		    var mta = document.createElement("script");
+		    mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";
+		    mta.setAttribute("name", "MTAH5");
+		    mta.setAttribute("sid", "500507164");
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(mta, s);
+		})();
+		</script>		
+		
+	</body>
+
+</html>
+

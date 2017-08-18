@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>movie.wxjii.cn</title>
+		<title>Ursa影视</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -17,6 +17,16 @@
 				background-color: #efeff4;
 			}
 		</style>
+		<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?5d66bd0c136a6998ab02a25bd4034a87";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+		</script>
+
 	</head>
 
 	<body>
@@ -39,7 +49,6 @@
 							bottom: '50px'
 						}
 					}
-
 				],
 				preloadPages: [{
 					"id": "list",
@@ -173,7 +182,8 @@
 			        switch(xhr.readyState){
 			            case 4:
 			            plus.nativeUI.closeWaiting();
-			            var btn = ['更新', '否']
+			            var btn = ['更新', '否'];
+			            var btn1 = ['重试', '否'];
 			            if(xhr.status==200){
 			                console.log("检测更新成功："+xhr.responseText);
 			                var newVer=xhr.responseText;
@@ -194,9 +204,9 @@
 			            }else{
 			                console.log("检测更新失败！");
 //			                plus.nativeUI.alert("检测更新失败！");
-			                mui.confirm('检测更新失败！', '更新哦', btn, function(e) {
+			                mui.confirm('检测更新失败！', '有新版本啦', btn1, function(e) {
 								if(e.index == 0){
-									alert(1)
+									mui.currentWebview.close();
 								}else{
 									mui.currentWebview.close();
 								}
@@ -238,47 +248,42 @@
 			        plus.nativeUI.alert("安装wgt文件失败["+e.code+"]："+e.message);
 			    });
 			}
+
+			//网络连接
+			function plusReady1(){
+			　　 var types = {};
 			
+			　　 types[plus.networkinfo.CONNECTION_UNKNOW] = "Unknown connection";
 			
+			　　 types[plus.networkinfo.CONNECTION_NONE] = "None connection";
 			
+			　　 types[plus.networkinfo.CONNECTION_ETHERNET] = "Ethernet connection";
 			
+			　　 types[plus.networkinfo.CONNECTION_WIFI] = "WiFi connection";
 			
+			　　 types[plus.networkinfo.CONNECTION_CELL2G] = "Cellular 2G connection";
 			
-		//网络连接
-function plusReady1(){
-
-　　 var types = {};
-
-　　 types[plus.networkinfo.CONNECTION_UNKNOW] = "Unknown connection";
-
-　　 types[plus.networkinfo.CONNECTION_NONE] = "None connection";
-
-　　 types[plus.networkinfo.CONNECTION_ETHERNET] = "Ethernet connection";
-
-　　 types[plus.networkinfo.CONNECTION_WIFI] = "WiFi connection";
-
-　　 types[plus.networkinfo.CONNECTION_CELL2G] = "Cellular 2G connection";
-
-　　 types[plus.networkinfo.CONNECTION_CELL3G] = "Cellular 3G connection";
-
-　　 types[plus.networkinfo.CONNECTION_CELL4G] = "Cellular 4G connection";
-
-//　　 alert( "Network: " + types[plus.networkinfo.getCurrentType()] );
-
-}
-
-if(window.plus){
-
-　　plusReady();
-
-}else{
-
-　　document.addEventListener("plusready",plusReady,false);
-
-}
-
-
+			　　 types[plus.networkinfo.CONNECTION_CELL3G] = "Cellular 3G connection";
+			
+			　　 types[plus.networkinfo.CONNECTION_CELL4G] = "Cellular 4G connection";
+			//　　 alert( "Network: " + types[plus.networkinfo.getCurrentType()] );
+			}
+			if(window.plus){
+			　　plusReady();
+			}else{
+			　　document.addEventListener("plusready",plusReady,false);
+			}
+		</script>
+		<script>
+		var _mtac = {};
+		(function() {
+		    var mta = document.createElement("script");
+		    mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";
+		    mta.setAttribute("name", "MTAH5");
+		    mta.setAttribute("sid", "500507164");
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(mta, s);
+		})();
 		</script>
 	</body>
-
 </html>

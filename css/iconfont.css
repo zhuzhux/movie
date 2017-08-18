@@ -15,6 +15,14 @@
 
 .icon-dianying:before { content: "\e70e"; }
 
+.icon-player-back:before { content: "\e670"; }
+
+.icon-player-forward:before { content: "\e671"; }
+
+.icon-beisudu:before { content: "\e637"; }
+
+.icon-beisudu1:before { content: "\e638"; }
+
 .icon-sousuo:before { content: "\e608"; }
 
 .icon-set:before { content: "\e600"; }

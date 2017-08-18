@@ -5,9 +5,9 @@
 		"iPad"
 	],
 	"id": "H59174772",/*应用的标识，创建应用时自动生成，勿手动修改*/
-	"name": "Ursa",/*应用名称，程序桌面图标名称*/
+	"name": "Ursa影视",/*应用名称，程序桌面图标名称*/
 	"version": {
-		"name": "1.0.11",/*应用版本名称*/
+		"name": "1.0.2",/*应用版本名称*/
 		"code": "83"
 	},
 	"description": "WebApp",/*应用描述信息*/
@@ -210,7 +210,7 @@
 				},
 				"android": {
 					"mdpi": "", /*普通屏启动图片，分辨率：240x282*/
-					"ldpi": "","hdpi":"C:/Users/Administrator/Desktop/web/480.png","xhdpi":"C:/Users/Administrator/Desktop/web/720.png","xxhdpi":"C:/Users/Administrator/Desktop/web/1080.png"
+					"ldpi": "","xhdpi":"C:/Users/Administrator/Desktop/web/app720.png","hdpi":"C:/Users/Administrator/Desktop/web/app480.png","xxhdpi":"C:/Users/Administrator/Desktop/web/app1080.png"
 				}
 			}
 		}
@@ -257,7 +257,11 @@
 					"img/60x60.gif",
 					"img/bg.png",
 					"img/bg2.png",
-					"img/video_bg.png"
+					"img/video_bg.png",
+					"zy.media.min.js",
+					"test.jpg",
+					"zy.media.min.css",
+					"test.mp4"
 				],
 				"refer": [],
 				"priority": 0
@@ -283,12 +287,14 @@
 					"img/60x60.gif",
 					"css/iconfont.css",
 					"fonts/iconfont.ttf",
-					"listA.html"
+					"listA.html",
+					"js/ajax.js"
 				],
 				"refer": [
 					"ck/index.htm",
 					"video.html",
-					"testVideo.html"
+					"testVideo.html",
+					"flvjs.html"
 				],
 				"priority": 0
 			},
@@ -342,7 +348,13 @@
 			},
 			"listA.html": {
 				"resources": [
-					"css/mui.min.css"
+					"css/mui.min.css",
+					"js/mui.min.js",
+					"js/jquery.js",
+					"fonts/mui.ttf",
+					"css/list.css",
+					"js/mui.pullToRefresh.js",
+					"js/mui.pullToRefresh.material.js"
 				],
 				"refer": [
 					"search.html",
@@ -353,14 +365,47 @@
 		},
 		"idle": {
 			"resources": [
-				"img/img1.jpg",
+				"test.html",
+				"php/movieHome.php",
+				"php/movieU2.php",
+				"Phpfetcher/Page/Abstract.php",
+				"Phpfetcher/Manager/Abstract.php",
+				"php/movieU.php",
+				"php/movieB.php",
 				"js/mui.js",
-				"css/mui.css"
+				"Phpfetcher/Log.php",
+				"php/movieSearch.php",
+				"README.md",
+				"Phpfetcher/Page/Default.php",
+				"Phpfetcher/Util/Trie.php",
+				"Phpfetcher/Crawler/Abstract.php",
+				"Phpfetcher/Dom/SimpleHtmlDom.php",
+				"Phpfetcher/Dom/simple_html_dom.php",
+				"css/mui.css",
+				"php/sg.php",
+				"php/movieA.php",
+				"php/movieU3.php",
+				"phpfetcher.php",
+				"Phpfetcher/Error.php",
+				"Phpfetcher/Dom/Abstract.php",
+				"php/movieU1.php",
+				"Phpfetcher/Crawler/Default.php",
+				"js/video.min.js"
 			]
 		}
 	},
 	"unpackage":[
 	  "css/mui.css",
-	  "js/mui.js"
+	  "css/video-js.css",
+	  "js/mui.js",
+	  "js/video.min.js",
+	  "js/videojs-ie8.min.js",
+	  "php",
+	  "Phpfetcher",
+	  "phpfetcher.php",
+	  "README.md",
+	  "video.html",
+	  "test.html",
+	  "testVideo.html"
 	]
 }
