@@ -261,7 +261,10 @@
 					"zy.media.min.js",
 					"test.jpg",
 					"zy.media.min.css",
-					"test.mp4"
+					"test.mp4",
+					"js/Vcontrol.js",
+					"img/vbg.png",
+					"img/vbg.jpg"
 				],
 				"refer": [],
 				"priority": 0

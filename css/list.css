@@ -95,3 +95,6 @@ header.mui-bar-nav{box-shadow: none;border-bottom: 1px solid #ccc;}
 #slider ul .mui-card{box-shadow: 0px 0px 1px rgba(0,0,0,.3);}
 #slider ul .mui-card h5{font-size: 16px;color: rgba(7,17,27,.6);}
 
+#tabbar-gr .mui-table-view:before, #tabbar-gr .mui-table-view:after{height: 0;}
+#tabbar-gr .mui-table-view{height: auto;}
+

@@ -1,130 +1,133 @@
 {
-  "index.html": {
-    "href": "index.html",
-    "resources": [
-      "js/mui.min.js",
-      "js/jquery.js",
-      "css/mui.min.css",
-      "img/tb4.jpg",
-      "img/tb1.jpg",
-      "img/tb2.jpg",
-      "img/tb3.jpg",
-      "fonts/mui.ttf",
-      "/php/movieA.php",
-      "list.html"
-    ],
-    "refer": [
-      "index2.html",
-      "movie.html",
-      "list.html"
-    ],
-    "priority": 0
-  },
-  "index2.html": {
-    "resources": [
-      "css/mui.min.css"
-    ],
-    "refer": []
-  },
-  "movie.html": {
-    "resources": [
-      "css/mui.min.css",
-      "/php/movieA.php",
-      "js/mui.min.js",
-      "js/jquery.js",
-      "fonts/mui.ttf",
-      "img/60x60.gif",
-      "img/bg.png",
-      "img/bg2.png",
-      "img/video_bg.png",
-      "zy.media.min.js",
-      "test.jpg",
-      "zy.media.min.css",
-      "test.mp4"
-    ],
-    "refer": []
-  },
-  "list.html": {
-    "resources": [
-      "img/tb1.jpg",
-      "img/tb2.jpg",
-      "img/tb3.jpg",
-      "img/tb4.jpg",
-      "js/jquery.js",
-      "css/mui.min.css",
-      "/php/movieA.php",
-      "/movie.html",
-      "fonts/mui.ttf",
-      "css/list.css",
-      "js/mui.min.js",
-      "js/mui.pullToRefresh.js",
-      "js/mui.pullToRefresh.material.js",
-      "img/bg.jpg",
-      "search.html",
-      "img/60x60.gif",
-      "css/iconfont.css",
-      "fonts/iconfont.ttf",
-      "listA.html",
-      "js/ajax.js"
-    ],
-    "refer": [
-      "movie.html",
-      "search.html",
-      "ck/index.htm",
-      "video.html",
-      "testVideo.html",
-      "listA.html",
-      "flvjs.html"
-    ]
-  },
-  "search.html": {
-    "resources": [
-      "css/mui.min.css",
-      "js/mui.min.js",
-      "js/jquery.js",
-      "fonts/mui.ttf"
-    ],
-    "refer": [
-      "search_ok.html",
-      "movie.html"
-    ]
-  },
-  "search_ok.html": {
-    "resources": [
-      "css/mui.min.css"
-    ],
-    "refer": []
-  },
-  "ck/index.htm": {
-    "resources": [
-      "ck/js/offlights.js",
-      "ck/ckplayer/ckplayer.js",
-      "ck/demo1.htm"
-    ],
-    "refer": [
-      "ck/demo1.htm"
-    ]
-  },
-  "testVideo.html": {
-    "resources": [
-      "js/videojs-ie8.min.js",
-      "css/video-js.css",
-      "css/mui.min.css"
-    ],
-    "refer": []
-  },
-  "listA.html": {
-    "resources": [
-      "css/mui.min.css",
-      "js/mui.min.js",
-      "js/jquery.js",
-      "css/list.css",
-      "js/mui.pullToRefresh.js",
-      "js/mui.pullToRefresh.material.js"
-    ],
-    "refer": [
-      "search.html",
-      "movie.html"
-    ]
-  }
+	"index.html": {
+		"href": "index.html",
+		"resources": [
+			"js/mui.min.js",
+			"js/jquery.js",
+			"css/mui.min.css",
+			"img/tb4.jpg",
+			"img/tb1.jpg",
+			"img/tb2.jpg",
+			"img/tb3.jpg",
+			"fonts/mui.ttf",
+			"/php/movieA.php",
+			"list.html"
+		],
+		"refer": [
+			"index2.html",
+			"movie.html",
+			"list.html"
+		],
+		"priority": 0
+	},
+	"index2.html": {
+		"resources": [
+			"css/mui.min.css"
+		],
+		"refer": []
+	},
+	"movie.html": {
+		"resources": [
+			"css/mui.min.css",
+			"/php/movieA.php",
+			"js/mui.min.js",
+			"js/jquery.js",
+			"fonts/mui.ttf",
+			"img/60x60.gif",
+			"img/bg.png",
+			"img/bg2.png",
+			"img/video_bg.png",
+			"zy.media.min.js",
+			"test.jpg",
+			"zy.media.min.css",
+			"test.mp4",
+			"js/Vcontrol.js",
+			"img/vbg.png",
+			"img/vbg.jpg"
+		],
+		"refer": []
+	},
+	"list.html": {
+		"resources": [
+			"img/tb1.jpg",
+			"img/tb2.jpg",
+			"img/tb3.jpg",
+			"img/tb4.jpg",
+			"js/jquery.js",
+			"css/mui.min.css",
+			"/php/movieA.php",
+			"/movie.html",
+			"fonts/mui.ttf",
+			"css/list.css",
+			"js/mui.min.js",
+			"js/mui.pullToRefresh.js",
+			"js/mui.pullToRefresh.material.js",
+			"img/bg.jpg",
+			"search.html",
+			"img/60x60.gif",
+			"css/iconfont.css",
+			"fonts/iconfont.ttf",
+			"listA.html",
+			"js/ajax.js"
+		],
+		"refer": [
+			"movie.html",
+			"search.html",
+			"ck/index.htm",
+			"video.html",
+			"testVideo.html",
+			"listA.html",
+			"flvjs.html"
+		]
+	},
+	"search.html": {
+		"resources": [
+			"css/mui.min.css",
+			"js/mui.min.js",
+			"js/jquery.js",
+			"fonts/mui.ttf"
+		],
+		"refer": [
+			"search_ok.html",
+			"movie.html"
+		]
+	},
+	"search_ok.html": {
+		"resources": [
+			"css/mui.min.css"
+		],
+		"refer": []
+	},
+	"ck/index.htm": {
+		"resources": [
+			"ck/js/offlights.js",
+			"ck/ckplayer/ckplayer.js",
+			"ck/demo1.htm"
+		],
+		"refer": [
+			"ck/demo1.htm"
+		]
+	},
+	"testVideo.html": {
+		"resources": [
+			"js/videojs-ie8.min.js",
+			"css/video-js.css",
+			"css/mui.min.css"
+		],
+		"refer": []
+	},
+	"listA.html": {
+		"resources": [
+			"css/mui.min.css",
+			"js/mui.min.js",
+			"js/jquery.js",
+			"css/list.css",
+			"js/mui.pullToRefresh.js",
+			"js/mui.pullToRefresh.material.js"
+		],
+		"refer": [
+			"search.html",
+			"movie.html"
+		]
+	}
 }

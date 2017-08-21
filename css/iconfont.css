@@ -13,11 +13,15 @@
 
 .icon-paixing:before { content: "\e7c4"; }
 
+.icon-zantingbofang:before { content: "\e6b8"; }
+
 .icon-dianying:before { content: "\e70e"; }
 
 .icon-player-back:before { content: "\e670"; }
 
 .icon-player-forward:before { content: "\e671"; }
+
+.icon-bofang:before { content: "\e601"; }
 
 .icon-beisudu:before { content: "\e637"; }
 

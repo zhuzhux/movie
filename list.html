@@ -254,7 +254,20 @@
 				            </p>
 				        </div>
 				    </li>-->
-				    <li class="mui-table-view-cell " onclick="huancun.qingli()">
+				    <li class="mui-table-view-cell">
+				    	<ul class="mui-table-view mui-grid-view" style="min-height: 0;">
+				    		<li class="mui-table-view-cell mui-media mui-col-xs-4">
+				    			<div class="lia mui-card" id="list_1" data-href="http://m.yingshidaquan.cc/html/DQ230665.html"><img class="mui-media-object" src="http://static.bookteller.cc/Uploads/vod/2017-03-12/58c4a88140376.jpg" style="height: 140px;"><p class="mui-media-body">丧尸新生代/逃亡僵尸岛 </p><p class="mui-media-body p-actor">多格雷·斯科特,杰西卡·德·古维,马丁·麦凯恩 </p></div>
+				    		</li>
+				    		<li class="mui-table-view-cell mui-media mui-col-xs-4">
+				    			<div class="lia mui-card" id="list_1" data-href="http://m.yingshidaquan.cc/html/DQ230665.html"><img class="mui-media-object" src="http://static.bookteller.cc/Uploads/vod/2017-03-12/58c4a88140376.jpg" style="height: 140px;"><p class="mui-media-body">丧尸新生代/逃亡僵尸岛 </p><p class="mui-media-body p-actor">多格雷·斯科特,杰西卡·德·古维,马丁·麦凯恩 </p></div>
+				    		</li>
+				    		<li class="mui-table-view-cell mui-media mui-col-xs-4">
+				    			<div class="lia mui-card" id="list_1" data-href="http://m.yingshidaquan.cc/html/DQ230665.html"><img class="mui-media-object" src="http://static.bookteller.cc/Uploads/vod/2017-03-12/58c4a88140376.jpg" style="height: 140px;"><p class="mui-media-body">丧尸新生代/逃亡僵尸岛 </p><p class="mui-media-body p-actor">多格雷·斯科特,杰西卡·德·古维,马丁·麦凯恩 </p></div>
+				    		</li>
+						</ul>
+				    </li>
+				    <li class="mui-table-view-cell" onclick="huancun.qingli()">
 				    	<span>清理缓存</span><span id="huancun" class="mui-pull-right"></span>
 				        <div class="mui-collapse-content">
 				        </div>
@@ -463,7 +476,7 @@
 		var id = this.getAttribute('id');
 		var href = this.getAttribute('data-href');
 		var title = this.getElementsByTagName('p')[0].innerHTML;
-
+		console.log($(this).parent().html())
 		//获得详情页面
 		if(!detailPage) {
 			detailPage = plus.webview.getWebviewById('movie.html');
