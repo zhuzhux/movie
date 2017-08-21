@@ -81,11 +81,11 @@
 
 /*小问题处理*/
 .mui-table-view {min-height: 600px;}
-#slider .lia p{font-size: .75rem;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+#slider .lia p, #tabbar-gr .lia p{font-size: .75rem;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
 .mui-table-view.mui-grid-view{padding-right: 8px;}
 #slider .mui-slider-item{border: 0;}
-#slider .lia .p-actor{font-size:10px;}
-#slider .lia img{10px 10px 5px #888888;}
+#slider .lia .p-actor, #tabbar-gr .lia .p-actor{font-size:10px;}
+#slider .lia img, #slider .lia img{10px 10px 5px #888888;}
 /*#slider ul>li {padding-top:5px}*/
 .mui-slider-group .mui-scroll{background: white;}
 header.mui-bar-nav{box-shadow: none;border-bottom: 1px solid #ccc;}
@@ -95,6 +95,7 @@ header.mui-bar-nav{box-shadow: none;border-bottom: 1px solid #ccc;}
 #slider ul .mui-card{box-shadow: 0px 0px 1px rgba(0,0,0,.3);}
 #slider ul .mui-card h5{font-size: 16px;color: rgba(7,17,27,.6);}
 
-#tabbar-gr .mui-table-view:before, #tabbar-gr .mui-table-view:after{height: 0;}
-#tabbar-gr .mui-table-view{height: auto;}
-
+#tabbar-gr .mui-table-view:before, #tabbar-gr .mui-table-view:after, #tabbar-gr .jilu:after{height: 0;}
+#tabbar-gr .mui-table-view{height: auto; }
+#tabbar-gr .ul-wrapper{padding: 0;}
+#tabbar-gr .jilu{padding-bottom: 0;}
